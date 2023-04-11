@@ -1,31 +1,26 @@
-<nav class="nav-box">
-    <div class="adaptive-container">
-        <div class="nav-column">
-            <a href="/panel"><img src="public/img/logo.svg"></a>
-        </div>
-        <div class="nav-column">
-            <ul>
-                <a href="/panel"><li>Панель</li></a>
-                <a href="/profile"><li>Профиль</li></a>
-                <a href="/market"><li>Маркет</li></a>
-                <a href="/status"><li>Статус сервера</li></a>
-                <a href="/support"><li>Поддержка</li></a>
-            </ul>
-        </div>
-        <div class="nav-column">
-            <button class="lk-button">%%USERNAME%%</button>
-            <div class="notification-box">
-                <button class="notification-window-button"><img src="public/img/notification img.svg"></button>
-                <div class="notification-window">
-                    <p>Пока нет уведомлений</p>
-                </div>
+<nav class="navigation-block">
+    <div class="container">
+        <div class="navigation_left__item-block">
+            <div class="navigation_logo__item-block">
+                <a href="/"><img draggable="false" class="image-logo" src="public/img/logo.svg" alt="logo"></a>
             </div>
-            
-            <button>
-                <a href="/logout">
-                    <img src="public/img/leave img.svg">
-                </a>
-            </button>
+            <div class="navigation_choise_language__item-block">
+                <button id="eng" class="language-button active">ENG</button>
+                <button id="ru" class="language-button">RU</button>
+            </div>
+        </div>
+        <div class="navigation_center__item-block">
+            <a href="#main" class="navigation-button navigation_active">HOME</a>
+            <a href="#announcements" class="navigation-button">ANNOUNCEMENT</a>
+            <a href="#products" class="navigation-button">PRODUCTS<img src=""></a>
+            <a href="#contacts" class="navigation-button">CONTACTS</a>
+        </div>
+        <div class="navigation_right__item-block">
+            <a href="#" class="cart-button">
+                <img src="public/img/cart.svg">
+                CART
+            </a>
+            <a href="#" class="purshare-button">PURCHASE CHEAT</a>
         </div>
     </div>        
 </nav>
