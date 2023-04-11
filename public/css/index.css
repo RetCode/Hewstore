@@ -141,6 +141,141 @@ body
 }
 /* main section */
 
+/* announcements section */
+.announcements-section
+{
+    padding-top: 75px;
+}
+
+.announcements_button-block
+{
+    margin-top: 14px;
+    padding-bottom: 25px;
+}
+
+.announcements_button-block a
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFE001;
+
+    display: flex;
+    align-items: center;
+
+    transition: 0.2s ease all;
+}
+
+.announcements_button-block a:hover
+{
+ opacity: .7;
+}
+
+.announcements_button-block a img
+{
+    margin-left: 8px;
+}
+
+.announcements_items-block
+{
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(0, 427px));
+    justify-content: space-between;
+}
+
+.announcements_items-block .announcements-item
+{
+    width: 425px;
+}
+
+.announcements_items-block .announcements-item .announcements_image
+{
+    width: 425px;
+    height: 160px;
+
+    object-fit: cover;
+
+    pointer-events: none;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info
+{
+    height: 150px;
+
+    background: #101834;
+
+    padding: 15px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-date
+{
+    display: flex;
+    align-items: center;
+
+    pointer-events: none;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-date img
+{
+    margin-right: 4px;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-date p
+{
+    font-size: 10px;
+    font-weight: 500;
+    color: #4D5365;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-name p
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+} 
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-description p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #C3C5CB;
+} 
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-link a
+{
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFE001;
+
+    display: flex;
+    align-items: center;
+
+    transition: 0.2s ease all;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-link a:hover
+{
+    opacity: .7;
+}
+
+.announcements_items-block .announcements-item .announcements_item-info .announcements_item-link a img
+{
+    margin-left: 8px;
+}
+/* announcements section */
+
 /* products section */
 .name-block
 {
