@@ -5,5 +5,5 @@ use app\core\Utils;
 
 class indexModel extends Model
 {
-
+    
 }
