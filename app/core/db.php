@@ -35,7 +35,7 @@ class DataBase
     *|-----------------------------------------------------------------
     **/
 
-    public static function Query($query, $arrayParams)
+    public static function Query($query, $arrayParams = [])
     {
         try
         {
