@@ -45,16 +45,17 @@ body
 .main-block
 {
     display: flex;
+    justify-content: space-between;
+
+    padding-top: 130px;
 }
 
 .left-block
 {
     width: 50%;
-}
 
-.main-text-box
-{
-    margin-top: 210px;
+    display: flex;
+    align-items: center;
 }
 
 .main-text
@@ -111,26 +112,29 @@ body
     font-size: 16px;
     color: #FFE001;
     margin-right: 8px;
+
+    transition: 0.2s ease all;
 }
 
-.right-block
+.more-details-button:hover
 {
-    width: 50%;
+    opacity: .7;
 }
 
 .logo-box
 {
-    margin-top: 130px;
-    margin-left: 150px;
+    width: 425px;
+    height: 427.06px;
+    padding: 65px 71px;
     background: rgba(22, 30, 57, 0.25);
     backdrop-filter: blur(32px);
     border-radius: 18px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .logo-box img
 {
-    width: 425px;
-    height: 427px;
+    width: 100%
 }
