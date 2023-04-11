@@ -17,9 +17,7 @@ return array(
     'b710d6ad052cf7757a2aceedd561d1f2' => $baseDir . '/app/core/utils.php',
     'a55ead8cbe2b92a4c9d5ab72f8add83c' => $baseDir . '/app/core/validations.php',
     '2335d4c1ab23a7e12b31c68f5bc4345b' => $baseDir . '/app/core/templatesData.php',
-    '33326cf540843eddc71c2661d9ac8869' => $baseDir . '/app/interfaces/userInterfaces.php',
-    '9c260928bf2d0281fd14f10710806b15' => $baseDir . '/app/interfaces/sendCodeInterfaces.php',
-    'aa9575ae691e3f84560fa5a797070a3e' => $baseDir . '/app/interfaces/subInfoInterfaces.php',
     'c0ec4096fb775279f1f16515dd5e3471' => $baseDir . '/app/interfaces/sessionInterfaces.php',
+    '02001384a004ffefe33bb2af65019c56' => $baseDir . '/app/interfaces/gamesInterfaces.php',
     '259ce40066b44bcaed6a1b727f2e029e' => $vendorDir . '/phpmailer/PHPMailerAutoload.php',
 );

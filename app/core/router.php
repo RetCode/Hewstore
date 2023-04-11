@@ -19,6 +19,7 @@ class Router
         switch($route)
         {
             case "index": Router::done("index", "index"); break;
+            case "api": Router::done("api", "api"); break;
             default: Router::error(404);
         }
     }
