@@ -1,5 +1,5 @@
 <nav class="navigation-block">
-    <div class="container">
+    <div class="header-container">
         <div class="navigation_left__item-block">
             <div class="navigation_logo__item-block">
                 <a href="/"><img draggable="false" class="image-logo" src="public/img/logo.svg" alt="logo"></a>
