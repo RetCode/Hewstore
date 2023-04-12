@@ -140,25 +140,4 @@ class DataBase
             return null;
         }
     }
-
-    /**
-    *|-----------------------------------------------------------------
-    *|  @param string $value - String
-    *|
-    *|  Secure sql injectin for query
-    *|-----------------------------------------------------------------
-    **/
-    public static function injectionProtect($value)
-    {
-        try
-        {
-            $mysqlconnect = DataBase::connect();
-            return mysqli_real_escape_string($mysqlconnect, $value);
-        }
-        catch(Exception $ex)
-        {
-            return null;
-        }
-    }
-
 }
