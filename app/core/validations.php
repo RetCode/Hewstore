@@ -14,49 +14,38 @@ class Validations
 {
     /**
     *|-----------------------------------------------------------------
-    *|  @param string $mail
-    *|  @param string $pass
-    *|  Валидация почты и пароля
+    *|  @param integer $id
+    *|  Валидация метода api - getProducts
     *|-----------------------------------------------------------------
     **/
-    static function MailAndPass($mail, $pass)
+    static function getProducts($id)
     {
-        if(empty($mail) || empty($pass))
-        Utils::sendAjaxRequest([
-            'success' => false,
-            'message' => 'Поля не могут быть пусты'
-        ]);
-
-        if(!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $mail))
+        if(!isset($id) || empty($id))
             Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Почта введена некорректно'
+                "response" => false,
+                "error" => "ID undefined"
             ]);
-
-        if(strlen($pass) < 8) 
-        {
-            Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Пароль слишком простой'
-            ]);
-        }
     }
 
     /**
     *|-----------------------------------------------------------------
-    *|  @param string $code
-    *|  Валидация введенного кода
+    *|  @param string $filter
+    *|  @param string $value
+    *|  Валидация метода api - addFilter
     *|-----------------------------------------------------------------
     **/
-    static function emptyCode($code)
+    static function addFilter($filter, $value)
     {
-        if(empty($code))
-        {
+        if(!isset($filter) || empty($filter))
             Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Заполните поле'
+                "response" => false,
+                "error" => "Filter undefined"
             ]);
-        }
-    }
 
+        if(!isset($value) || empty($value))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Name undefined"
+            ]);
+    }
 }
