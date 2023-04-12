@@ -67,7 +67,7 @@ class DataBase
                 
                 $result = mysqli_stmt_get_result($stmt);
                 $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
-                
+
                 mysqli_stmt_close($stmt);
                 $mysqlconnect->close();
                 
@@ -119,7 +119,7 @@ class DataBase
                 if (!empty($arrayParams)) {
                     mysqli_stmt_bind_param($stmt, $types, ...$arrayParams);
                 }
-                
+
                 // выполняем запрос
                 $result = mysqli_stmt_execute($stmt);
 
@@ -140,25 +140,4 @@ class DataBase
             return null;
         }
     }
-
-    /**
-    *|-----------------------------------------------------------------
-    *|  @param string $value - String
-    *|
-    *|  Secure sql injectin for query
-    *|-----------------------------------------------------------------
-    **/
-    public static function injectionProtect($value)
-    {
-        try
-        {
-            $mysqlconnect = DataBase::connect();
-            return mysqli_real_escape_string($mysqlconnect, $value);
-        }
-        catch(Exception $ex)
-        {
-            return null;
-        }
-    }
-
 }

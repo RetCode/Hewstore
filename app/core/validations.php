@@ -12,51 +12,146 @@ use app\core\Utils;
 
 class Validations
 {
+
     /**
     *|-----------------------------------------------------------------
-    *|  @param string $mail
-    *|  @param string $pass
-    *|  Валидация почты и пароля
+    *|  @param integer $id
+    *|  Валидация метода api - getProducts
     *|-----------------------------------------------------------------
     **/
-    static function MailAndPass($mail, $pass)
+    static function getProducts($id)
     {
-        if(empty($mail) || empty($pass))
-        Utils::sendAjaxRequest([
-            'success' => false,
-            'message' => 'Поля не могут быть пусты'
-        ]);
-
-        if(!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $mail))
+        if(!isset($id) || empty($id))
             Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Почта введена некорректно'
+                "response" => false,
+                "error" => "ID undefined"
             ]);
-
-        if(strlen($pass) < 8) 
-        {
-            Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Пароль слишком простой'
-            ]);
-        }
     }
 
     /**
     *|-----------------------------------------------------------------
-    *|  @param string $code
-    *|  Валидация введенного кода
+    *|  @param string $filter
+    *|  Валидация метода api - FilterAcces
     *|-----------------------------------------------------------------
     **/
-    static function emptyCode($code)
+    static function FilterAcces($filter)
     {
-        if(empty($code))
-        {
+
+        $acces_filter = ["filter_os", "filter_cpu", "filter_gpu"];
+
+        if(!in_array($filter, $acces_filter))
             Utils::sendAjaxRequest([
-                'success' => false,
-                'message' => 'Заполните поле'
+                "response" => false,
+                "error" => "filter not access"
             ]);
-        }
     }
 
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $filter
+    *|  @param string $value
+    *|  Валидация метода api - addFilter
+    *|-----------------------------------------------------------------
+    **/
+    static function addFilter($filter, $value)
+    {
+        if(!isset($filter) || empty($filter))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Filter undefined"
+            ]);
+
+        if(!isset($value) || empty($value))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Name undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $text
+    *|  Валидация метода api - searchGame
+    *|-----------------------------------------------------------------
+    **/
+    static function searchGame($text)
+    {
+        if(!isset($text) || empty($text))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "text undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $text
+    *|  @param int $id
+    *|  Валидация метода api - searchItems
+    *|-----------------------------------------------------------------
+    **/
+    static function searchItems($text, $id)
+    {
+        if(!isset($text) || empty($text))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "text undefined"
+            ]);
+
+        if(!isset($id) || empty($id))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "id undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $text
+    *|  @param int $id
+    *|  Валидация метода api - searchItems
+    *|-----------------------------------------------------------------
+    **/
+    static function editFilter($filter, $id, $text)
+    {
+        if(!isset($filter) || empty($filter))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Filter undefined"
+            ]);
+
+        if(!isset($id) || empty($id))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Id undefined"
+            ]);
+
+        if(!isset($text) || empty($text))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Text undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $id
+    *|  @param int $text
+    *|  Валидация метода api - editTitle
+    *|-----------------------------------------------------------------
+    **/
+    static function editTitle($id, $text)
+    {
+        if(!isset($id) || empty($id))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Id undefined"
+            ]);
+
+        if(!isset($text) || empty($text))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Text undefined"
+            ]);
+    }
 }

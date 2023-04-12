@@ -34,12 +34,12 @@ body
 
 .wrapper
 {
-    background: url(../img/bg.jpg) no-repeat bottom center;
+    background: url(../../img/bg.jpg) no-repeat bottom center;
 }
 
 .wrapper .main
 {
-    background: url(../img/bg.png) no-repeat top center;
+    background: url(../../img/bg.png) no-repeat top center;
 }
 
 /* main section */
