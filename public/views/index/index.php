@@ -260,7 +260,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Discord Community</p>
-                                <a href="#" class="contacts-link">discord.gg/Fpy262yz9S</a>
+                                <a href="https://discord.gg/Fpy262yz9S" class="contacts-link">discord.gg/Fpy262yz9S</a>
                             </div>
                         </div>
                         <div class="contacts-item">
@@ -278,7 +278,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Telegram</p>
-                                <a href="#" class="contacts-link">@NobodyKnowsMeAgain</a>
+                                <a href="https://t.me/NobodyKnowsMeAgain" class="contacts-link">@NobodyKnowsMeAgain</a>
                             </div>
                         </div>
                     </div>
