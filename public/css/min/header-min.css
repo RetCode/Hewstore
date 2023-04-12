@@ -25,9 +25,11 @@
     position: fixed;
 
     padding: 14px 0;
+
+    z-index: 3;
 }
 
-.container
+.header-container
 {
     width: 1380px;
 
@@ -116,7 +118,7 @@
 .navigation-block .navigation_center__item-block .navigation_active::after
 {
     position: absolute;   
-    top: 112%;
+    top: 140%;
     left: 50%;
 
     width: 80px;
