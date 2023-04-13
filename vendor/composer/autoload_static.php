@@ -43,6 +43,10 @@ class ComposerStaticInitc86e3541b9438c2b419b8453e8839970
         array (
             'Dotenv\\' => 7,
         ),
+        'C' => 
+        array (
+            'Cryptomus\\Api\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -73,6 +77,10 @@ class ComposerStaticInitc86e3541b9438c2b419b8453e8839970
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'Cryptomus\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cryptomus/api-php-sdk/src',
         ),
     );
 
