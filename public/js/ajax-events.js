@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dataType: 'json',
         data: {method: 'getGames'},
         success: function(data){
-            let items = document.querySelector('.item')
+            let items = document.querySelector('.products_items-block')
             let loadingGIF = document.querySelector('.loading')
             
             for(let i = 0; i < data["items"].length; i++)
@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 loadingGIF.remove();
 
-                items.innerHTML = `<div class="item-image">
-                    <img src="public/img/${img}">
+                items.innerHTML += `<div class="item">
+                <div class="item-image">
+                    <img draggable="false" src="public/img/products/${img}">
                     <p>${name}</p>
                 </div>
                 <div class="item_bottom-block">
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="public/img/arrow.svg">
                     </a>
                     <p class="products-count">[Products: 4]</p>
-                </div>`
+                </div>
+            </div>`
                 
 
             }

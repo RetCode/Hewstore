@@ -364,9 +364,8 @@ body::-webkit-scrollbar
 .products_items-block
 {
     display: grid;
-    gap: 32px;
+    gap: 49px;
     grid-template-columns: repeat(auto-fit, minmax(0, 427px));
-    justify-content: space-between;
 
     min-height: 281px;
 }
