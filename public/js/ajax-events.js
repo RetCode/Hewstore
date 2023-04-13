@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // alert('1')
     $.ajax({
+        async: true,
         url: '/api',
         method: 'post',
-        dataType: 'json',
+        dataType: 'json',        
         data: {method: 'getGames'},
         success: function(data){
             let items = document.querySelector('.products_items-block')
