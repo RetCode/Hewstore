@@ -199,5 +199,7 @@
 	<!-- Scripts -->
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
+    <script src="vendor/jquery.js"></script>
+    <script src="public/js/ajax-events.js"></script>
 </body>
 </html>
