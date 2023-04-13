@@ -135,11 +135,18 @@
                             <img src="public/img/find.svg">
                             <input type="text" placeholder="Find">
                         </div>
-                    </div>                    
-                    <div class="products_items-block">
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
+                    </div>  
+                    <div class="loading">
+                            <div class="spinner">
+                                <svg viewBox="25 25 50 50" class="circular">
+                                    <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                                </svg>
+                            </div>
+                        </div>                  
+                    <div class="products_items-block">                        
+                        <div class="item">                        
+                            <!-- <div class="item-image">
+                                <img src="public/img/firebaseload.gif">
                                 <p>OVERWATCH 2</p>
                             </div>
                             <div class="item_bottom-block">
@@ -148,7 +155,7 @@
                                     <img src="public/img/arrow.svg">
                                 </a>
                                 <p class="products-count">[Products: 4]</p>
-                            </div>
+                            </div> -->
                         </div>                      
                     </div>
                 </div>
