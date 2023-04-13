@@ -143,20 +143,7 @@
                                 </svg>
                             </div>
                         </div>                  
-                    <div class="products_items-block">                        
-                        <div class="item">                        
-                            <!-- <div class="item-image">
-                                <img src="public/img/firebaseload.gif">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div> -->
-                        </div>                      
+                    <div class="products_items-block">
                     </div>
                 </div>
             </section>

@@ -39,12 +39,12 @@ body::-webkit-scrollbar
 
 .wrapper
 {
-    background: url(../img/bg.jpg) no-repeat bottom center;
+    background: url(../../img/bg.jpg) no-repeat bottom center;
 }
 
 .wrapper .main
 {
-    background: url(../img/bg.png) no-repeat top center;
+    background: url(../../img/bg.png) no-repeat top center;
 }
 
 /* main section */
@@ -364,9 +364,8 @@ body::-webkit-scrollbar
 .products_items-block
 {
     display: grid;
-    gap: 32px;
+    gap: 49px;
     grid-template-columns: repeat(auto-fit, minmax(0, 427px));
-    justify-content: space-between;
 
     min-height: 281px;
 }
