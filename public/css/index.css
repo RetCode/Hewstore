@@ -23,6 +23,11 @@ body
     position: relative;
 }
 
+body::-webkit-scrollbar
+{
+    display: none;
+}
+
 .container
 {
     width: 1380px;
@@ -34,12 +39,12 @@ body
 
 .wrapper
 {
-    background: url(../../img/bg.jpg) no-repeat bottom center;
+    background: url(../img/bg.jpg) no-repeat bottom center;
 }
 
 .wrapper .main
 {
-    background: url(../../img/bg.png) no-repeat top center;
+    background: url(../img/bg.png) no-repeat top center;
 }
 
 /* main section */
@@ -144,7 +149,7 @@ body
 /* announcements section */
 .announcements-section
 {
-    padding-top: 75px;
+    padding-top: 110px;
 }
 
 .announcements_button-block
@@ -304,7 +309,7 @@ body
 
 .products-section
 {
-    padding-top: 75px;
+    padding-top: 110px;
 }
 
 .products-section .unification-block

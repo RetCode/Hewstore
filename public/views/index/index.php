@@ -19,21 +19,22 @@
                         <div class="left-block">
                             <div class="unification-block">
                                 <div class="main-text-box">
-                                    <p class="main-text">Diverse and rich experience starting daily shaping work</p>
+                                    <p class="main-text lang">main-text</p>
+                                    
                                 </div>
                                 <div class="description-text-box">
-                                    <p class="description-text">It should not be forgotten, however, that the constant information and propaganda support of our activities largely determines the creation of positions taken.</p>
+                                    <p class="description-text lang">description-text</p>
                                 </div>
                                 <div class="button-box">
-                                    <a href="#" class="purshare-button">PURCHASE CHEAT</a>
-                                    <a href="#" class="more-details-button">MORE DETAILS <img src="public/img/arrow.svg"></a>
+                                    <a href="#" class="purshare-button lang">purshare-button</a>
+                                    <a href="#" class="more-details-button">CONTACT US <img src="public/img/arrow.svg"></a>
                                     
                                 </div> 
                             </div>                               
                         </div>
                         <div class="right-block">
                             <div class="logo-box">
-                                <img src="public/img/logo.svg">
+                                <img draggable="false" src="public/img/logo.svg">
                             </div>
                         </div>
                     </div>
@@ -43,8 +44,8 @@
             <!-- Announcements Section -->
             <section id="announcements" class="announcements-section">
                 <div class="container">
-                    <div class="name-block">
-                        <p>ANNOUNCEMENTS</p>
+                    <div class="name-block lang">
+                        <p>name-block</p>
                     </div>
                     <div class="announcements_button-block">
                         <a href="#">
@@ -148,98 +149,7 @@
                                 </a>
                                 <p class="products-count">[Products: 4]</p>
                             </div>
-                        </div>   
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>                    
+                        </div>                      
                     </div>
                 </div>
             </section>
@@ -287,6 +197,7 @@
         </main>        
     </div>    
 	<!-- Scripts -->
+	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
 </body>
 </html>
