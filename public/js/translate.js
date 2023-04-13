@@ -1,3 +1,5 @@
+// import i18next from 'i18next';
+
 const languages = JSON.stringify({
     // "RU":{
     //     "main-text":"Разнообразный и богатый опыт начала ежедневной работы по формованию",
