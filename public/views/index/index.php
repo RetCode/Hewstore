@@ -45,7 +45,7 @@
             <section id="announcements" class="announcements-section">
                 <div class="container">
                     <div class="name-block lang">
-                        <p>name-block</p>
+                        <p>ANNOUNCEMENT</p>
                     </div>
                     <div class="announcements_button-block">
                         <a href="#">
@@ -133,7 +133,7 @@
                         </div>
                         <div class="products_search-block">
                             <img src="public/img/find.svg">
-                            <input type="text" placeholder="Find">
+                            <input id="findInput" type="text" placeholder="Find">
                         </div>
                     </div>  
                     <div class="loading">
