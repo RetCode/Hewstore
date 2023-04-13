@@ -1,5 +1,6 @@
+let itemsMassive;
+
 document.addEventListener('DOMContentLoaded', () => {
-    // alert('1')
     $.ajax({
         async: true,
         url: '/api',
@@ -7,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
         dataType: 'json',        
         data: {method: 'getGames'},
         success: function(data){
-            let items = document.querySelector('.products_items-block')
-            let loadingGIF = document.querySelector('.loading')
+            let items = document.querySelector('.products_items-block');
+            let loadingGIF = document.querySelector('.loading');
+
+            itemsMassive = data['items'];
             
             for(let i = 0; i < data["items"].length; i++)
             {
@@ -31,9 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="products-count">[Products: 4]</p>
                 </div>
             </div>`
-                
-
             }
         }
     })
+})
+
+let findInput = document.querySelector('#findInput')
+
+findInput.addEventListener('keyup', () => {
+    
 })
