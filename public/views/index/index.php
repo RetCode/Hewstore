@@ -45,7 +45,7 @@
             <section id="announcements" class="announcements-section">
                 <div class="container">
                     <div class="name-block lang">
-                        <p>name-block</p>
+                        <p>ANNOUNCEMENT</p>
                     </div>
                     <div class="announcements_button-block">
                         <a href="#">
@@ -133,23 +133,17 @@
                         </div>
                         <div class="products_search-block">
                             <img src="public/img/find.svg">
-                            <input type="text" placeholder="Find">
+                            <input id="findInput" type="text" placeholder="Find">
                         </div>
-                    </div>                    
+                    </div>  
+                    <div class="loading">
+                            <div class="spinner">
+                                <svg viewBox="25 25 50 50" class="circular">
+                                    <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                                </svg>
+                            </div>
+                        </div>                  
                     <div class="products_items-block">
-                        <div class="item">
-                            <div class="item-image">
-                                <img src="public/img/products/3.png">
-                                <p>OVERWATCH 2</p>
-                            </div>
-                            <div class="item_bottom-block">
-                                <a href="#">
-                                    MORE DETAILS 
-                                    <img src="public/img/arrow.svg">
-                                </a>
-                                <p class="products-count">[Products: 4]</p>
-                            </div>
-                        </div>                      
                     </div>
                 </div>
             </section>
@@ -199,5 +193,7 @@
 	<!-- Scripts -->
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
+    <script src="vendor/jquery.js"></script>
+    <script src="public/js/ajax-events.js"></script>
 </body>
 </html>
