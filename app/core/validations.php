@@ -184,4 +184,31 @@ class Validations
                 "error" => "Id undefined"
             ]);
     }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param int $id
+    *|  Валидация метода api - addStatus
+    *|-----------------------------------------------------------------
+    **/
+    static function getOffer($amount, $network, $to_currency)
+    {
+        if(!isset($network) || empty($network))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Network undefined"
+            ]);
+
+        if(!isset($amount) || empty($amount))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Amount undefined"
+            ]);
+
+        if(!isset($to_currency) || empty($to_currency))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Currency undefined"
+            ]);
+    }
 }
