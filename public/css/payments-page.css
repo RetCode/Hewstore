@@ -41,7 +41,7 @@ body::-webkit-scrollbar
 {
     background: url(../img/bgpay.png) no-repeat top center;
 
-    padding-bottom: 40vh;
+    padding-bottom: 20vh;
 }
 
 .payment-section
@@ -173,7 +173,7 @@ body::-webkit-scrollbar
     margin-right: 5px;
 
     z-index: 1;
-
+button
     transition: 0.2s ease all;
 }
 
@@ -302,11 +302,24 @@ body::-webkit-scrollbar
     padding: 8px 12px;    
 }
 
-.selected_method-wrapper .item p
+.selected_method-wrapper .item .item-text
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.selected_method-wrapper .item .coin-name
 {
     font-size: 16px;
     font-weight: 500;
     color: white;
+}
+
+.selected_method-wrapper .item .coin-network
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(137, 137, 137);
 }
 
 .selected_method-wrapper .item img
