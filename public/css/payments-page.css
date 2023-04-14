@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after
+{
+    box-sizing: border-box;
+}
+
+*
+{
+    font-family: 'Inter';
+
+    margin: 0;
+
+    text-decoration: none;
+}
+
+body
+{
+    background: #0A122E;
+
+    position: relative;
+}
+
+body::-webkit-scrollbar
+{
+    display: none;
+}
+
+.container
+{
+    width: 1380px;
+
+    margin: 0 auto;
+
+    z-index: 2;
+}
+
+.wrapper
+{
+    background: url(../img/bgpay.png) no-repeat top center;
+
+    padding-bottom: 40vh;
+}
+
+.payment-section
+{
+    padding-top: 150px;
+}
+
+.main
+{
+    margin: 0 auto;
+
+    max-width: 567px;
+
+    position: relative;
+}
+
+.select_payment_type-block
+{
+    width: 100%;
+    border-radius: 4px;
+    
+    padding: 35px;
+    padding-bottom: 28px;
+
+    background: rgba(22,30,57,.5);
+    backdrop-filter: blur(54px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select_payment_type-block .select_payment_type-title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+
+    width: 100%;
+}
+
+.select_payment_type-block .select_methods
+{
+    margin-top: 20px;
+}
+
+.select_payment_type-block .select_methods .select_method
+{
+    background: #111832;
+    border: 1px solid rgba(255,255,255,.05);
+
+    padding: 24px;
+
+    cursor: pointer;
+}
+
+.select_payment_type-block .select_methods .select_method:first-child
+{
+    border-radius: 8px 8px 0 0;
+}
+
+.select_payment_type-block .select_methods .select_method:last-child
+{
+    border-radius: 0 0 8px 8px;
+}
+
+.select_payment_type-block .select_methods .select_method.active
+{
+    background: #1f2431;
+    border-color: #ffe001;
+}
+
+.select_payment_type-block .select_methods .select_method .select_method-title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+}
+
+.select_payment_type-block .select_methods .select_method .select_method-desc
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,.6);
+
+    margin-top: 4px;
+}
+
+.select_payment_type-block .select_methods .select_method .select_method-desc a
+{
+    color: #ffe001;
+}
+
+.select_payment_type-block .select_method-count
+{
+    width: 32px;
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 30px;
+}
+
+.select_payment_type-block .select_method-count .select_method-drop
+{
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+
+    background: #1d274f;
+}
+
+.select_payment_type-block .select_method-count .select_method-drop.active-select
+{
+    background: #3a50a6;
+}
+
+.close_button svg
+{
+    position: absolute;
+    right: 0;
+
+    margin-top: 5px;
+    margin-right: 5px;
+
+    z-index: 1;
+}
+
+.close_button svg:hover
+{
+    transition: 0.2s ease all;
+
+    opacity: .7;
+}
+
