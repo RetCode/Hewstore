@@ -357,3 +357,177 @@ body::-webkit-scrollbar
 {
     background: #3a50a6;
 }
+
+.select_final-block.show
+{
+    display: flex;
+}
+
+.select_final-block
+{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+}
+
+.select-header
+{
+    position: relative;
+
+    width: 100%;
+    border-radius: 4px;
+    max-width: 350px;
+    
+    padding: 35px;
+    padding-bottom: 28px;
+    margin: 0 auto;
+
+    background: rgba(22,30,57,.5);
+    backdrop-filter: blur(54px);
+}
+
+.select_final-block .select_payment_type-title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+
+    width: 100%;
+}
+
+.select_final-block .selected_coin-block
+{
+    width: 100%;
+    border-radius: 8px;
+
+    padding: 16px;
+    margin-top: 20px;
+
+    background-color: #1f2431;
+    border :1px solid #ffe001;
+}
+
+.select_final-block .selected_coin-block .selected_type
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+}
+
+.select_final-block .selected_coin-block .selected_coin
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,.6);
+
+    margin-top: 4px;
+}
+
+.select-wrapper
+{
+    width: 100%;
+    max-width: 350px;
+
+    margin-top: 12px;
+    padding: 0 24px;
+}
+
+.select-wrapper .alert_block
+{
+    border-radius: 8px;
+
+    text-align: center;
+
+    padding: 12px 18px;
+
+    background: #1c2232;
+    border: 1px solid #ffe001;
+}
+
+.select-wrapper .alert_block .alert_title
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffe001;
+}
+
+.select-wrapper .alert_block .alert_desc
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,.6);
+
+    margin-top: 4px;
+}
+
+.button-block
+{
+    width: 100%;
+    max-width: 350px;
+
+    margin: 0 auto;
+    margin-top: 24px;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-block button
+{
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+
+    border: transparent;
+    background: #ffe001;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+
+    cursor: pointer;
+
+    transition: 0.2s ease all;
+}
+
+.button-block button:hover
+{
+    opacity: .7;
+}
+
+.select_final-block .select_method-count
+{
+    width: 32px;
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 30px;
+}
+
+.select_final-block .select_method-count .select_method-drop
+{
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+
+    background: #1d274f;
+}
+
+.select_final-block .select_method-count .select_method-drop.active-select
+{
+    background: #3a50a6;
+}
+
+.select_final-block .final
+{
+    margin-left: 70px;
+}
+
+.select_final-block .final svg
+{
+    margin-right: 70px;
+}

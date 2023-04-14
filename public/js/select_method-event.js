@@ -15,6 +15,7 @@ let backButton = document.querySelectorAll('.back-button');
 backButton.forEach(back =>{
     back.addEventListener('click', () =>{
         document.querySelector('.select_cryptocurrencies-block').classList.remove('show');
+        document.querySelector('.select_final-block').classList.remove('show');
         document.querySelector('.select_payment_type-block').classList.add('show');
     })
 })
@@ -31,6 +32,8 @@ switching_to_cryptocurrencies.forEach(item =>{
             case 2:
                 break;
             case 3:
+                document.querySelector('.select_final-block').classList.add('show');
+                document.querySelector('.select_payment_type-block').classList.remove('show');
                 break;
         }
     
