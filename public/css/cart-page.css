@@ -36,14 +36,17 @@ body::-webkit-scrollbar
 
 .wrapper
 {
-    /* background: url(../img/blurbg.png) center no-repeat; */
+    background: url(../img/blurbg.png) top no-repeat;
+
+    padding-bottom: 48.5vh;
 }
 
 .main
 {
-    padding-top: 110px;
-    padding-left: 180px;
-    padding-right: 180px;
+    padding-top: 150px;
+    margin: 0 auto;
+
+    width: 75%;
 }
 
 .all-box
@@ -51,6 +54,11 @@ body::-webkit-scrollbar
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.boxes
+{
+    width: 67%;
 }
 
 .cart-block
@@ -103,12 +111,12 @@ body::-webkit-scrollbar
 .product-count-block
 {
     background: rgba(25, 34, 60, 1);
-    border-color: 1px solid #141b36;;
+    border: 1px solid #141b36;
     margin-top: 15px;
     padding: 25px 25px;
     border-radius: 4px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -116,11 +124,6 @@ body::-webkit-scrollbar
 {
     width: 50px;
     height: 25px;
-}
-
-.product-count-text-box
-{
-    margin-left: 70px;
 }
 
 .product-count-text-box p
@@ -154,6 +157,7 @@ body::-webkit-scrollbar
     padding: 23px 22px;
     background: rgba(25, 34, 60, 1);
     border: 1px solid #141b36;
+    margin-left: 30px;
 }
 
 .product-name-box
