@@ -19,6 +19,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'cryptomus/api-php-sdk' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => '7d4cd3b50114951b649cb533fd8a2cb9a889e4c6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../cryptomus/api-php-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'graham-campbell/result-type' => array(
             'pretty_version' => 'v1.1.1',
             'version' => '1.1.1.0',

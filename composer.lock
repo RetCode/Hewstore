@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05a64f8ad0126beb2603c7e09514b09a",
+    "content-hash": "a8d787ed1d323262b15b55595dc5e89f",
     "packages": [
+        {
+            "name": "cryptomus/api-php-sdk",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CryptomusCom/api-php-sdk.git",
+                "reference": "7d4cd3b50114951b649cb533fd8a2cb9a889e4c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CryptomusCom/api-php-sdk/zipball/7d4cd3b50114951b649cb533fd8a2cb9a889e4c6",
+                "reference": "7d4cd3b50114951b649cb533fd8a2cb9a889e4c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cryptomus\\Api\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Cryptomus api SDK",
+            "support": {
+                "issues": "https://github.com/CryptomusCom/api-php-sdk/issues",
+                "source": "https://github.com/CryptomusCom/api-php-sdk/tree/v1.0.0"
+            },
+            "time": "2022-07-29T15:49:10+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.1.1",
