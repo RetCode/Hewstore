@@ -56,6 +56,11 @@ body::-webkit-scrollbar
     max-width: 567px;
 }
 
+.select_payment_type-block.show
+{
+    display: flex;
+}
+
 .select_payment_type-block
 {
     position: relative;
@@ -72,11 +77,6 @@ body::-webkit-scrollbar
     display: none;
     flex-direction: column;
     align-items: center;
-}
-
-.select_payment_type-block.show
-{
-    display: flex;
 }
 
 .select_payment_type-block .select_payment_type-title
@@ -315,4 +315,27 @@ body::-webkit-scrollbar
     height: 36px;
 
     margin-right: 8px;
+}
+
+.select_cryptocurrencies-block .select_method-count
+{
+    width: 32px;
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 30px;
+}
+
+.select_cryptocurrencies-block .select_method-count .select_method-drop
+{
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+
+    background: #1d274f;
+}
+
+.select_cryptocurrencies-block .select_method-count .select_method-drop.active-select
+{
+    background: #3a50a6;
 }
