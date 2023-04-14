@@ -54,12 +54,12 @@ body::-webkit-scrollbar
     margin: 0 auto;
 
     max-width: 567px;
-
-    position: relative;
 }
 
 .select_payment_type-block
 {
+    position: relative;
+
     width: 100%;
     border-radius: 4px;
     
@@ -69,9 +69,14 @@ body::-webkit-scrollbar
     background: rgba(22,30,57,.5);
     backdrop-filter: blur(54px);
 
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
+}
+
+.select_payment_type-block.show
+{
+    display: flex;
 }
 
 .select_payment_type-block .select_payment_type-title
@@ -162,17 +167,152 @@ body::-webkit-scrollbar
 {
     position: absolute;
     right: 0;
+    top: 0;
 
     margin-top: 5px;
     margin-right: 5px;
 
     z-index: 1;
+
+    transition: 0.2s ease all;
+}
+
+.back-button
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+
+    background-color: transparent;
+    border: transparent;
+
+    cursor: pointer;
+}
+
+.back-button svg
+{
+    transition: 0.2s ease all;
+}
+
+.back-button svg:hover
+{
+    opacity: .7;
 }
 
 .close_button svg:hover
 {
-    transition: 0.2s ease all;
-
     opacity: .7;
 }
 
+.select_cryptocurrencies-block
+{
+    display: none;
+}
+
+.select_cryptocurrencies-block.show
+{
+    display: flex;
+}
+
+.select_cryptocurrencies-block
+{
+    position: relative;
+
+    width: 100%;
+    border-radius: 4px;
+    
+    padding: 35px;
+    padding-bottom: 28px;
+
+    background: rgba(22,30,57,.5);
+    backdrop-filter: blur(54px);
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select_cryptocurrencies-block .select_payment_type-title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+
+    width: 100%;
+}
+
+.select_cryptocurrencies-block .selected_method-header .select_method-title
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.9);
+}
+
+.select_cryptocurrencies-block .selected_method-header .select_method-desc
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,.6);
+
+    margin-top: 4px;
+}
+
+.select_cryptocurrencies-block .selected_method-header
+{
+    border-radius: 8px 8px 0 0;
+
+    margin-top: 20px;
+
+    padding: 24px;
+
+    background-color: #1f2431;
+    border: 1px solid #ffe001;
+}
+
+.select_cryptocurrencies-block .selected_method-wrapper
+{
+    width: 100%;
+
+    border-radius: 0 0 8px 8px;
+
+    padding: 12px;
+
+    border: 1px solid #ffe001;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 230px));
+    gap: 8px;
+}
+
+.selected_method-wrapper .item
+{
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+
+    background: rgba(25,34,60,.5);
+
+    cursor: pointer;
+
+    padding: 8px 12px;    
+}
+
+.selected_method-wrapper .item p
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+
+.selected_method-wrapper .item img
+{
+    width: 36px;
+    height: 36px;
+
+    margin-right: 8px;
+}
