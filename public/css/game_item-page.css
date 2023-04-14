@@ -45,23 +45,22 @@ body::-webkit-scrollbar
 .up-block
 {
     display: flex;
+    justify-content: space-between;
+
+    padding-top: 110px;
 }
 
 .left-block
 {
-    width: 57%;
+    width: 56%;
 }
 
 .right-block
 {
-    width: 43%;
+    width: 41%;
     display: flex;
     justify-content: space-between;
-}
-
-.game-name-box
-{
-    margin-top: 75px;
+    align-items: center;
 }
 
 .name-text
@@ -86,9 +85,10 @@ body::-webkit-scrollbar
 
 .input-box
 {
-    margin-top: 100px;
     margin-left: 50px;
     width: 100%;
+
+    position: relative;
 }
 
 .input-box input
@@ -118,10 +118,8 @@ body::-webkit-scrollbar
     position: absolute;
     top: 0;
     
-    margin-top: 116px;
+    margin-top: 16px;
     margin-left: 12px;
-
-    z-index: 1;
 }
 
 .product-block
@@ -167,7 +165,14 @@ body::-webkit-scrollbar
     border-color: transparent;
     margin-left: 5px;
     margin-right: 5px;
-    padding: 8px 27px
+    padding: 8px 27px;
+
+    transition: 0.2s ease all;
+}
+
+.button-block button:hover
+{
+    opacity: .7;
 }
 
 .catalog-block
@@ -268,19 +273,27 @@ body::-webkit-scrollbar
 .catalog-block .item .item_bottom-block button
 {
     background-color: #FFE001;
-    border-color: transparent;
+    border: transparent;
     border-radius: 5px;
-    padding: 6px 25px; 
+    padding: 8px 16px; 
     font-weight: 600;
     margin-right: 30px;
     cursor: pointer;
-    text-align: center;
+    font-size: 11px;
+
+    display: flex;
+
+    transition: 0.2s ease all;
+}
+
+.catalog-block .item .item_bottom-block button:hover
+{
+    opacity: .7;
 }
 
 .catalog-block .item .item_bottom-block .cart
 {
-    position: absolute;
-    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .catalog-block .item .item-image .green
@@ -292,4 +305,5 @@ body::-webkit-scrollbar
     font-size: 12px;
     font-weight: 600;
     border-radius: 2px;
+    right: 0;
 }
