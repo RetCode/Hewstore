@@ -19,6 +19,7 @@ class ComposerStaticInitc86e3541b9438c2b419b8453e8839970
         'a55ead8cbe2b92a4c9d5ab72f8add83c' => __DIR__ . '/../..' . '/app/core/validations.php',
         '2335d4c1ab23a7e12b31c68f5bc4345b' => __DIR__ . '/../..' . '/app/core/templatesData.php',
         'c0ec4096fb775279f1f16515dd5e3471' => __DIR__ . '/../..' . '/app/interfaces/sessionInterfaces.php',
+        '87930e3d13f106f4abb4d8d72da098b6' => __DIR__ . '/../..' . '/app/interfaces/localCachedInterfaces.php',
         '02001384a004ffefe33bb2af65019c56' => __DIR__ . '/../..' . '/app/interfaces/gamesInterfaces.php',
         '259ce40066b44bcaed6a1b727f2e029e' => __DIR__ . '/..' . '/phpmailer/PHPMailerAutoload.php',
     );

@@ -10,6 +10,7 @@
             "app/core/validations.php",
             "app/core/templatesData.php",
             "app/interfaces/sessionInterfaces.php",
+            "app/interfaces/localCachedInterfaces.php",
             "app/interfaces/gamesInterfaces.php",
             "vendor/phpmailer/PHPMailerAutoload.php"
         ]
@@ -17,6 +18,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.8",
         "vlucas/phpdotenv": "^5.5",
-        "cryptomus/api-php-sdk": "^1.0"
+        "cryptomus/api-php-sdk": "^1.0",
+        "ext-memcached": "*"
     }
 }
