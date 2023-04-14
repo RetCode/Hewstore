@@ -31,7 +31,6 @@ body::-webkit-scrollbar
 .container
 {
     width: 1380px;
-
     margin: 0 auto;
 }
 
@@ -42,10 +41,16 @@ body::-webkit-scrollbar
 
 .main
 {
-    display: flex;
-    justify-content: space-evenly;
-
     padding-top: 110px;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+
+.all-box
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .cart-block
@@ -78,7 +83,6 @@ body::-webkit-scrollbar
 {
     background: rgba(25, 34, 60, 1);
     border-color: 1px solid #141b36;;
-    margin-top: 20px;
     padding: 14px 30px;
     border-radius: 4px;
     display: flex;
@@ -134,7 +138,7 @@ body::-webkit-scrollbar
 
 .total-number-box
 {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .total-number-box p
@@ -229,4 +233,34 @@ body::-webkit-scrollbar
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
+}
+
+.input-box
+{
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.input-box button
+{
+
+    font-weight: 600;
+    background-color: transparent;
+    border-color: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.input-box input
+{
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    background: rgba(20, 27, 54, .5);
+    border: 1px solid #141b36;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
 }
