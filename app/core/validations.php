@@ -135,8 +135,8 @@ class Validations
 
     /**
     *|-----------------------------------------------------------------
-    *|  @param string $id
-    *|  @param int $text
+    *|  @param id $id
+    *|  @param string $text
     *|  Валидация метода api - editTitle
     *|-----------------------------------------------------------------
     **/
@@ -152,6 +152,63 @@ class Validations
             Utils::sendAjaxRequest([
                 "response" => false,
                 "error" => "Text undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param string $text
+    *|  Валидация метода api - addStatus
+    *|-----------------------------------------------------------------
+    **/
+    static function addStatus($name)
+    {
+        if(!isset($name) || empty($name))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Name undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param int $id
+    *|  Валидация метода api - addStatus
+    *|-----------------------------------------------------------------
+    **/
+    static function deleteStatus($id)
+    {
+        if(!isset($id) || empty($id))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Id undefined"
+            ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param int $id
+    *|  Валидация метода api - addStatus
+    *|-----------------------------------------------------------------
+    **/
+    static function getOffer($amount, $network, $to_currency)
+    {
+        if(!isset($network) || empty($network))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Network undefined"
+            ]);
+
+        if(!isset($amount) || empty($amount))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Amount undefined"
+            ]);
+
+        if(!isset($to_currency) || empty($to_currency))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Currency undefined"
             ]);
     }
 }

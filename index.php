@@ -14,6 +14,7 @@
     use app\interfaces\SessionUI;
     use app\core\Router;
     use Dotenv\Dotenv;
+    use app\interfaces\LocalCachedUI;
 
     // Подгрузка envairoment переменных
     $dotenv = Dotenv::createImmutable(__DIR__);

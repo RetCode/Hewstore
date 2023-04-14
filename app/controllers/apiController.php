@@ -4,6 +4,7 @@ use app\core\DataBase;
 use app\core\Utils;
 use app\core\Validations;
 use app\core\View;
+use app\interfaces\LocalCachedUI;
 
 /**
  * apiController класс является контроллером для обработки API-запросов.
@@ -41,13 +42,27 @@ class apiController extends Controller
             }
 
             /**
-             * Если значение параметра "method" в запросе не равно "getGames",
+             * Если значение параметра "method" в запросе равно "getGames",
              * то вызывается метод getGames() модели  для получения данных о играх.
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив игр
              */
            if($_POST["method"] == "getGames"){
+
+                // Проверяем кеширование
+                $cachedResult = LocalCachedUI::getCache("getGames");
+                
+                if($cachedResult != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "items" => json_decode(json_encode($cachedResult),true)
+                    ]);
+                }
+                    
                 $games = $this->model->getGames();
+
+                // Создание кеша
+                LocalCachedUI::createCached("getGames", $games, 60);
 
                 Utils::sendAjaxRequest([
                     "response" => true,
@@ -56,12 +71,14 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "getProducts",
+             * Если значение параметра "method" в запросе равно "getProducts",
              * то вызывается метод getProducts() модели  для получения данных о продуктах в играх.
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив продуктов
              */
            if($_POST["method"] == "getProducts"){
+
+                
 
                 Validations::getProducts($_POST["id"]);
 
@@ -74,7 +91,7 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "addFilter",
+             * Если значение параметра "method" в запросе равно "addFilter",
              * то вызывается метод addFilter() модели  для добавления данных о новом фильтре
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
@@ -101,43 +118,7 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "searchGame",
-             * то вызывается метод searchGame() модели для выдачи объекта по введенном имени
-             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             */
-
-            if($_POST["method"] == "searchGame"){
-                
-                Validations::searchGame($_POST['text']);
-
-                $search = $this->model->searchGame($_POST["text"]);
-
-                Utils::sendAjaxRequest([
-                    "response" => true,
-                    "items" => json_decode(json_encode($search),true)
-                ]);
-            }
-
-            /** 
-             * Если значение параметра "method" в запросе не равно "searchItems",
-             * то вызывается метод searchGame() модели для выдачи объекта по введенном имени
-             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             */
-
-            if($_POST["method"] == "searchItems"){
-                
-                Validations::searchItems($_POST["text"], $_POST["id"]);
-
-                $search = $this->model->searchItems($_POST["text"], $_POST["id"]);
-
-                Utils::sendAjaxRequest([
-                    "response" => true,
-                    "items" => json_decode(json_encode($search),true)
-                ]);
-            }
-
-            /** 
-             * Если значение параметра "method" в запросе не равно "editFilter",
+             * Если значение параметра "method" в запросе равно "editFilter",
              * то вызывается метод addFilter() модели  для редактирования данных фильтре
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
@@ -164,7 +145,7 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "editGame",
+             * Если значение параметра "method" в запросе равно "editGame",
              * то вызывается метод editGame() модели  для редактирования данных о игре
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
@@ -190,7 +171,7 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "editProduct",
+             * Если значение параметра "method" в запросе равно "editProduct",
              * то вызывается метод editProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
@@ -216,17 +197,95 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе не равно "editProduct",
+             * Если значение параметра "method" в запросе равно "editProduct",
              * то вызывается метод editProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
 
-             if($_POST["method"] == "editStatus"){
+            if($_POST["method"] == "editStatus"){
                 
                 Validations::editTitle($_POST['id'], $_POST["text"]);
 
                if($this->model->editStatus($_POST['id'], $_POST["text"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Status not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "addStatus",
+             * то вызывается метод addStatus() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "addStatus"){
+                
+                Validations::addStatus($_POST["name"]);
+
+               if($this->model->addStatus($_POST["name"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Status not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "deleteStatus",
+             * то вызывается метод addStatus() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+            if($_POST["method"] == "deleteStatus"){
+                
+                Validations::deleteStatus($_POST["id"]);
+
+               if($this->model->deleteStatus($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Status not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "getOffer",
+             * то вызывается метод getOffer() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "getOffer"){
+                
+                Validations::getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"]);
+
+               if($this->model->getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true

@@ -2,7 +2,8 @@
 use app\core\DataBase;
 use app\core\Model;
 use app\core\Utils;
-use PhpOption\None;
+use Cryptomus\Api\Client;
+
 
 class apiModel extends Model{
 
@@ -11,7 +12,9 @@ class apiModel extends Model{
      * @return array
     */
     function getGames(){
-        return $this->DataBase::Query("SELECT * FROM games_table");
+        return $this->DataBase::Query("SELECT games_table.id, games_table.name, games_table.img, 
+                (SELECT COUNT(id) FROM product WHERE product.games = games_table.id) as 'productCount' 
+                FROM games_table WHERE 1");
     }
 
     /** 
@@ -35,7 +38,7 @@ class apiModel extends Model{
      * Запрос в базу данных на добавление нового филтра
      * @param string $filter
      * @param string $value
-     * @return false|true
+     * @return True|False
     */
     function addFilter($filter, $value){
 
@@ -56,37 +59,10 @@ class apiModel extends Model{
     }
 
     /** 
-     * Запрос в базу данных на поиск игры
-     * @param string $text
-     * @return array
-    */
-    function searchGame($text){
-        return $this->DataBase::Query("SELECT * FROM games_table WHERE name LIKE ?",[
-            $text."%"
-        ]);
-    }
-
-    /** 
-     * Запрос в базу данных на поиск товара под игру
-     * @param string $text
-     * @param int $id
-     * @return array
-    */
-    function searchItems($text, $id){
-        return $this->DataBase::Query("SELECT product.id, product.name, product.img, status_table.name as 'status', games_table.name as 'game' FROM product
-        INNER JOIN status_table ON status_table.id = product.status
-        INNER JOIN games_table ON games_table.id = product.games
-        WHERE product.games = ? AND product.name LIKE ?",[
-            $id,
-            $text."%"
-        ]);
-    }
-
-    /** 
      * Запрос в базу данных на редактирование фильтра
      * @param string $filter
      * @param string $value
-     * @return array
+     * @return True|False
     */
     function editFilter($filter, $id, $text){
 
@@ -111,7 +87,7 @@ class apiModel extends Model{
      * Запрос в базу данных на редактирование игры
      * @param string $id
      * @param string $text
-     * @return array
+     * @return True|False
     */
     function editGame($id, $text){
 
@@ -136,7 +112,7 @@ class apiModel extends Model{
      * Запрос в базу данных на редактирование игры
      * @param string $id
      * @param string $text
-     * @return array
+     * @return True|False
     */
     function editProduct($id, $text){
 
@@ -158,10 +134,10 @@ class apiModel extends Model{
     }
 
    /** 
-     * Запрос в базу данных на редактирование игры
+     * Запрос в базу данных на редактирование статуса
      * @param string $id
      * @param string $text
-     * @return array
+     * @return True|False
     */
     function editStatus($id, $text){
 
@@ -180,6 +156,86 @@ class apiModel extends Model{
             return True;
         }
         else return false;
+    }
+
+   /** 
+     * Запрос в базу данных на создание статуса
+     * @param string $text
+     * @return True|False
+    */
+    function addStatus($text){
+        DataBase::QueryUpd("INSERT INTO status_table VALUES(Null, ?)",
+        [
+            $text
+        ]);
+        return True;
+    }
+
+   /** 
+     * Запрос в базу данных на создание статуса
+     * @param string $id
+     * @return True|False
+    */
+    function deleteStatus($id){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM status_table WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("DELETE FROM status_table WHERE id = ?",
+            [
+                $id
+            ]);
+            return True;
+        }
+        else return false;
+    }
+
+
+    /**
+     *  Запрос на создание платежа
+     */
+
+    function getOffer($amount, $network, $to_currency){
+
+        $client = Client::payment($_ENV["PAYMENT_KEY"], $_ENV["MERCHANT_UUID"]);
+
+        $idPayment = DataBase::Query("SELECT id FROM payments ORDER BY id DESC LIMIT 1", [])[0];
+
+        $data = [
+            'amount' => strval($amount),
+            'currency' => 'USD',
+            'network' => $network,
+            'order_id' => strval($idPayment + 1),
+            'url_return' => 'https://example.com/return',
+            'url_callback' => 'https://example.com/callback',
+            'is_payment_multiple' => false,
+            'lifetime' => '7200',
+            'to_currency' => $to_currency
+        ];
+
+        $result = $client->create($data);
+
+        var_dump($idPayment);
+        var_dump($result);
+
+        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            $amount,
+            "USD",
+            $network,
+            7200,
+            $to_currency,
+            $result["uuid"],
+            $result["payment_status"],
+            $result["expired_at"],
+            $result["address"]
+        ]);
+
+        return True;
     }
 
 }
