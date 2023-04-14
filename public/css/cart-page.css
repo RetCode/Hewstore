@@ -43,13 +43,15 @@ body::-webkit-scrollbar
 .main
 {
     display: flex;
+    justify-content: space-evenly;
+
+    padding-top: 110px;
 }
 
 .cart-block
 {
     display: flex;
     align-items: center;
-    margin-top: 75px;
     width: 100%;
 }
 
@@ -143,7 +145,6 @@ body::-webkit-scrollbar
 
 .cart-form-box
 {
-    margin-top: 110px;
     width: 306px;
     border-radius: 4px;
     padding: 23px 22px;
