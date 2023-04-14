@@ -255,11 +255,37 @@ class apiController extends Controller
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
 
-             if($_POST["method"] == "deleteStatus"){
+            if($_POST["method"] == "deleteStatus"){
                 
                 Validations::deleteStatus($_POST["id"]);
 
                if($this->model->deleteStatus($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Status not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "getOffer",
+             * то вызывается метод getOffer() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "getOffer"){
+                
+                Validations::getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"]);
+
+               if($this->model->getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true

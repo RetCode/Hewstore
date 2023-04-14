@@ -2,7 +2,8 @@
 use app\core\DataBase;
 use app\core\Model;
 use app\core\Utils;
-use PhpOption\None;
+use Cryptomus\Api\Client;
+
 
 class apiModel extends Model{
 
@@ -191,6 +192,50 @@ class apiModel extends Model{
             return True;
         }
         else return false;
+    }
+
+
+    /**
+     *  Запрос на создание платежа
+     */
+
+    function getOffer($amount, $network, $to_currency){
+
+        $client = Client::payment($_ENV["PAYMENT_KEY"], $_ENV["MERCHANT_UUID"]);
+
+        $idPayment = DataBase::Query("SELECT id FROM payments ORDER BY id DESC LIMIT 1", [])[0];
+
+        $data = [
+            'amount' => strval($amount),
+            'currency' => 'USD',
+            'network' => $network,
+            'order_id' => strval($idPayment + 1),
+            'url_return' => 'https://example.com/return',
+            'url_callback' => 'https://example.com/callback',
+            'is_payment_multiple' => false,
+            'lifetime' => '7200',
+            'to_currency' => $to_currency
+        ];
+
+        $result = $client->create($data);
+
+        var_dump($idPayment);
+        var_dump($result);
+
+        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            $amount,
+            "USD",
+            $network,
+            7200,
+            $to_currency,
+            $result["uuid"],
+            $result["payment_status"],
+            $result["expired_at"],
+            $result["address"]
+        ]);
+
+        return True;
     }
 
 }
