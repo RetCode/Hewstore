@@ -3,7 +3,7 @@ use app\core\DataBase;
 use app\core\Model;
 use app\core\Utils;
 use Cryptomus\Api\Client;
-
+use app\interfaces\LocalCachedUI;
 
 class apiModel extends Model{
 
@@ -56,6 +56,27 @@ class apiModel extends Model{
             return True;
         }
         else return false;
+    }
+
+    /** 
+     * Запрос в базу данных на получение филтров
+     * @param string $filter
+    */
+    function getFilter($filter){
+
+        // Проверяем кеширование
+        $cachedResult = LocalCachedUI::getCache($filter);
+        
+        if($cachedResult != null)
+            return $cachedResult;
+            
+        $data = DataBase::Query("SELECT * FROM $filter");
+
+        if($data != null)
+            // Создание кеша
+            LocalCachedUI::createCached($filter, $data, 60);
+
+        return $data;
     }
 
     /** 

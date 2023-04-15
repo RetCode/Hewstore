@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
-	<link rel="stylesheet" href="../public/css/cart-page.css">
-    <title>Document</title>
+	<link rel="stylesheet" href="public/css/min/cart-page-min.css">
+    <title>Корзина</title>
 </head>
 <body>
+    %%HEADER%%
     <div class="wrapper">
         <section class="cart-page">
             <div class="container">
@@ -16,17 +17,17 @@
                     <div class="left-block">
                         <div class="cart-block">
                             <div class="cart-info-box">
-                                <p class="cart-text">CART</p>
+                                <p class="cart-text lang" data-text="cart">{text}</p>
                             </div>
                             <div class="cart-count-box">
-                                <p class="cart-count-text">Products: 1</p>
+                                <p class="cart-count-text lang" data-text="cart-products">{text}: 1</p>
                             </div>
                         </div>
                         <div class="all-box">
                             <div class="boxes">
                             <div class="clear-block">
                                 <img class="img-trash" src="../public/img/cart__trash.svg">
-                                <button>Clear all</button>
+                                <button class="lang" data-text="cart-clear-all">{text}</button>
                             </div>
                             <div class="product-count-block">
                                 <div class="product-img-box">
@@ -51,22 +52,22 @@
                             </div>
                             <div class="cart-form-box">
                                 <div class="product-name-box">
-                                    <p>Product</p>
+                                    <p class="lang" data-text="cart-product">{text}</p>
                                 </div>
                                 <div class="product-amount-box">
                                     <p class="name-product">Noble: Day Subscription</p>
                                     <p class="amount">$ 7.00</p>
                                 </div>
                                 <div class="total-box">
-                                        <p>Total</p>
+                                        <p class="lang" data-text="cart-product-cost">{text}</p>
                                         <p>$ 7</p>
                                 </div>
                                 <div class="input-block">
-                                    <input class="input-coupon" type="text" placeholder="Coupon code">
-                                    <input type="text" placeholder="Email for invoice updates">
+                                    <input class="input-coupon langInput" type="text" data-text="cart-promo" placeholder="{text}">
+                                    <input type="mail" class="langInput" data-text="cart-mail" placeholder="{text}">
                                 </div>
                                 <div class="button-box">
-                                    <button>Proceed to checkout</button>
+                                    <button class="lang" data-text="cart-pay-button">{text}</button>
                             </div>
                         </div>
                         </div>
@@ -75,5 +76,8 @@
             </div>
         </section>
     </div>
+    <!-- Scripts -->
+	<script src="public/js/translate.js"></script>
+	<script src="public/js/min/event-click-min.js"></script>
 </body>
 </html>

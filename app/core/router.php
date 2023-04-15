@@ -20,6 +20,8 @@ class Router
         {
             case "index": Router::done("index", "index"); break;
             case "api": Router::done("api", "api"); break;
+            case "cart": Router::done("index", "cart"); break;
+            case "game": Router::done("index", "game"); break;
             default: Router::error(404);
         }
     }

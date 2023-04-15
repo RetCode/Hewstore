@@ -1,35 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 *,
 *::before,
-*::after
-{
-    box-sizing: border-box;
+*::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
-*
-{
-    font-family: 'Inter';
+* {
+    font-family: "Inter";
 
     margin: 0;
 
     text-decoration: none;
 }
 
-body
-{
-    background: #0A122E;
+body {
+    background: #0a122e;
 
     position: relative;
 }
 
-body::-webkit-scrollbar
-{
+body::-webkit-scrollbar {
     display: none;
 }
 
-.container
-{
+.container {
     width: 1380px;
 
     margin: 0 auto;
@@ -37,120 +33,114 @@ body::-webkit-scrollbar
     z-index: 2;
 }
 
-.wrapper
-{
+.wrapper {
     background: url(../img/bgpay.png) no-repeat top center;
 
     padding-bottom: 20vh;
 }
 
-.payment-section
-{
+.payment-section {
     padding-top: 150px;
 }
 
-.main
-{
+.main {
     margin: 0 auto;
 
     max-width: 567px;
 }
 
-.select_payment_type-block.show
-{
-    display: flex;
-}
-
-.select_payment_type-block
-{
+.select_payment_type-block {
     position: relative;
 
     width: 100%;
     border-radius: 4px;
-    
+
     padding: 35px;
     padding-bottom: 28px;
 
-    background: rgba(22,30,57,.5);
-    backdrop-filter: blur(54px);
+    background: rgba(22, 30, 57, 0.5);
+    -webkit-backdrop-filter: blur(54px);
+            backdrop-filter: blur(54px);
 
     display: none;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
-.select_payment_type-block .select_payment_type-title
-{
+.select_payment_type-block .select_payment_type-title {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 
     width: 100%;
 }
 
-.select_payment_type-block .select_methods
-{
+.select_payment_type-block .select_methods {
     margin-top: 20px;
 }
 
-.select_payment_type-block .select_methods .select_method
-{
+.select_payment_type-block .select_methods .select_method {
     background: #111832;
-    border: 1px solid rgba(255,255,255,.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
     padding: 24px;
 
     cursor: pointer;
 }
 
-.select_payment_type-block .select_methods .select_method:first-child
-{
+.select_payment_type-block .select_methods .select_method:first-child {
     border-radius: 8px 8px 0 0;
 }
 
-.select_payment_type-block .select_methods .select_method:last-child
-{
+.select_payment_type-block .select_methods .select_method:last-child {
     border-radius: 0 0 8px 8px;
 }
 
-.select_payment_type-block .select_methods .select_method.active
-{
+.select_payment_type-block .select_methods .select_method.active {
     background: #1f2431;
     border-color: #ffe001;
 }
 
-.select_payment_type-block .select_methods .select_method .select_method-title
-{
+.select_payment_type-block .select_methods .select_method .select_method-title {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.select_payment_type-block .select_methods .select_method .select_method-desc
-{
+.select_payment_type-block .select_methods .select_method .select_method-desc {
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, 0.6);
 
     margin-top: 4px;
 }
 
-.select_payment_type-block .select_methods .select_method .select_method-desc a
-{
+.select_payment_type-block .select_methods .select_method .select_method-desc a {
     color: #ffe001;
 }
 
-.select_payment_type-block .select_method-count
-{
+.select_payment_type-block .select_method-count {
     width: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 
     margin-top: 30px;
 }
 
-.select_payment_type-block .select_method-count .select_method-drop
-{
+.select_payment_type-block .select_method-count .select_method-drop {
     width: 6px;
     height: 6px;
     border-radius: 100%;
@@ -158,13 +148,11 @@ body::-webkit-scrollbar
     background: #1d274f;
 }
 
-.select_payment_type-block .select_method-count .select_method-drop.active-select
-{
+.select_payment_type-block .select_method-count .select_method-drop.active-select {
     background: #3a50a6;
 }
 
-.close_button svg
-{
+.close_button svg {
     position: absolute;
     right: 0;
     top: 0;
@@ -173,11 +161,14 @@ body::-webkit-scrollbar
 
     z-index: 1;
 
+    -webkit-transition: 0.2s ease all;
+
+    -o-transition: 0.2s ease all;
+
     transition: 0.2s ease all;
 }
 
-.back-button
-{
+.back-button {
     position: absolute;
     top: 0;
     left: 0;
@@ -191,76 +182,71 @@ body::-webkit-scrollbar
     cursor: pointer;
 }
 
-.back-button svg
-{
+.back-button svg {
+    -webkit-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
     transition: 0.2s ease all;
 }
 
-.back-button svg:hover
-{
-    opacity: .7;
+.back-button svg:hover {
+    opacity: 0.7;
 }
 
-.close_button svg:hover
-{
-    opacity: .7;
+.close_button svg:hover {
+    opacity: 0.7;
 }
 
-.select_cryptocurrencies-block
-{
-    display: none;
-}
-
-.select_cryptocurrencies-block.show
-{
-    display: flex;
-}
-
-.select_cryptocurrencies-block
-{
+.select_cryptocurrencies-block {
     position: relative;
 
     width: 100%;
     border-radius: 4px;
-    
+
     padding: 35px;
     padding-bottom: 28px;
 
-    background: rgba(22,30,57,.5);
-    backdrop-filter: blur(54px);
+    background: rgba(22, 30, 57, 0.5);
+    -webkit-backdrop-filter: blur(54px);
+            backdrop-filter: blur(54px);
 
     display: none;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
-.select_cryptocurrencies-block .select_payment_type-title
-{
+.select_cryptocurrencies-block .select_payment_type-title {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 
     width: 100%;
 }
 
-.select_cryptocurrencies-block .selected_method-header .select_method-title
-{
+.select_cryptocurrencies-block .selected_method-header .select_method-title {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.select_cryptocurrencies-block .selected_method-header .select_method-desc
-{
+.select_cryptocurrencies-block .selected_method-header .select_method-desc {
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, 0.6);
 
     margin-top: 4px;
 }
 
-.select_cryptocurrencies-block .selected_method-header
-{
+.select_cryptocurrencies-block .selected_method-header {
     border-radius: 8px 8px 0 0;
 
     margin-top: 20px;
@@ -271,8 +257,7 @@ body::-webkit-scrollbar
     border: 1px solid #ffe001;
 }
 
-.select_cryptocurrencies-block .selected_method-wrapper
-{
+.select_cryptocurrencies-block .selected_method-wrapper {
     width: 100%;
 
     border-radius: 0 0 8px 8px;
@@ -281,71 +266,83 @@ body::-webkit-scrollbar
 
     border: 1px solid #ffe001;
 
+    display: -ms-grid;
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 230px));
     gap: 8px;
 }
 
-.selected_method-wrapper .item
-{
+.selected_method-wrapper .item {
     border-radius: 8px;
 
-    display: flex;
-    align-items: center;
+    display: -webkit-box;
 
-    background: rgba(25,34,60,.5);
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    background: rgba(25, 34, 60, 0.5);
 
     cursor: pointer;
 
-    padding: 8px 12px;   
-    
+    padding: 8px 12px;
+
+    -webkit-transition: 0.2s ease all;
+
+    -o-transition: 0.2s ease all;
+
     transition: 0.2s ease all;
 }
 
-.selected_method-wrapper .item:hover
-{
-    background: rgba(43,55,89,.5);
+.selected_method-wrapper .item:hover {
+    background: rgba(43, 55, 89, 0.5);
 }
 
-.selected_method-wrapper .item .item-text
-{
+.selected_method-wrapper .item .item-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
-.selected_method-wrapper .item .coin-name
-{
+.selected_method-wrapper .item .coin-name {
     font-size: 16px;
     font-weight: 500;
     color: white;
 }
 
-.selected_method-wrapper .item .coin-network
-{
+.selected_method-wrapper .item .coin-network {
     font-size: 14px;
     font-weight: 400;
     color: rgb(137, 137, 137);
 }
 
-.selected_method-wrapper .item img
-{
+.selected_method-wrapper .item img {
     width: 36px;
     height: 36px;
 
     margin-right: 8px;
 }
 
-.select_cryptocurrencies-block .select_method-count
-{
+.select_cryptocurrencies-block .select_method-count {
     width: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 
     margin-top: 30px;
 }
 
-.select_cryptocurrencies-block .select_method-count .select_method-drop
-{
+.select_cryptocurrencies-block .select_method-count .select_method-drop {
     width: 6px;
     height: 6px;
     border-radius: 100%;
@@ -353,52 +350,48 @@ body::-webkit-scrollbar
     background: #1d274f;
 }
 
-.select_cryptocurrencies-block .select_method-count .select_method-drop.active-select
-{
+.select_cryptocurrencies-block .select_method-count .select_method-drop.active-select {
     background: #3a50a6;
 }
 
-.select_final-block.show
-{
-    display: flex;
-}
-
-.select_final-block
-{
+.select_final-block {
     display: none;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
     position: relative;
 }
 
-.select-header
-{
+.select-header {
     position: relative;
 
     width: 100%;
     border-radius: 4px;
     max-width: 350px;
-    
+
     padding: 35px;
     padding-bottom: 28px;
     margin: 0 auto;
 
-    background: rgba(22,30,57,.5);
-    backdrop-filter: blur(54px);
+    background: rgba(22, 30, 57, 0.5);
+    -webkit-backdrop-filter: blur(54px);
+            backdrop-filter: blur(54px);
 }
 
-.select_final-block .select_payment_type-title
-{
+.select_final-block .select_payment_type-title {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 
     width: 100%;
 }
 
-.select_final-block .selected_coin-block
-{
+.select_final-block .selected_coin-block {
     width: 100%;
     border-radius: 8px;
 
@@ -406,27 +399,24 @@ body::-webkit-scrollbar
     margin-top: 20px;
 
     background-color: #1f2431;
-    border :1px solid #ffe001;
+    border: 1px solid #ffe001;
 }
 
-.select_final-block .selected_coin-block .selected_type
-{
+.select_final-block .selected_coin-block .selected_type {
     font-size: 16px;
     font-weight: 500;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.select_final-block .selected_coin-block .selected_coin
-{
+.select_final-block .selected_coin-block .selected_coin {
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, 0.6);
 
     margin-top: 4px;
 }
 
-.select-wrapper
-{
+.select-wrapper {
     width: 100%;
     max-width: 350px;
 
@@ -434,8 +424,7 @@ body::-webkit-scrollbar
     padding: 0 24px;
 }
 
-.select-wrapper .alert_block
-{
+.select-wrapper .alert_block {
     border-radius: 8px;
 
     text-align: center;
@@ -446,24 +435,21 @@ body::-webkit-scrollbar
     border: 1px solid #ffe001;
 }
 
-.select-wrapper .alert_block .alert_title
-{
+.select-wrapper .alert_block .alert_title {
     font-size: 14px;
     font-weight: 400;
     color: #ffe001;
 }
 
-.select-wrapper .alert_block .alert_desc
-{
+.select-wrapper .alert_block .alert_desc {
     font-size: 14px;
     font-weight: 400;
-    color: rgba(255,255,255,.6);
+    color: rgba(255, 255, 255, 0.6);
 
     margin-top: 4px;
 }
 
-.button-block
-{
+.button-block {
     width: 100%;
     max-width: 350px;
 
@@ -471,13 +457,20 @@ body::-webkit-scrollbar
     margin-top: 24px;
     padding: 0 24px;
 
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
-.button-block button
-{
+.button-block button {
     width: 100%;
     height: 40px;
     border-radius: 2px;
@@ -491,25 +484,29 @@ body::-webkit-scrollbar
 
     cursor: pointer;
 
+    -webkit-transition: 0.2s ease all;
+
+    -o-transition: 0.2s ease all;
+
     transition: 0.2s ease all;
 }
 
-.button-block button:hover
-{
-    opacity: .7;
+.button-block button:hover {
+    opacity: 0.7;
 }
 
-.select_final-block .select_method-count
-{
+.select_final-block .select_method-count {
     width: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 
     margin-top: 30px;
 }
 
-.select_final-block .select_method-count .select_method-drop
-{
+.select_final-block .select_method-count .select_method-drop {
     width: 6px;
     height: 6px;
     border-radius: 100%;
@@ -517,17 +514,21 @@ body::-webkit-scrollbar
     background: #1d274f;
 }
 
-.select_final-block .select_method-count .select_method-drop.active-select
-{
+.select_final-block .select_method-count .select_method-drop.active-select {
     background: #3a50a6;
 }
 
-.select_final-block .final
-{
+.select_final-block .final {
     margin-left: 70px;
 }
 
-.select_final-block .final svg
-{
+.select_final-block .final svg {
     margin-right: 70px;
+}
+
+.show {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
 }

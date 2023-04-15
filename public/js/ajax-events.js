@@ -10,8 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
         success: function(data){
             let items = document.querySelector('.products_items-block');
             let loadingGIF = document.querySelector('.loading');
-            
+
             searchArray = data["items"];
+
+            lang = getLang()
+            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "MORE DETAILS";
+            langProducts = lang == "ru" ? "Продуктов" : "Products";
 
             for(let i = 0; i < data["items"].length; i++)
             {
@@ -29,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="item_bottom-block">
                     <a href="/game?id=${id}">
-                        MORE DETAILS 
+                        ${langProductsCaption} 
                         <img src="public/img/arrow.svg">
                     </a>
-                    <p class="products-count">[Products: ${productCount}]</p>
+                    <p class="products-count">[${langProducts}: ${productCount}]</p>
                 </div>
             </div>`
             }
@@ -64,6 +68,9 @@ findInput.addEventListener('keyup', () => {
             let img = searchArray[i]["img"];
             let productCount = searchArray[i]["productCount"]
 
+            lang = getLang()
+            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "MORE DETAILS";
+            langProducts = lang == "ru" ? "Продуктов" : "Products";
 
             if(serachText != "")
             {
@@ -76,10 +83,10 @@ findInput.addEventListener('keyup', () => {
                         </div>
                         <div class="item_bottom-block">
                             <a href="/game?id=${id}">
-                                MORE DETAILS 
+                                ${langProductsCaption} 
                                 <img src="public/img/arrow.svg">
                             </a>
-                            <p class="products-count">[Products: ${productCount}]</p>
+                            <p class="products-count">[${langProducts}: ${productCount}]</p>
                         </div>
                     </div>`
                 }
@@ -93,10 +100,10 @@ findInput.addEventListener('keyup', () => {
                     </div>
                     <div class="item_bottom-block">
                         <a href="/game?id=${id}">
-                            MORE DETAILS 
+                            ${langProductsCaption} 
                             <img src="public/img/arrow.svg">
                         </a>
-                        <p class="products-count">[Products: ${productCount}]</p>
+                        <p class="products-count">[${langProducts}: ${productCount}]</p>
                     </div>
                 </div>`
             }
