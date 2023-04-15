@@ -355,7 +355,7 @@ body::-webkit-scrollbar
     justify-content: center;
 }
 
-.payment_details-wrapper .payment_details-main .payment_change-button_block button
+.payment_details-wrapper .payment_details-main .payment_change-button_block a
 {
     background: transparent;
     border: transparent;
@@ -372,13 +372,13 @@ body::-webkit-scrollbar
     transition: 0.2s ease all;
 }
 
-.payment_details-wrapper .payment_details-main .payment_change-button_block button:hover
+.payment_details-wrapper .payment_details-main .payment_change-button_block a:hover
 {
     opacity: .7;
 }
 
 
-.payment_details-wrapper .payment_details-main .payment_change-button_block button svg
+.payment_details-wrapper .payment_details-main .payment_change-button_block a svg
 {
     margin-right: 8px;
 }
@@ -430,4 +430,11 @@ body::-webkit-scrollbar
     color: rgba(255, 255, 255, 0.9);
 
     text-decoration: underline;
+
+    transition: 0.2s ease all;
+}
+
+.payment_details-wrapper .payment_details-main .payment_faq-block p a:hover
+{
+    opacity: .7;
 }
