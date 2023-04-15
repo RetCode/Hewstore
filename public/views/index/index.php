@@ -19,16 +19,14 @@
                         <div class="left-block">
                             <div class="unification-block">
                                 <div class="main-text-box">
-                                    <p class="main-text lang">main-text</p>
-                                    
+                                    <p class="main-text lang" data-text="main-text">{text}</p>
                                 </div>
                                 <div class="description-text-box">
-                                    <p class="description-text lang">description-text</p>
+                                    <p class="description-text lang" data-text="description-text">{text}</p>
                                 </div>
                                 <div class="button-box">
-                                    <a href="#" class="purshare-button lang">purshare-button</a>
-                                    <a href="#" class="more-details-button">CONTACT US <img src="public/img/arrow.svg"></a>
-                                    
+                                    <a href="#products" class="purshare-button lang" data-text="purshare-button">{text}</a>
+                                    <a href="#contacts" class="more-details-button lang" data-text="more-details-button">{text} <img src="public/img/arrow.svg"></a>
                                 </div> 
                             </div>                               
                         </div>
@@ -44,12 +42,12 @@
             <!-- Announcements Section -->
             <section id="announcements" class="announcements-section">
                 <div class="container">
-                    <div class="name-block lang">
-                        <p>ANNOUNCEMENT</p>
+                    <div class="name-block lang" data-text="announcement">
+                        <p>{text}</p>
                     </div>
                     <div class="announcements_button-block">
-                        <a href="#">
-                            ANNOUNCEMENT ARCHIVE
+                        <a href="#" class="lang" data-text="announcement-archive">
+                            {text}
                             <img src="public/img/arrow.svg">
                         </a>
                     </div>
@@ -124,16 +122,16 @@
             <!-- Products Section -->
             <section id="products" class="products-section">
                 <div class="container">
-                    <div class="name-block">
-                        <p>GAMES</p>
+                    <div class="name-block lang" data-text="games">
+                        <p>{text}</p>
                     </div>
                     <div class="unification-block">
-                        <div class="description-block">
-                            <p>Find and select the game you are interested in to go to the products available for that game</p>
+                        <div class="description-block lang" data-text="games-description">
+                            <p>{text}</p>
                         </div>
                         <div class="products_search-block">
                             <img src="public/img/find.svg">
-                            <input id="findInput" type="text" placeholder="Find">
+                            <input id="findInput" class="langInput" data-text="search" type="text" placeholder="{text}">
                         </div>
                     </div>  
                     <div class="loading">
@@ -151,11 +149,11 @@
             <!-- Contacts Section -->
             <section id="contacts" class="contacts-section">
                 <div class="container">
-                    <div class="name-block">
-                        <p>CONTACTS</p>
+                    <div class="name-block lang" data-text="contacts">
+                        <p>{text}</p>
                     </div>
-                    <div class="description-block">
-                        <p>If you have any problems or questions, please contact us, we are always happy to help</p>
+                    <div class="description-block lang" data-text="contacts-description">
+                        <p>{text}</p>
                     </div>
                     <div class="contacts_items-block">
                         <div class="contacts-item">
@@ -163,7 +161,7 @@
                                 <img src="public/img/contacts/discord.svg">
                             </div>
                             <div class="contacts_item-info">
-                                <p class="contacts-header">Discord Community</p>
+                                <p class="contacts-header lang" data-text="discord-server">{text}</p>
                                 <a href="https://discord.gg/Fpy262yz9S" class="contacts-link">discord.gg/Fpy262yz9S</a>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ buttons.forEach(item =>
 {
     item.addEventListener('click', () =>
     {
+        console.log(item)
         document.querySelector('.language-button.active').classList.remove('active');
         item.classList.add('active')
     })

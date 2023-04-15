@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
-	<link rel="stylesheet" href="../public/css/game_item-page.css">
-    <title>Document</title>
+	<link rel="stylesheet" href="public/css/min/game_item-page-min.css">
+    <title>Товары</title>
 </head>
 <body>
+    %%HEADER%%
     <div class="wrapper">
         <section class="game-items">
             <div class="container">
@@ -16,16 +17,16 @@
                     <div class="up-block">
                         <div class="left-block">
                             <div class="game-name-box">
-                                <p class="name-text">OVERWATCH 2</p>
+                                <p class="name-text">%%GAMENAME%%</p>
                             </div>
                             <div class="info-box">
-                                <p class="info-text">Read the product description or use the filter to find a product that is compatible with your system</p>
+                                <p class="info-text lang" data-text="game-description">{text}</p>
                             </div>
                         </div>
                         <div class="right-block">
                             <div class="input-box">
                                 <img src="../public/img/find.svg">
-                                <input type="text" placeholder="Search">
+                                <input type="text" class="langInput" data-text="search" placeholder="{text}">
                             </div>
                         </div>
                     </div>
@@ -34,29 +35,21 @@
                                 <div class="text-block">
                                     <p>OS</p>
                                 </div>
-                                <div class="button-block">
-                                    <button>Windows 7</button>
-                                    <button>Windows 8</button>
-                                    <button>Windows 10</button>
-                                    <button>Windows 11</button>
+                                <div class="button-block" id="os">
                                 </div>
                             </div>
                             <div class="cpu-block">
                                 <div class="text-block">
                                     <p>CPU</p>
                                 </div>
-                                <div class="button-block">
-                                    <button>Intel</button>
-                                    <button>AMD</button>
+                                <div class="button-block" id="cpu">
                                 </div>
                             </div>
                             <div class="gpu-block">
                                 <div class="text-block">
                                     <p>GPU</p>
                                 </div>
-                                <div class="button-block">
-                                    <button>Nvidia</button>
-                                    <button>AMD</button>
+                                <div class="button-block" id="gpu">
                                 </div>
                             </div>
                         </div>
@@ -123,5 +116,10 @@
             </div>
         </section>
     </div>
+    <!-- Scripts -->
+	<script src="public/js/translate.js"></script>
+	<script src="public/js/min/event-click-min.js"></script>
+	<script src="vendor/jquery.js"></script>
+	<script src="public/js/ajax-events-games.js"></script>
 </body>
 </html>

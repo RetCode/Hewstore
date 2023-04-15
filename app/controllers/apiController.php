@@ -47,7 +47,7 @@ class apiController extends Controller
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив игр
              */
-           if($_POST["method"] == "getGames"){
+            if($_POST["method"] == "getGames"){
 
                 // Проверяем кеширование
                 $cachedResult = LocalCachedUI::getCache("getGames");
@@ -76,9 +76,7 @@ class apiController extends Controller
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив продуктов
              */
-           if($_POST["method"] == "getProducts"){
-
-                
+            if($_POST["method"] == "getProducts"){
 
                 Validations::getProducts($_POST["id"]);
 
@@ -133,6 +131,35 @@ class apiController extends Controller
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "An " . $_POST['filter'] . " with this name not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "getFilter",
+             * то вызывается метод getFilter() модели  для редактирования данных фильтре
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "getFilter"){
+                
+                Validations::FilterAcces($_POST['filter']);
+
+                $data = $this->model->getFilter($_POST["filter"]);
+
+                if($data != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true,
+                        "items" => $data
                     ]);
                 }
                 else{

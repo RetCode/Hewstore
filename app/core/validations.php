@@ -187,8 +187,10 @@ class Validations
 
     /**
     *|-----------------------------------------------------------------
-    *|  @param int $id
-    *|  Валидация метода api - addStatus
+    *|  @param float $amount
+    *|  @param string $network
+    *|  @param string $to_currency
+    *|  Валидация метода api - getOffer
     *|-----------------------------------------------------------------
     **/
     static function getOffer($amount, $network, $to_currency)
@@ -210,5 +212,17 @@ class Validations
                 "response" => false,
                 "error" => "Currency undefined"
             ]);
+    }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param int $id
+    *|  Валидация метода api - gamesAction
+    *|-----------------------------------------------------------------
+    **/
+    static function gamesAction($id)
+    {
+        if(!isset($id) || empty($id))
+            header("Location: /");
     }
 }

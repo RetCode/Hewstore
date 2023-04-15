@@ -1,3 +1,0 @@
-[2023-03-29 02:32:19] [QueryUpd - db.php] start
-[2023-03-29 02:40:16] [QueryUpd - db.php] start
-[2023-03-29 02:41:11] [QueryUpd - db.php] start
