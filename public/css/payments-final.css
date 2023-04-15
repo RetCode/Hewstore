@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after
+{
+    box-sizing: border-box;
+}
+
+*
+{
+    font-family: 'Inter';
+
+    margin: 0;
+
+    text-decoration: none;
+}
+
+body
+{
+    background: #0A122E;
+
+    position: relative;
+}
+
+body::-webkit-scrollbar
+{
+    display: none;
+}
+
+.container
+{
+    width: 1380px;
+
+    margin: 0 auto;
+
+    z-index: 2;
+}
+
+.wrapper
+{
+    background: url(../img/paymentbg.png) no-repeat top center;
+
+    padding-bottom: 20vh;
+}
+
+.confirmation_payment-section
+{
+    padding-top: 110px;
+}
+
+.main
+{
+    margin: 0 auto;
+
+    max-width: 725px;
+}
+
+.close_button svg
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin-right: -40px;
+
+    z-index: 1;
+
+    transition: 0.2s ease all;
+}
+
+.back-button
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0;
+    margin-left: -40px;
+
+    background-color: transparent;
+    border: transparent;
+
+    cursor: pointer;
+}
+
+.back-button svg
+{
+    transition: 0.2s ease all;
+}
+
+.back-button svg:hover
+{
+    opacity: .7;
+}
+
+.close_button svg:hover
+{
+    opacity: .7;
+}
+
+.payment_details-block
+{
+    position: relative;
+
+    width: 100%;
+    border-radius: 4px;
+
+    background: rgba(22,30,57,.5);
+    backdrop-filter: blur(54px);
+}
+
+.payment_details-wrapper .payment_details-header
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 36px 76px;
+}
+
+.payment_details-wrapper .payment_details-header .header-logo
+{
+    display: flex;
+    justify-content: center;
+}
+
+.payment_details-wrapper .payment_details-header .header-logo img
+{
+    width: 64px;
+}
+
+.payment_details-wrapper .payment_details-header .header-title
+{
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255,255,255,.9);
+    text-align: center;
+
+    margin-top: 12px;
+}
+
+.payment_details-wrapper .payment_details-header .header-desc
+{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,.6);
+    text-align: center;
+
+    margin-top: 8px;
+}
+
+.border
+{
+    width: 100%;
+
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.payment_details-wrapper .payment_details-main
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 36px 115px;
+    padding-bottom: 28px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-product_name
+{
+    width: 100%;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-product_name p
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);;
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-order_block
+{
+    width: 100%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-order_block .order_values
+{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-order_block .order_values_off
+{
+    display: none;
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-order_block .order_values .order_title
+{
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+
+    padding: 20px 0;
+}
+
+.payment_details-wrapper .payment_details-main .payment_details-order_block .order_values .order_attribute
+{
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+
+    padding: 20px 0;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block
+{
+    width: 100%;
+
+    padding-top: 20px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode
+{
+    width: 257px;
+
+    border-radius: 12px;
+
+    padding: 20px 48px;
+    margin: 0 auto;
+
+    background: #19203A;
+
+    text-align: center;
+
+    display: none;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode .qrcode_block
+{
+    margin-bottom: 8px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode .qrcode_block img
+{
+    padding: 5px;
+
+    background: white;
+
+    border-radius: 4px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode .value_name p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode .value_count p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .binance_qrcode .value_count p span
+{
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode
+{
+    width: 100%;
+    border-radius: 12px;
+
+    padding: 20px;
+
+    background: #19203A;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .qrcode_block
+{
+    margin-right: 20px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .qrcode_block img
+{
+    width: 86px;
+
+    padding: 5px;
+
+    background: white;
+
+    border-radius: 4px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_title p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    word-break: normal;
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p span
+{
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .button-block a
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+
+    white-space:nowrap;
+}
+
+.payment_details-wrapper .payment_details-main .payment_change-button_block
+{
+    width: 100%;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    justify-content: center;
+}
+
+.payment_details-wrapper .payment_details-main .payment_change-button_block button
+{
+    background: transparent;
+    border: transparent;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+
+    cursor: pointer;
+
+    transition: 0.2s ease all;
+}
+
+.payment_details-wrapper .payment_details-main .payment_change-button_block button:hover
+{
+    opacity: .7;
+}
+
+
+.payment_details-wrapper .payment_details-main .payment_change-button_block button svg
+{
+    margin-right: 8px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_status-block
+{
+    width: 100%;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment_details-wrapper .payment_details-main .payment_status-block .value_name
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.payment_details-wrapper .payment_details-main .payment_status-block .value_attribute
+{
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFE001;
+}
+
+.payment_details-wrapper .payment_details-main .payment_faq-block
+{
+    width: 100%;
+
+    padding-top: 20px;
+}
+
+.payment_details-wrapper .payment_details-main .payment_faq-block p
+{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+
+    text-align: center;
+}
+
+.payment_details-wrapper .payment_details-main .payment_faq-block p a
+{
+    color: rgba(255, 255, 255, 0.9);
+
+    text-decoration: underline;
+}
