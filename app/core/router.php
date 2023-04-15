@@ -22,6 +22,16 @@ class Router
             case "api": Router::done("api", "api"); break;
             case "cart": Router::done("index", "cart"); break;
             case "game": Router::done("index", "game"); break;
+            case "admin/games": Router::done("admin", "game"); break;
+            case "admin/items": Router::done("admin", "items"); break;
+            case "admin/types": Router::done("admin", "types"); break;
+            case "admin/keys": Router::done("admin", "keys"); break;
+            case "admin/tag": Router::done("admin", "tag"); break;
+            case "admin/news": Router::done("admin", "news"); break;
+            case "admin/promo": Router::done("admin", "promo"); break;
+            case "admin/payments": Router::done("admin", "payments"); break;
+            case "admin/sellers": Router::done("admin", "sellers"); break;
+            case "admin": Router::done("admin", "admin"); break;
             default: Router::error(404);
         }
     }
