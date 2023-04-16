@@ -176,7 +176,7 @@ class Validations
     *|  Валидация метода api - addStatus
     *|-----------------------------------------------------------------
     **/
-    static function deleteStatus($id)
+    static function deleteId($id)
     {
         if(!isset($id) || empty($id))
             Utils::sendAjaxRequest([

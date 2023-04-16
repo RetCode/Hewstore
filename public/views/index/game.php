@@ -36,6 +36,10 @@
                                     <p>OS</p>
                                 </div>
                                 <div class="button-block" id="os">
+                                    <button>Windows 7</button>
+                                    <button>Windows 8</button>
+                                    <button>Windows 10</button>
+                                    <button>Windows 11</button>
                                 </div>
                             </div>
                             <div class="cpu-block">
@@ -43,6 +47,8 @@
                                     <p>CPU</p>
                                 </div>
                                 <div class="button-block" id="cpu">
+                                    <button>Intel</button>
+                                    <button>AMD</button>
                                 </div>
                             </div>
                             <div class="gpu-block">
@@ -50,6 +56,8 @@
                                     <p>GPU</p>
                                 </div>
                                 <div class="button-block" id="gpu">
+                                    <button>Nvidia</button>
+                                    <button>AMD</button>
                                 </div>
                             </div>
                         </div>

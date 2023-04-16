@@ -18,6 +18,16 @@ class apiModel extends Model{
     }
 
     /** 
+     * Запрос в базу данных на запрос ключей
+     * @return array
+    */
+    function getKeys(){
+        return $this->DataBase::Query("SELECT games_table.id, games_table.name, games_table.img, 
+                (SELECT COUNT(id) FROM product WHERE product.games = games_table.id) as 'productCount' 
+                FROM games_table WHERE 1");
+    }
+
+    /** 
      * Запрос в базу данных на запрос продуктов под игру
      * @param int $id
      * @return array
@@ -31,6 +41,50 @@ class apiModel extends Model{
              [
                $id
              ]
+        );
+    }
+
+    /** 
+     * Запрос в базу данных на запрос продуктов под игру
+     * @return array
+    */
+    function getProductsAll(){
+        return $this->DataBase::Query(
+            "SELECT product.id, product.name, product.img,  product.status as 'statusID', product.games,  status_table.name as 'status', games_table.name as 'game' FROM product
+             INNER JOIN status_table ON status_table.id = product.status
+             INNER JOIN games_table ON games_table.id = product.games"
+        );
+    }
+
+    /** 
+     * Запрос в базу данных на запрос продуктов под игру
+     * @return array
+    */
+    function getProductType(){
+        return $this->DataBase::Query(
+            "SELECT products_type.id, products_type.product, products_type.name, products_type.cost, product.name as 'productTitle' 
+            FROM products_type 
+            INNER JOIN product ON product.id = products_type.product"
+        );
+    }
+
+    /** 
+     * Запрос в базу данных на запрос платежей
+     * @return array
+    */
+    function getSellers(){
+        return $this->DataBase::Query(
+            "SELECT * FROM payments WHERE payment_status = 'success'"
+        );
+    }
+
+    /** 
+     * Запрос в базу данных на запрос всех платежей
+     * @return array
+    */
+    function getPayments(){
+        return $this->DataBase::Query(
+            "SELECT * FROM payments"
         );
     }
 
@@ -124,18 +178,24 @@ class apiModel extends Model{
                 $text,
                 $id
             ]);
+
+            if (file_exists("public/cached/getGames.cached"))
+                unlink("public/cached/getGames.cached");
+
             return True;
         }
         else return false;
     }
 
     /** 
-     * Запрос в базу данных на редактирование игры
+     * Запрос в базу данных на редактирование продукта
      * @param string $id
      * @param string $text
+     * @param int $status
+     * @param int $game
      * @return True|False
     */
-    function editProduct($id, $text){
+    function editProduct($id, $text, $status, $game){
 
         $isExists = DataBase::Query(
             "SELECT id FROM product WHERE id = ?",
@@ -144,11 +204,47 @@ class apiModel extends Model{
             ]);
 
         if($isExists != null){
-            DataBase::QueryUpd("UPDATE product SET name = ? WHERE id = ?",
+            DataBase::QueryUpd("UPDATE product SET name = ?, status = ?, games = ? WHERE id = ?",
             [
                 $text,
+                $status,
+                $game,
                 $id
             ]);
+
+            if (file_exists("public/cached/getProductsAll.cached"))
+                unlink("public/cached/getProductsAll.cached");
+
+            return True;
+        }
+        else return false;
+    }
+
+    /** 
+     * Запрос в базу данных на редактирование продукта
+     * @param string $id
+     * @param string $text
+     * @param int $product
+     * @param float $cost
+     * @return True|False
+    */
+    function editProductType($id, $text, $product, $cost){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("UPDATE products_type SET name = ?, product = ?, cost = ? WHERE id = ?",
+            [
+                $text,
+                $product,
+                $cost,
+                $id
+            ]);
+
             return True;
         }
         else return false;
@@ -193,7 +289,7 @@ class apiModel extends Model{
     }
 
    /** 
-     * Запрос в базу данных на создание статуса
+     * Запрос в базу данных на удаление статуса
      * @param string $id
      * @return True|False
     */
@@ -215,6 +311,92 @@ class apiModel extends Model{
         else return false;
     }
 
+    
+   /** 
+     * Запрос в базу данных на удаление игры
+     * @param string $id
+     * @return True|False
+    */
+    function deleteGame($id){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM games_table WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("DELETE FROM games_table WHERE id = ?",
+            [
+                $id
+            ]);
+
+            if (file_exists("public/cached/getGames.cached"))
+                unlink("public/cached/getGames.cached");
+
+            return True;
+        }
+        else return false;
+    }
+
+    /** 
+     * Запрос в базу данных на удаление игры
+     * @param string $id
+     * @return True|False
+    */
+    function deleteProduct($id){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM product WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("DELETE FROM product WHERE id = ?",
+            [
+                $id
+            ]);
+
+            if (file_exists("public/cached/getProductsAll.cached"))
+                unlink("public/cached/getProductsAll.cached");
+
+            return True;
+        }
+        else return false;
+    }
+
+    /** 
+     * Запрос в базу данных на удаление типа продукта
+     * @param string $id
+     * @return True|False
+    */
+    function deleteProductType($id){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("DELETE FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+            return True;
+        }
+        else return false;
+    }
+
+    /** 
+     * Запрос на получение всех статустов
+    */
+    function getStatus(){
+        return DataBase::Query("SELECT * FROM status_table");
+    }
+
 
     /**
      *  Запрос на создание платежа
@@ -224,7 +406,7 @@ class apiModel extends Model{
 
         $client = Client::payment($_ENV["PAYMENT_KEY"], $_ENV["MERCHANT_UUID"]);
 
-        $idPayment = DataBase::Query("SELECT id FROM payments ORDER BY id DESC LIMIT 1", [])[0];
+        $idPayment = DataBase::Query("SELECT id FROM payments ORDER BY id DESC LIMIT 1")[0]["id"];
 
         $data = [
             'amount' => strval($amount),
@@ -259,4 +441,56 @@ class apiModel extends Model{
         return True;
     }
 
+    /**
+     *  Запрос на создание игры
+     */
+
+    function createGame($name, $filename){
+
+        DataBase::QueryUpd("INSERT INTO games_table VALUES(Null, ?, ?)",
+        [
+            $name,
+            $filename,
+        ]);
+        
+        if (file_exists("public/cached/getGames.cached"))
+            unlink("public/cached/getGames.cached");
+
+        return True;
+    }
+
+    /**
+     *  Запрос на создание продукта
+     */
+
+    function createProduct($name, $filename, $status, $game){
+
+        DataBase::QueryUpd("INSERT INTO product VALUES(Null, ?, ?, ?, ?)",
+        [
+            $name,
+            $filename,
+            $status,
+            $game
+        ]);
+        
+        if (file_exists("public/cached/getProductsAll.cached"))
+            unlink("public/cached/getProductsAll.cached");
+
+        return True;
+    }
+
+    /**
+     *  Запрос на создание продукта
+     */
+
+     function createProductType($name, $product, $cost){
+
+        DataBase::QueryUpd("INSERT INTO products_type VALUES(Null, ?, ?, ?)",
+        [
+            $product,
+            $name,
+            $cost
+        ]);
+        return True;
+    }
 }
