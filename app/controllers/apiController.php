@@ -80,7 +80,20 @@ class apiController extends Controller
 
                 Validations::getProducts($_POST["id"]);
 
+                // Проверяем кеширование
+                $cachedResult = LocalCachedUI::getCache("getProducts-" . $_POST["id"]);
+                
+                if($cachedResult != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "items" => json_decode(json_encode($cachedResult),true)
+                    ]);
+                }
+                    
                 $products = $this->model->getProducts($_POST["id"]);
+
+                // Создание кеша
+                LocalCachedUI::createCached("getProducts-" . $_POST["id"], $products, 60);
 
                 Utils::sendAjaxRequest([
                     "response" => true,
@@ -115,60 +128,6 @@ class apiController extends Controller
                     "response" => true,
                     "items" => json_decode(json_encode($products),true)
                 ]);
-            }
-
-            /** 
-             * Если значение параметра "method" в запросе равно "addFilter",
-             * то вызывается метод addFilter() модели  для добавления данных о новом фильтре
-             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
-             */
-
-            if($_POST["method"] == "addFilter"){
-                
-                Validations::FilterAcces($_POST['filter']);
-                Validations::addFilter($_POST['filter'], $_POST["name"]);
-
-               if($this->model->addFilter($_POST["filter"], $_POST["name"])){
-                    Utils::sendAjaxRequest([
-                        "response" => true,
-                        "succes" => true
-                    ]);
-                }
-                else{
-                    Utils::sendAjaxRequest([
-                        "response" => true,
-                        "succes" => false,
-                        "error" => "An " . $_POST['filter'] . " with this name already exists"
-                    ]); 
-                }
-            }
-
-            /** 
-             * Если значение параметра "method" в запросе равно "editFilter",
-             * то вызывается метод addFilter() модели  для редактирования данных фильтре
-             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
-             */
-
-            if($_POST["method"] == "editFilter"){
-                
-                Validations::FilterAcces($_POST['filter']);
-                Validations::editFilter($_POST['filter'], $_POST["id"], $_POST["text"]);
-
-               if($this->model->editFilter($_POST["filter"], $_POST["id"], $_POST['text'])){
-                    Utils::sendAjaxRequest([
-                        "response" => true,
-                        "succes" => true
-                    ]);
-                }
-                else{
-                    Utils::sendAjaxRequest([
-                        "response" => true,
-                        "succes" => false,
-                        "error" => "An " . $_POST['filter'] . " with this name not exists"
-                    ]); 
-                }
             }
 
             /** 
@@ -272,9 +231,7 @@ class apiController extends Controller
 
             if($_POST["method"] == "getFilter"){
                 
-                Validations::FilterAcces($_POST['filter']);
-
-                $data = $this->model->getFilter($_POST["filter"]);
+                $data = $this->model->getFilter($_POST["id"]);
 
                 if($data != null){
                     Utils::sendAjaxRequest([
@@ -287,7 +244,7 @@ class apiController extends Controller
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => false,
-                        "error" => "An " . $_POST['filter'] . " with this name not exists"
+                        "error" => "not exists"
                     ]); 
                 }
             }

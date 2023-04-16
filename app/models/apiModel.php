@@ -34,10 +34,10 @@ class apiModel extends Model{
     */
     function getProducts($id){
         return $this->DataBase::Query(
-            "SELECT product.id, product.name, product.img, status_table.name as 'status', games_table.name as 'game' FROM product
-             INNER JOIN status_table ON status_table.id = product.status
-             INNER JOIN games_table ON games_table.id = product.games
-             WHERE product.games = ?", 
+            "SELECT product.id, product.name, product.img, status_table.name as 'status', games_table.name as 'game', status_table.color FROM product
+            INNER JOIN status_table ON status_table.id = product.status
+            INNER JOIN games_table ON games_table.id = product.games
+            WHERE product.games = ?", 
              [
                $id
              ]
@@ -88,74 +88,26 @@ class apiModel extends Model{
         );
     }
 
-    /** 
-     * Запрос в базу данных на добавление нового филтра
-     * @param string $filter
-     * @param string $value
-     * @return True|False
-    */
-    function addFilter($filter, $value){
-
-        $isExists = DataBase::Query(
-            "SELECT id FROM $filter WHERE name LIKE ?",
-            [
-                $value
-            ]);
-
-        if($isExists == null){
-            DataBase::QueryUpd("INSERT INTO $filter VALUES(NULL, ?)",
-            [
-                $value
-            ]);
-            return True;
-        }
-        else return false;
-    }
 
     /** 
      * Запрос в базу данных на получение филтров
      * @param string $filter
     */
-    function getFilter($filter){
+    function getFilter($id){
 
         // Проверяем кеширование
-        $cachedResult = LocalCachedUI::getCache($filter);
+        $cachedResult = LocalCachedUI::getCache("getProductsFilter-" . $id);
         
         if($cachedResult != null)
             return $cachedResult;
             
-        $data = DataBase::Query("SELECT * FROM $filter");
+        $data = DataBase::Query("SELECT * FROM stats_product WHERE game = ?", [$id]);
 
         if($data != null)
             // Создание кеша
-            LocalCachedUI::createCached($filter, $data, 60);
+            LocalCachedUI::createCached("getProductsFilter-" . $id, $data, 60);
 
         return $data;
-    }
-
-    /** 
-     * Запрос в базу данных на редактирование фильтра
-     * @param string $filter
-     * @param string $value
-     * @return True|False
-    */
-    function editFilter($filter, $id, $text){
-
-        $isExists = DataBase::Query(
-            "SELECT id FROM $filter WHERE id = ?",
-            [
-                $id
-            ]);
-
-        if($isExists != null){
-            DataBase::QueryUpd("UPDATE $filter SET name = ? WHERE id = ?",
-            [
-                $text,
-                $id
-            ]);
-            return True;
-        }
-        else return false;
     }
 
     /** 

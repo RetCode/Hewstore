@@ -300,8 +300,6 @@ body::-webkit-scrollbar
 .catalog-block .item .item-image .green
 {
     display: flex;
-    color: #3ccc4f;
-    background: rgba(60,204,79,.2);
     margin-left: 80px;
     font-size: 12px;
     font-weight: 600;
@@ -423,4 +421,9 @@ body::-webkit-scrollbar
     opacity: .7;
 
     color: #212121;
+}
+
+.os__filter-item-active,  .cpu__filter-item-active, .gpu__filter-item-active{
+    background-color: #ffe001 !important;
+    color: #212121 !important;
 }
