@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
-	<link rel="stylesheet" href="public/css/min/game_item-page-min.css">
+	<link rel="stylesheet" href="public/css/game_item-page.css">
     <title>Товары</title>
 </head>
 <body>
@@ -124,6 +124,27 @@
             </div>
         </section>
     </div>
+
+    <!-- Modals -->
+    <div class="modal modal_active">
+        <div class="bg_blur"></div>
+        <div class="modal_body">
+            <div class="modal_item">                
+                <p class="product_name">product_name: Day Subscription</p>
+                <p class="product_price">$ 7.00</p>
+            </div>
+            <div class="modal_item">
+                <p class="product_name">product_name: Day Subscription</p>
+                <p class="product_price">$ 40.00</p>
+            </div>
+            <div class="modal_item">                
+                <p class="product_name">product_name: Day Subscription</p>
+                <p class="product_price">$ 125.00</p>
+            </div>
+            <button class="modal_button">Close</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
