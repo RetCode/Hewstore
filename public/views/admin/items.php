@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/types" class="nav-link text-white">
+                        <a href="/admin/keys" class="nav-link text-white">
                             <svg class="bi me-2" width="16" height="16"></svg>
                             Ключи от товара
                         </a>

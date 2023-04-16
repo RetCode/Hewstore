@@ -234,8 +234,8 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "getSellers",
-             * то вызывается метод getSellers() модели  для получения данных о продуктах в играх.
+             * Если значение параметра "method" в запросе равно "getPayments",
+             * то вызывается метод getPayments() модели  для получения данных о продуктах в играх.
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив продуктов
              */
@@ -345,6 +345,32 @@ class apiController extends Controller
             }
 
             /** 
+             * Если значение параметра "method" в запросе равно "editProductType",
+             * то вызывается метод editProductType() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "editProductType"){
+                
+                Validations::editTitle($_POST['id'], $_POST["text"]);
+
+               if($this->model->editProductType($_POST['id'], $_POST["text"], $_POST["product"], $_POST["cost"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "ProductType not exists"
+                    ]); 
+                }
+            }
+
+            /** 
              * Если значение параметра "method" в запросе равно "editProduct",
              * то вызывается метод editProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
@@ -424,7 +450,7 @@ class apiController extends Controller
 
             /** 
              * Если значение параметра "method" в запросе равно "deleteGame",
-             * то вызывается метод addStatus() модели  для редактирования данных о продукте
+             * то вызывается метод deleteGame() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
@@ -449,8 +475,8 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "deleteGame",
-             * то вызывается метод addStatus() модели  для редактирования данных о продукте
+             * Если значение параметра "method" в запросе равно "deleteProduct",
+             * то вызывается метод deleteProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
@@ -469,7 +495,33 @@ class apiController extends Controller
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => false,
-                        "error" => "Status not exists"
+                        "error" => "Product not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "deleteProductType",
+             * то вызывается метод deleteProductType() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "deleteProductType"){
+                
+                Validations::deleteId($_POST["id"]);
+
+               if($this->model->deleteProductType($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "ProductType not exists"
                     ]); 
                 }
             }
@@ -545,6 +597,27 @@ class apiController extends Controller
                             "succes" => true
                         ]);
                     }
+                } else {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "createGame",
+             * то вызывается метод createGame() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+            if($_POST["method"] == "createProductType"){
+                
+                if($this->model->createProductType($_POST["name"], $_POST["game"], $_POST["cost"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
                 } else {
                     Utils::sendAjaxRequest([
                         "response" => true,

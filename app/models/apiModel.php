@@ -18,6 +18,16 @@ class apiModel extends Model{
     }
 
     /** 
+     * Запрос в базу данных на запрос ключей
+     * @return array
+    */
+    function getKeys(){
+        return $this->DataBase::Query("SELECT games_table.id, games_table.name, games_table.img, 
+                (SELECT COUNT(id) FROM product WHERE product.games = games_table.id) as 'productCount' 
+                FROM games_table WHERE 1");
+    }
+
+    /** 
      * Запрос в базу данных на запрос продуктов под игру
      * @param int $id
      * @return array
@@ -178,7 +188,7 @@ class apiModel extends Model{
     }
 
     /** 
-     * Запрос в базу данных на редактирование игры
+     * Запрос в базу данных на редактирование продукта
      * @param string $id
      * @param string $text
      * @param int $status
@@ -204,6 +214,36 @@ class apiModel extends Model{
 
             if (file_exists("public/cached/getProductsAll.cached"))
                 unlink("public/cached/getProductsAll.cached");
+
+            return True;
+        }
+        else return false;
+    }
+
+    /** 
+     * Запрос в базу данных на редактирование продукта
+     * @param string $id
+     * @param string $text
+     * @param int $product
+     * @param float $cost
+     * @return True|False
+    */
+    function editProductType($id, $text, $product, $cost){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("UPDATE products_type SET name = ?, product = ?, cost = ? WHERE id = ?",
+            [
+                $text,
+                $product,
+                $cost,
+                $id
+            ]);
 
             return True;
         }
@@ -326,6 +366,29 @@ class apiModel extends Model{
         else return false;
     }
 
+    /** 
+     * Запрос в базу данных на удаление типа продукта
+     * @param string $id
+     * @return True|False
+    */
+    function deleteProductType($id){
+
+        $isExists = DataBase::Query(
+            "SELECT id FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+        if($isExists != null){
+            DataBase::QueryUpd("DELETE FROM products_type WHERE id = ?",
+            [
+                $id
+            ]);
+
+            return True;
+        }
+        else return false;
+    }
 
     /** 
      * Запрос на получение всех статустов
@@ -413,6 +476,21 @@ class apiModel extends Model{
         if (file_exists("public/cached/getProductsAll.cached"))
             unlink("public/cached/getProductsAll.cached");
 
+        return True;
+    }
+
+    /**
+     *  Запрос на создание продукта
+     */
+
+     function createProductType($name, $product, $cost){
+
+        DataBase::QueryUpd("INSERT INTO products_type VALUES(Null, ?, ?, ?)",
+        [
+            $product,
+            $name,
+            $cost
+        ]);
         return True;
     }
 }

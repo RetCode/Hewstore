@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/types" class="nav-link text-white">
+                        <a href="/admin/keys" class="nav-link text-white">
                             <svg class="bi me-2" width="16" height="16"></svg>
                             Ключи от товара
                         </a>
@@ -156,7 +156,6 @@
                 type: "POST",
                 data: {method: 'getProductsAll'},
                 success: function(response) {
-                    console.log(response)
                     response["items"].forEach(element => {
                         document.getElementById("products").innerHTML += `<option value="${element["id"]}">${element["name"]}</option>`;
                         document.getElementById("recipient-products").innerHTML += `<option value="${element["id"]}">${element["name"]}</option>`;
@@ -172,31 +171,19 @@
 
             function createData()
             {
-                var status = $("#statusInput").val();
-                var game = $("#gameInput").val();
+                var cost = $("#cost").val();
+                var game = $("#products").val();
                 var name = $("#nameInput").val(); 
-                var fileInput = $("#fileInput")[0];
-                var file = fileInput.files[0]; 
-                
-                var formData = new FormData(); 
-                
-                formData.append("name", name); 
-                formData.append("file", file);
-                formData.append("status", status);
-                formData.append("game", game);
-                formData.append("method", "createProduct");
 
                 $.ajax({
                     url: "/api",
                     type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
+                    data: {method: "createProductType", name: name, game: game, cost: cost},
                     success: function(response) {
                         if(response["succes"] == true)
                         {
                             document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
-                            Продукт успешно добавлен
+                            Тип продукта успешно добавлен
                             </div>`;
 
                             loadItems()
@@ -218,15 +205,15 @@
             {
                 let id = object.getAttribute("x-id");
                 let name = object.getAttribute("x-name");
-                let status = object.getAttribute("x-status");
-                let game = object.getAttribute("x-game");
+                let cost = object.getAttribute("x-cost");
+                let product = object.getAttribute("x-product");
 
                 document.getElementById("recipient-name").value = name;
                 document.getElementById("recipient-id").value = id;
 
 
-                document.getElementById("recipient-statusInput").value = status;
-                document.getElementById("recipient-gameInput").value = game;
+                document.getElementById("recipient-products").value = product;
+                document.getElementById("recipient-cost").value = cost;
             }
 
             function deleteData(object)
@@ -236,7 +223,7 @@
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'deleteProduct', id: id},
+                data: {method: 'deleteProductType', id: id},
                     success: function(response) {
                         if(response["succes"] == true)
                         {
@@ -263,13 +250,13 @@
             {
                 let id = document.getElementById("recipient-id").value;
                 let name = document.getElementById("recipient-name").value;
-                let status = document.getElementById("recipient-statusInput").value;
-                let game = document.getElementById("recipient-gameInput").value;
+                let product = document.getElementById("recipient-products").value;
+                let cost = document.getElementById("recipient-cost").value;
 
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'editProduct', id: id, text: name, status: status, game: game},
+                data: {method: 'editProductType', id: id, text: name, product: product, cost: cost},
                     success: function(response) {
                         if(response["succes"] == true)
                         {
