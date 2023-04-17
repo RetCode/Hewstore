@@ -193,5 +193,6 @@
 	<script src="public/js/min/event-click-min.js"></script>
     <script src="vendor/jquery.js"></script>
     <script src="public/js/ajax-events.js"></script>
+    <script src="public/js/scroll_event.js"></script>
 </body>
 </html>
