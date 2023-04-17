@@ -18,9 +18,14 @@
 
 body
 {
-    background: #0A122E;
-
     position: relative;
+
+    background: url(../img/paymentbg.png) no-repeat;
+    background-size: contain;
+    background-color: #0A122E;
+    background-position: top;
+    
+    min-height: 100vh;
 }
 
 body::-webkit-scrollbar
@@ -38,8 +43,7 @@ body::-webkit-scrollbar
 }
 
 .wrapper
-{
-    background: url(../img/paymentbg.png) no-repeat top center;
+{  
 
     padding-bottom: 20vh;
 }

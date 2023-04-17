@@ -16,7 +16,12 @@
 }
 
 body {
-    background: #0a122e;
+    background: url(../img/bgpay.png) no-repeat;
+    background-size: contain;
+    background-color: #0A122E;
+    background-position: top;
+    
+    min-height: 100vh;
 
     position: relative;
 }
@@ -33,8 +38,7 @@ body::-webkit-scrollbar {
     z-index: 2;
 }
 
-.wrapper {
-    background: url(../img/bgpay.png) no-repeat top center;
+.wrapper {   
 
     padding-bottom: 20vh;
 }
