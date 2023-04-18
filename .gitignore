@@ -2,3 +2,4 @@
 public/cached/getGames.cached
 public/cached/getProductsTypes.cached
 .gitignore
+public/cached/getProductsAll.cached
