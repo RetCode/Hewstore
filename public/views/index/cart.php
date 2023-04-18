@@ -25,34 +25,40 @@
                         </div>
                         <div class="all-box">
                             <div class="boxes">
-                            <div class="clear-block">
-                                <img class="img-trash" src="../public/img/cart__trash.svg">
-                                <button class="lang cart-clear-all" data-text="cart-clear-all">{text}</button>
+                            <div class="clear-block">                                
+                                <button class="lang cart-clear-all" data-text="cart-clear-all"><img class="img-trash" src="../public/img/cart__trash.svg"> {text}</button>
                             </div>
                             <div class="products">
                                 
                             </div>
-                            <div class="cart-form-box">
+                            
+                        </div>
+                        <div class="cart-form-box">
                                 <div class="product-name-box">
                                     <p class="lang" data-text="cart-product">{text}</p>
                                 </div>
                                 <div class="product-amount-box">
-                                    <p class="name-product">Noble: Day Subscription</p>
-                                    <p class="amount">$ 7.00</p>
+                                    <div class="product_item">
+                                        <p class="name-product">Noble: Day Subscription</p>
+                                        <p class="amount">$ 7.00</p>
+                                    </div>
+                                    
                                 </div>
                                 <div class="total-box">
                                         <p class="lang" data-text="cart-product-cost">{text}</p>
                                         <p>$ 7</p>
                                 </div>
                                 <div class="input-block">
-                                    <input class="input-coupon langInput" type="text" data-text="cart-promo" placeholder="{text}">
+                                    <div class="input_arrow">
+                                        <input class="input-coupon langInput" type="text" data-text="cart-promo" placeholder="{text}">
+                                        <img src="../public/img/rArrow.svg">
+                                    </div>
+                                    
                                     <input type="mail" class="langInput" data-text="cart-mail" placeholder="{text}">
                                 </div>
                                 <div class="button-box">
                                     <button class="lang" data-text="cart-pay-button">{text}</button>
                             </div>
-                        </div>
-                        </div>
                     </div>                 
                 </div>
             </div>

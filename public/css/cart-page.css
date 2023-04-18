@@ -162,7 +162,6 @@ body::-webkit-scrollbar
     padding: 23px 22px;
     background: rgba(25, 34, 60, 1);
     border: 1px solid #141b36;
-    margin-left: 30px;
 }
 
 .product-name-box
@@ -180,9 +179,16 @@ body::-webkit-scrollbar
 
 .product-amount-box
 {
+    margin-top: 11px;
+}
+
+.product-amount-box .product_item
+{
     display: flex;
     justify-content: space-between;
-    margin-top: 11px;
+    align-items: center;
+
+    padding-bottom: 10px;
 }
 
 .product-amount-box .amount
@@ -197,7 +203,6 @@ body::-webkit-scrollbar
     display: flex;
     justify-content: space-between;
     border-top: #141b36 1px solid;
-    margin-top: 10px;
     padding-top: 10px;
 }
 

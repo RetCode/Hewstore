@@ -1,2 +1,4 @@
 .env
 public/cached/getGames.cached
+public/cached/getProductsTypes.cached
+.gitignore
