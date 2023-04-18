@@ -66,8 +66,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -87,8 +87,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -108,8 +108,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -162,7 +162,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header lang" data-text="discord-server">{text}</p>
-                                <a href="https://discord.gg/Fpy262yz9S" class="contacts-link">discord.gg/Fpy262yz9S</a>
+                                <a href="https://discord.gg/Fpy262yz9S" target="_blank" class="contacts-link">discord.gg/Fpy262yz9S</a>
                             </div>
                         </div>
                         <div class="contacts-item">
@@ -171,7 +171,9 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Discord</p>
-                                <a class="contacts-link">HewHewLalalay#5853</a>
+                                <a id="copy_target" class="contacts-link copy_target">
+                                    <p id="text">HewHewLalalay#5853</p>
+                                </a>
                             </div>
                         </div>
                         <div class="contacts-item">
@@ -180,7 +182,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Telegram</p>
-                                <a href="https://t.me/NobodyKnowsMeAgain" class="contacts-link">@NobodyKnowsMeAgain</a>
+                                <a href="https://t.me/NobodyKnowsMeAgain" target="_blank" class="contacts-link">@NobodyKnowsMeAgain</a>
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@ const languages = JSON.stringify({
     "ru":{
         "main-text":"Лучший магазин софта для игр и не только",
         "description-text":"Почему вам следует выбрать нас? - Лучшие продукты на мировом рынке, Быстрая поддержка, Мгновенное получение, Наш опыт.",
-        "purshare-button":"Купить чит",
+        "purshare-button":"КУПИТЬ ЧИТ",
         "more-details-button":"СВЯЗАТЬСЯ С НАМИ",
         "announcement":"АНОНСЫ",
         "announcement-archive":"АРХИВ АНОНСОВ",
@@ -25,7 +25,8 @@ const languages = JSON.stringify({
         "cart-pay-button": "Перейти к оплате",
         "cart-promo": "Промокод",
         "cart-mail": "Почта",
-        "game-description": "Прочитайте описание продукта или воспользуйтесь фильтром, чтобы найти продукт, совместимый с вашей системой"
+        "game-description": "Прочитайте описание продукта или воспользуйтесь фильтром, чтобы найти продукт, совместимый с вашей системой",
+        "announcements_open-link": "ОТКРЫТЬ"
     },
     "en":{
         "main-text":"The best software store for games and more",
@@ -33,7 +34,7 @@ const languages = JSON.stringify({
         "purshare-button":"PURCHASE CHEAT",
         "more-details-button":"CONTACT US",
         "announcement":"ANNOUNCEMENTS",
-        "announcement-archive":"ANNOUNCEMENT",
+        "announcement-archive":"ANNOUNCEMENT ARCHIVE",
         "games": "GAMES",
         "games-description": "Find and select the game you are interested in to go to the products available for that game",
         "search": "Search",
@@ -50,7 +51,8 @@ const languages = JSON.stringify({
         "cart-pay-button": "Proceed to checkout",
         "cart-promo": "Coupon code",
         "cart-mail": "Email for invoice updates",
-        "game-description": "Read the product description or use the filter to find a product that is compatible with your system"
+        "game-description": "Read the product description or use the filter to find a product that is compatible with your system",
+        "announcements_open-link": "OPEN"
     }
 });
 
