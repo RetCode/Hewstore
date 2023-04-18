@@ -58,7 +58,7 @@ function generateItems()
 
 
         productsTypesName.forEach(productsType_ => {
-            if(productsType_["id"] == element["product"])
+            if(productsType_["id"] == element["id"])
             {
                 productTitle = productsType_["productTitle"];
                 productName = productsType_["name"];
@@ -98,7 +98,19 @@ function generateItems()
             </div>
         </div>`
     });
+}
 
+function generateEvents()
+{
+    document.querySelector(".cart-clear-all").addEventListener("click", () => {
+        localStorage.removeItem("cart");
+        updateCartCount()
+        loadCart()
+    })
+}
+
+function updateCartCount()
+{
     if(localStorage.getItem("cart") != null)
     {
         document.getElementById("productsCount").innerHTML = JSON.parse(localStorage.getItem("cart"))["items"].length;
@@ -107,12 +119,4 @@ function generateItems()
     {
         document.getElementById("productsCount").innerHTML = 0;
     }
-}
-
-function generateEvents()
-{
-    document.querySelector(".cart-clear-all").addEventListener("click", () => {
-        localStorage.removeItem("cart");
-        loadCart()
-    })
 }

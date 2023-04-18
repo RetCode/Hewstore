@@ -20,7 +20,7 @@
                                 <p class="cart-text lang" data-text="cart">{text}</p>
                             </div>
                             <div class="cart-count-box">
-                                <p class="cart-count-text lang" data-text="cart-products">{text}: <span id="productsCount">1</span></p>
+                                <p class="cart-count-text lang" data-text="cart-products">{text}: <span id="productsCount">0</span></p>
                             </div>
                         </div>
                         <div class="all-box">
