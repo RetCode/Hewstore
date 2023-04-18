@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+html
+{
+    scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after
@@ -39,12 +44,22 @@ body::-webkit-scrollbar
 
 .wrapper
 {
-    background: url(../../img/bg.jpg) no-repeat bottom center;
+    background: url(../../img/bg.jpg) no-repeat;
+    background-size: contain;
+    /* background-color: #0A122E; */
+    background-position: bottom;
+    
+    min-height: 100vh;
 }
 
 .wrapper .main
 {
-    background: url(../../img/bg.png) no-repeat top center;
+    background: url(../../img/bg.png) no-repeat;
+    background-size: contain;
+    /* background-color: #0A122E; */
+    background-position: top;
+    
+    min-height: 100vh;
 }
 
 /* main section */

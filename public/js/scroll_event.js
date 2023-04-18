@@ -1,20 +1,22 @@
 var tFlag = false;
 let out = 0;
-let lastel = ".hero";
+let lastel = ".main-section";
+
 
 $.fn.isInViewport = function() {
-	var elementTop = $(this).offset().top;
-	var elementBottom = elementTop + $(this).outerHeight();
-
-	var viewportTop = $(window).scrollTop();
-	var viewportBottom = viewportTop + $(window).height();
-
-	// console.log($(this), viewportTop / elementTop);
-	var res = viewportTop / elementTop > 0.55 && viewportTop / elementTop < 1.4;
-
-	return res;
+	if (typeof $(this).offset() !== 'undefined') {
+		var elementTop = $(this).offset().top;
+		var elementBottom = elementTop + $(this).outerHeight();
+	
+		var viewportTop = $(window).scrollTop();
+		var viewportBottom = viewportTop + $(window).height();
+	
+		// console.log($(this), viewportTop / elementTop);
+		var res = viewportTop / elementTop > 0.55 && viewportTop / elementTop < 1.4;
+	
+		return res;
+	}
 };
-
 
 function scrollListener(event) {
 	let items = [".main-section", ".announcements-section", ".products-section", ".contacts-section"];
@@ -31,7 +33,7 @@ function scrollListener(event) {
 		// $($(".header__burger-link")[3]).addClass("header__burger-link_active");
 		return
 	}
-	if ($(window).scrollTop() <= 100) {
+	if ($(window).scrollTop() <= 110) {
 		$(".navigation-button").removeClass("navigation_active");
 		// $(".header__burger-link").removeClass("header__burger-link_active");
 

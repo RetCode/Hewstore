@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after
+{
+    box-sizing: border-box;
+}
+
+*
+{
+    font-family: 'Inter';
+
+    margin: 0;
+
+    text-decoration: none;
+}
+
+body
+{
+    background: #0A122E;
+
+    position: relative;
+}
+
+body::-webkit-scrollbar
+{
+    display: none;
+}
+
+.container
+{
+    width: 1380px;
+
+    margin: 0 auto;
+}
+
+.main
+{
+    padding-top: 80px;
+}
+
+.item_img-block
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1a1d26;
+
+    height: 200px;
+}
+
+.item_img-block img
+{
+    height: 200px;
+}
+
+.item_wrapper
+{
+    padding-top: 50px;
+}
+
+.item_wrapper .item_wrapper-main .item_wrapper-title p
+{
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffe001;
+}
+
+.item_wrapper .item_wrapper-main .item__system_requirements
+{
+    margin-top: 10px;
+}
+
+.item_wrapper .item_wrapper-main .item__system_requirements p
+{
+    font-size: 1rem;
+    font-size: 400;
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+.item_wrapper .item_wrapper-main .item__system_requirements p span
+{
+    font-weight: 600;
+}
+
+.item_wrapper .item_wrapper-main .item_button-block
+{
+    padding-top: 50px;
+}
+
+.item_wrapper .item_wrapper-main .item_button-block a
+{
+    border-radius: 4px;
+
+    padding: 13px 24px;
+
+    background: #ffe001;
+    
+    font-size: 16px;
+    font-weight: 600;
+    color: #212121;
+
+    transition: 0.2s ease all;
+}
+
+.item_wrapper .item_wrapper-main .item_button-block a:hover
+{
+    opacity: .7;
+}

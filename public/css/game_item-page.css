@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+html
+{
+    scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after
@@ -18,7 +23,12 @@
 
 body
 {
-    background: #0A122E;
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: contain;
+    background-color: #0A122E;
+    background-position: bottom;
+
+    min-height: 100vh;
 
     position: relative;
 }
@@ -37,7 +47,8 @@ body::-webkit-scrollbar
 
 .wrapper
 {
-    background: url(../img/bg.jpg) bottom no-repeat;
+    
+    
 
     padding-bottom: 8.7vh;
 }
