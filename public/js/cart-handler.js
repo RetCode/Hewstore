@@ -1,3 +1,4 @@
+
 function loadCart()
 {
     let cartNotify = document.querySelector(".cart-count");
@@ -13,15 +14,6 @@ function loadCart()
     }
 }
 
-try
-{
-    document.querySelector(".cart-clear-all").addEventListener("click", () => {
-        localStorage.removeItem("cart");
-        loadCart()
-    })
-}
-catch {}
-
 window.addEventListener('load', function() {
-loadCart()
+    loadCart()
 })

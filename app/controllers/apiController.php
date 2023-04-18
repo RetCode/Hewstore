@@ -550,10 +550,9 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "createGame",
-             * то вызывается метод createGame() модели  для редактирования данных о продукте
+             * Если значение параметра "method" в запросе равно "createProduct",
+             * то вызывается метод createProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
             if($_POST["method"] == "createProduct"){
                 
@@ -577,10 +576,9 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "createGame",
-             * то вызывается метод createGame() модели  для редактирования данных о продукте
+             * Если значение параметра "method" в запросе равно "createProductType",
+             * то вызывается метод createProductType() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
             if($_POST["method"] == "createProductType"){
                 
@@ -596,6 +594,29 @@ class apiController extends Controller
                     ]); 
                 }
             }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "getKeysCount",
+             * то вызывается метод getKeysCount() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+            if($_POST["method"] == "getKeysCount"){
+                
+                $data = $this->model->getKeysCount();
+
+                if($data != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true,
+                        "items" => $data
+                    ]);
+                } else {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                    ]); 
+                }
+            }   
 
         }
         else{
