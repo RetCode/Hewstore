@@ -135,12 +135,12 @@
                         </div>
                     </div>  
                     <div class="loading">
-                            <div class="spinner">
-                                <svg viewBox="25 25 50 50" class="circular">
-                                    <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
-                                </svg>
-                            </div>
-                        </div>                  
+                        <div class="spinner">
+                            <svg viewBox="25 25 50 50" class="circular">
+                                <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                            </svg>
+                        </div>
+                    </div>                  
                     <div class="products_items-block">
                     </div>
                 </div>
@@ -189,6 +189,7 @@
         </main>        
     </div>    
 	<!-- Scripts -->
+    <script src="public/js/cart-handler.js"></script>
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
     <script src="vendor/jquery.js"></script>

@@ -62,6 +62,13 @@
                             </div>
                         </div>
                         <div class="catalog-block">
+                            <div class="loading">
+                                <div class="spinner">
+                                    <svg viewBox="25 25 50 50" class="circular">
+                                        <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                                    </svg>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -73,23 +80,15 @@
     <div class="modal">
         <div class="bg_blur"></div>
         <div class="modal_body">
-            <div class="modal_item">                
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 7.00</p>
-            </div>
-            <div class="modal_item">
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 40.00</p>
-            </div>
-            <div class="modal_item">                
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 125.00</p>
+            <div class="modal-items">
+
             </div>
             <button class="modal_button">Close</button>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="public/js/cart-handler.js"></script>
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
 	<script src="vendor/jquery.js"></script>

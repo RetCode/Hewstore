@@ -154,11 +154,25 @@ class apiController extends Controller
              */
             if($_POST["method"] == "getProductType"){
 
-                $product = $this->model->getProductType();
+                // Проверяем кеширование
+                $cachedResult = LocalCachedUI::getCache("getProductsTypes");
+                
+                if($cachedResult != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "items" => json_decode(json_encode($cachedResult),true)
+                    ]);
+                }
+                    
+                $products = $this->model->getProductType();
+
+                // Создание кеша
+                LocalCachedUI::createCached("getProductsTypes", $products, 60);
+
 
                 Utils::sendAjaxRequest([
                     "response" => true,
-                    "items" => json_decode(json_encode($product),true)
+                    "items" => json_decode(json_encode($products),true)
                 ]);
             }
 
