@@ -5,6 +5,7 @@ let id = url.searchParams.get("id");
 let searchArray;
 let filtersIds;
 let subSearch;
+let typesProduct;
 let filerOs = 0;
 let filterCpu = 0;
 let filterGpu = 0;
@@ -29,11 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
         url: '/api',
         method: 'post',
         dataType: 'json',        
+        data: {method: 'getProductType'},
+        success: function(data){
+            typesProduct = data["items"]
+        }
+    })
+
+    $.ajax({
+        async: true,
+        url: '/api',
+        method: 'post',
+        dataType: 'json',        
         data: {method: 'getProducts', id: id},
         success: function(data){
             let items = document.querySelector('.catalog-block');
             searchArray = data["items"];
             subSearch = data["items"];
+            document.getElementsByClassName("loading")[0].remove();
 
             lang = getLang()
             langMore = lang == "ru" ? "БОЛЬШЕ ИНФОРМАЦИИ" : "MORE DETAILS";
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
                     </div>
                     <div class="item_bottom-block">                                    
-                        <button><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
+                        <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
                         <a href="#">
                             ${langMore}
                             <img src="../public/img/arrow.svg">
@@ -178,7 +191,7 @@ function filterWriter()
                 <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
             </div>
             <div class="item_bottom-block">                                    
-                <button><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
+                <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
                 <a href="#">
                     ${langMore}
                     <img src="../public/img/arrow.svg">
@@ -359,7 +372,7 @@ findInput.addEventListener('keyup', () => {
                             <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
                         </div>
                         <div class="item_bottom-block">                                    
-                            <button><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
+                            <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
                             <a href="#">
                                 ${langMore}
                                 <img src="../public/img/arrow.svg">
@@ -377,7 +390,7 @@ findInput.addEventListener('keyup', () => {
                             <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
                         </div>
                         <div class="item_bottom-block">                                    
-                            <button><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
+                            <button x-data="${id}" onclick="showProducts(this)"><img class="cart" x-data="${id}" onclick="showProducts(this)" src="../public/img/cart-dark.svg">${langCart}</button>
                             <a href="#">
                                 ${langMore}
                                 <img src="../public/img/arrow.svg">
@@ -389,4 +402,89 @@ findInput.addEventListener('keyup', () => {
 
     }, 200)
     prevText = findInput.value
+})
+
+function showProducts(object)
+{
+    let idProduct = object.getAttribute("x-data");
+    let proudcts = [];
+    let modal = document.querySelector(".modal-items");
+
+    while (modal.firstChild) {
+        modal.removeChild(modal.firstChild);
+    }
+
+    typesProduct.forEach(element => {
+        if(element["product"] == idProduct)
+            proudcts.push(element)
+    })
+
+    proudcts.forEach(element => {
+        modal.innerHTML += `<div class="modal_item" x-data="${element["id"]}" x-product="${element["product"]}"  onClick="addCart(this)">                
+            <p class="product_name">${element["productTitle"]}: ${element["name"]}</p>
+            <p class="product_price">$ ${element["cost"]}</p>
+        </div>`
+    });
+
+    document.querySelector(".modal").classList.add("modal_active");
+}
+
+function addCart(object)
+{
+    if(localStorage.getItem("cart") != null)
+    {
+        let cart = JSON.parse(localStorage.getItem("cart"))["items"];
+        let newCart = [];
+        let isExits = false;
+
+        cart.forEach(element => {
+            if(element["id"] == object.getAttribute("x-data"))
+            {
+                isExits = true;
+                newCart.push({
+                    "id": element["id"],
+                    "product": element["product"],
+                    "count": element["count"] + 1
+                })
+            }
+            else
+            {
+                newCart.push(element)
+            }
+        });
+
+        if(!isExits)
+        {
+            newCart.push({
+                "id": object.getAttribute("x-data"),
+                "product": object.getAttribute("x-product"),
+                "count": 1
+            })
+        }
+
+        console.log(newCart)
+
+        localStorage.setItem("cart", JSON.stringify({
+            "items": newCart
+        }))
+    }
+    else
+    {
+        localStorage.setItem("cart", JSON.stringify({
+            "items": [
+                {
+                    "id": object.getAttribute("x-data"),
+                    "product": object.getAttribute("x-product"),
+                    "count": 1
+                }
+            ]
+        }))
+    }
+
+    document.querySelector(".modal_active").classList.remove("modal_active");
+    loadCart();
+}
+
+document.getElementsByClassName("modal_button")[0].addEventListener("click", () => {
+    document.querySelector(".modal_active").classList.remove("modal_active");
 })

@@ -17,6 +17,7 @@
         </div>
         <div class="navigation_right__item-block">
             <a href="/cart" class="cart-button lang" data-text="cart">
+                <div class="cart-count" hidden>5</div>
                 <img src="public/img/cart.svg">
                 {text}
             </a>

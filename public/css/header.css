@@ -193,3 +193,15 @@
 {
     opacity: .7;
 }
+
+.cart-count
+{
+    background: #244461;
+    padding: 4px 6px 4px 6px;
+    border-radius: 100%;
+    font-size: 9px;
+    position: absolute;
+    margin-left: 94px;
+    margin-top: -25px;
+    color: white;
+}

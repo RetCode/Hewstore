@@ -154,11 +154,25 @@ class apiController extends Controller
              */
             if($_POST["method"] == "getProductType"){
 
-                $product = $this->model->getProductType();
+                // Проверяем кеширование
+                $cachedResult = LocalCachedUI::getCache("getProductsTypes");
+                
+                if($cachedResult != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "items" => json_decode(json_encode($cachedResult),true)
+                    ]);
+                }
+                    
+                $products = $this->model->getProductType();
+
+                // Создание кеша
+                LocalCachedUI::createCached("getProductsTypes", $products, 60);
+
 
                 Utils::sendAjaxRequest([
                     "response" => true,
-                    "items" => json_decode(json_encode($product),true)
+                    "items" => json_decode(json_encode($products),true)
                 ]);
             }
 
@@ -536,10 +550,9 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "createGame",
-             * то вызывается метод createGame() модели  для редактирования данных о продукте
+             * Если значение параметра "method" в запросе равно "createProduct",
+             * то вызывается метод createProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
             if($_POST["method"] == "createProduct"){
                 
@@ -563,10 +576,9 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "createGame",
-             * то вызывается метод createGame() модели  для редактирования данных о продукте
+             * Если значение параметра "method" в запросе равно "createProductType",
+             * то вызывается метод createProductType() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
             if($_POST["method"] == "createProductType"){
                 
@@ -582,6 +594,29 @@ class apiController extends Controller
                     ]); 
                 }
             }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "getKeysCount",
+             * то вызывается метод getKeysCount() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+            if($_POST["method"] == "getKeysCount"){
+                
+                $data = $this->model->getKeysCount();
+
+                if($data != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true,
+                        "items" => $data
+                    ]);
+                } else {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                    ]); 
+                }
+            }   
 
         }
         else{

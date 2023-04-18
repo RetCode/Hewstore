@@ -20,35 +20,17 @@
                                 <p class="cart-text lang" data-text="cart">{text}</p>
                             </div>
                             <div class="cart-count-box">
-                                <p class="cart-count-text lang" data-text="cart-products">{text}: 1</p>
+                                <p class="cart-count-text lang" data-text="cart-products">{text}: <span id="productsCount">1</span></p>
                             </div>
                         </div>
                         <div class="all-box">
                             <div class="boxes">
                             <div class="clear-block">
                                 <img class="img-trash" src="../public/img/cart__trash.svg">
-                                <button class="lang" data-text="cart-clear-all">{text}</button>
+                                <button class="lang cart-clear-all" data-text="cart-clear-all">{text}</button>
                             </div>
-                            <div class="product-count-block">
-                                <div class="product-img-box">
-                                    <img src="../public/img/561.png">
-                                </div>
-                                <div class="product-count-text-box">
-                                    <p>Noble: Day Subscription</p>
-                                    <p class="dark-text">Overwatch 2 Software</p>
-                                </div>
-                                <div class="input-box">
-                                    <button class="button-plus">+</button>
-                                    <input type="text" value="1">
-                                    <button class="button-minus">-</button>
-                                </div>
-                                <div class="total-number-box">
-                                    <p>$ 7.00</p>
-                                </div>
-                                <div class="trash-box">
-                                    <img src="../public/img/cart__trash.svg">
-                                </div>
-                            </div>
+                            <div class="products">
+                                
                             </div>
                             <div class="cart-form-box">
                                 <div class="product-name-box">
@@ -77,6 +59,9 @@
         </section>
     </div>
     <!-- Scripts -->
+    <script src="vendor/jquery.js"></script>
+    <script src="public/js/cart-handler.js"></script>
+    <script src="public/js/cart-executer.js"></script>
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
 </body>

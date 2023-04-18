@@ -64,7 +64,8 @@ class apiModel extends Model{
         return $this->DataBase::Query(
             "SELECT products_type.id, products_type.product, products_type.name, products_type.cost, product.name as 'productTitle' 
             FROM products_type 
-            INNER JOIN product ON product.id = products_type.product"
+            INNER JOIN product ON product.id = products_type.product
+            ORDER BY cost"
         );
     }
 
@@ -196,6 +197,9 @@ class apiModel extends Model{
                 $cost,
                 $id
             ]);
+
+            if (file_exists("public/cached/getProductsTypes.cached"))
+                unlink("public/cached/getProductsTypes.cached");
 
             return True;
         }
@@ -337,6 +341,9 @@ class apiModel extends Model{
                 $id
             ]);
 
+            if (file_exists("public/cached/getProductsTypes.cached"))
+                unlink("public/cached/getProductsTypes.cached");
+
             return True;
         }
         else return false;
@@ -435,7 +442,7 @@ class apiModel extends Model{
      *  Запрос на создание продукта
      */
 
-     function createProductType($name, $product, $cost){
+    function createProductType($name, $product, $cost){
 
         DataBase::QueryUpd("INSERT INTO products_type VALUES(Null, ?, ?, ?)",
         [
@@ -443,6 +450,21 @@ class apiModel extends Model{
             $name,
             $cost
         ]);
+
+        if (file_exists("public/cached/getProductsAll.cached"))
+            unlink("public/cached/getProductsAll.cached");
+
         return True;
+    }
+
+    /**
+     *  Запрос на получение кол-ва ключей
+     */
+
+    function getKeysCount()
+    {
+        return DataBase::Query("SELECT productType, COUNT(*) as count_keys
+        FROM key_table
+        GROUP BY productType");
     }
 }
