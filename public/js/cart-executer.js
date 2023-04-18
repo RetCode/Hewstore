@@ -46,61 +46,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function generateItems()
 {
-    let products = document.querySelector(".products");    
-    products.innerHTML = "";
-    productsType.forEach(element => {
+    let products = document.querySelector(".products");  
+    
+    if(productsType != undefined)
+    {
+        while (products.firstChild) {
+            products.removeChild(products.firstChild);
+        }
+        productsType.forEach(element => {
 
-        let productTitle;
-        let productName;
-        let productId;
-        let cost;
-        let img;
-        let gameName
+            let productTitle;
+            let productName;
+            let productId;
+            let cost;
+            let img;
+            let gameName
+            let maxValue;
+
+            productsTypesName.forEach(productsType_ => {
+                if(productsType_["id"] == element["id"])
+                {
+                    productTitle = productsType_["productTitle"];
+                    productName = productsType_["name"];
+                    productId = productsType_["product"];
+                    cost = productsType_["cost"];
+
+                }
+            });
+
+            productsName.forEach(productName_ => {
+                if(productName_["id"] == productId)
+                {
+                    img = productName_["img"];
+                    gameName = productName_["game"];
+                }
+            })
+
+            keysProducts.forEach(keys => {
+                if(keys["productType"] == element["id"])
+                    maxValue = keys["count_keys"];
+            });
 
 
-        productsTypesName.forEach(productsType_ => {
-            if(productsType_["id"] == element["id"])
-            {
-                productTitle = productsType_["productTitle"];
-                productName = productsType_["name"];
-                productId = productsType_["product"];
-                cost = productsType_["cost"];
-
-            }
+            products.innerHTML += `<div class="product-count-block">
+                <div class="product-img-box">
+                    <img src="/public/img/products/${img}">
+                </div>
+                <div class="product-count-text-box">
+                    <p>${productTitle}: ${productName}</p>
+                    <p class="dark-text">${gameName} Software</p>
+                </div>
+                <div class="input-box">
+                    <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
+                    <input type="text" id="item-${element["id"]}" value="1" max-value="${maxValue}" readonly>
+                    <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
+                </div>
+                <div class="total-number-box">
+                    <p>$ ${cost}</p>
+                </div>
+                <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
+                    <img src="../public/img/cart__trash.svg">
+                </div>
+            </div>`
         });
-
-        productsName.forEach(productName_ => {
-            if(productName_["id"] == productId)
-            {
-                img = productName_["img"];
-                gameName = productName_["game"];
-            }
-        })
-
-
-        products.innerHTML += `<div class="product-count-block">
-            <div class="product-img-box">
-                <img src="/public/img/products/${img}">
-            </div>
-            <div class="product-count-text-box">
-                <p>${productTitle}: ${productName}</p>
-                <p class="dark-text">${gameName} Software</p>
-            </div>
-            <div class="input-box">
-                <button class="button-plus">+</button>
-                <input type="text" value="1">
-                <button class="button-minus">-</button>
-            </div>
-            <div class="total-number-box">
-                <p>$ ${cost}</p>
-            </div>
-            <div class="trash-box" x-data="${element["id"]}" onclick="deleteCart(this)">
-                <img src="../public/img/cart__trash.svg">
-            </div>
-        </div>`
-    });
+    }
 
     updateCartCount()
+    rightCard()
 
     try{
         document.querySelector(".main").hidden = false;
@@ -109,23 +121,85 @@ function generateItems()
     catch {}
 }
 
+function addItems(object)
+{
+
+}
+
+function removeItems(object)
+{
+    
+}
+
+function reLoadCart()
+{
+    let cartNotify = document.querySelector(".cart-count");
+    let products = document.querySelector(".products");  
+    while (products.firstChild) {
+        products.removeChild(products.firstChild);
+    }
+    if(localStorage.getItem("cart") != null || localStorage.getItem("cart") != [])
+    {
+        let cart = JSON.parse(localStorage.getItem("cart"))["items"];
+        cartNotify.innerHTML = cart.length;
+        
+        if(cart.length != 0)
+            cartNotify.hidden = false;
+        else
+            cartNotify.hidden = true;
+    }
+    else
+    {
+        cartNotify.hidden = true;
+    }
+}
+
 function removeItemById(object) {
 
     id = object.getAttribute("x-data");
 
-    const index = arr.findIndex(item => item.id === id);
+    const index = productsType.findIndex(item => item.id === id);
     if (index !== -1) {
-      arr.splice(index, 1);
+        productsType.splice(index, 1);
     }
-    return arr;
-  }
+    localStorage.setItem("cart", JSON.stringify({
+        "items": productsType
+    }))
+
+    reLoadCart()
+    rightCard()
+}
+
+function rightCard()
+{
+    let currentCost = 0;
+    let cartBox = document.querySelector(".products-cart")
+    let cost = document.querySelector("#cost")
+    while (cartBox.firstChild) {
+        cartBox.removeChild(cartBox.firstChild);
+    }
+    productsType.forEach(element => {
+        productsTypesName.forEach(products => {
+            if(products["id"] == element["id"])
+            {
+                cartBox.innerHTML =`<div class="product_item">
+                    <p class="name-product">${products["productTitle"]}: ${products["name"]}</p>
+                    <p class="amount">$ ${products["cost"] * element["count"]}</p>
+                </div>`
+                currentCost += products["cost"] * element["count"];
+            }
+        });
+    });
+    cost.innerHTML = currentCost;
+
+}
 
 function generateEvents()
 {
     document.querySelector(".cart-clear-all").addEventListener("click", () => {
         localStorage.removeItem("cart");
         generateItems()
-        loadCart()
+        reLoadCart()
     })
 }
 

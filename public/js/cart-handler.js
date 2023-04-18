@@ -6,7 +6,9 @@ function loadCart()
     {
         let cart = JSON.parse(localStorage.getItem("cart"))["items"];
         cartNotify.innerHTML = cart.length;
-        cartNotify.hidden = false;
+        
+        if(cart.length != 0)
+            cartNotify.hidden = false;
     }
     else
     {

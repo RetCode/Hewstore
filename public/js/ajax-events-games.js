@@ -444,7 +444,7 @@ function addCart(object)
                 newCart.push({
                     "id": element["id"],
                     "product": element["product"],
-                    "count": element["count"] + 1
+                    "count": element["count"]
                 })
             }
             else

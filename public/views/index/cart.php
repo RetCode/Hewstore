@@ -44,15 +44,12 @@
                                     <p class="lang" data-text="cart-product">{text}</p>
                                 </div>
                                 <div class="product-amount-box">
-                                    <div class="product_item">
-                                        <p class="name-product">Noble: Day Subscription</p>
-                                        <p class="amount">$ 7.00</p>
+                                    <div class="products-cart">
                                     </div>
-                                    
                                 </div>
                                 <div class="total-box">
                                         <p class="lang" data-text="cart-product-cost">{text}</p>
-                                        <p>$ 7</p>
+                                        <p>$ <span id="cost">0</span></p>
                                 </div>
                                 <div class="input-block">
                                     <div class="input_arrow">
