@@ -82,7 +82,6 @@
         <div class="bg_blur"></div>
         <div class="modal_body">
             <div class="modal-items">
-
             </div>
             <button class="modal_button">Close</button>
         </div>

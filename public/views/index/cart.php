@@ -14,7 +14,12 @@
     <div class="wrapper">
         <section class="cart-page">
             <div class="container">
-                <div class="main">
+                <div class="loading">
+                    <svg viewBox="25 25 50 50">
+                        <circle r="20" cy="50" cx="50"></circle>
+                    </svg>
+                </div> 
+                <div class="main" hidden>
                     <div class="left-block">
                         <div class="cart-block">
                             <div class="cart-info-box">

@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function generateItems()
 {
     let products = document.querySelector(".products");    
+    products.innerHTML = "";
     productsType.forEach(element => {
 
         let productTitle;
@@ -93,18 +94,37 @@ function generateItems()
             <div class="total-number-box">
                 <p>$ ${cost}</p>
             </div>
-            <div class="trash-box">
+            <div class="trash-box" x-data="${element["id"]}" onclick="deleteCart(this)">
                 <img src="../public/img/cart__trash.svg">
             </div>
         </div>`
     });
+
+    updateCartCount()
+
+    try{
+        document.querySelector(".main").hidden = false;
+        document.querySelector(".loading").remove();
+    }
+    catch {}
 }
+
+function removeItemById(object) {
+
+    id = object.getAttribute("x-data");
+
+    const index = arr.findIndex(item => item.id === id);
+    if (index !== -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
 
 function generateEvents()
 {
     document.querySelector(".cart-clear-all").addEventListener("click", () => {
         localStorage.removeItem("cart");
-        updateCartCount()
+        generateItems()
         loadCart()
     })
 }
