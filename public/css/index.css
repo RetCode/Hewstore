@@ -567,6 +567,23 @@ body::-webkit-scrollbar
     opacity: .7;
 }
 
+.contacts_items-block .contacts-item .contacts_item-info .copy_target
+{
+    display: flex;
+    align-items: center;
+}
+
+.contacts_items-block .contacts-item .contacts_item-info .copy_target input
+{
+    width: 0.00000000001px;
+    height: 0.00000000001px;
+
+    padding: 0;
+
+    border: transparent;
+    background: transparent;
+}
+
 .contacts_items-block .contacts-item .contacts_item-info .copy_target:active
 {
     color: #FFE001;

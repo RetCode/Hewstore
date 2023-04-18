@@ -171,8 +171,9 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Discord</p>
-                                <a id="copy_target" class="contacts-link copy_target">
-                                    <p id="text">HewHewLalalay#5853</p>
+                                <a id="copy_target" onclick="copyFunction()" class="contacts-link copy_target">
+                                    <p>HewHewLalalay#5853</p>
+                                    <input id="text" type="text" value="HewHewLalalay#5853">
                                 </a>
                             </div>
                         </div>
