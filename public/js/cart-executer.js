@@ -88,26 +88,52 @@ function generateItems()
             });
 
 
-            products.innerHTML += `<div class="product-count-block">
-                <div class="product-img-box">
-                    <img src="/public/img/products/${img}">
-                </div>
-                <div class="product-count-text-box">
-                    <p>${productTitle}: ${productName}</p>
-                    <p class="dark-text">${gameName} Software</p>
-                </div>
-                <div class="input-box">
-                    <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
-                    <input type="text" id="item-${element["id"]}" value="${element["count"]}" max-value="${maxValue}" readonly>
-                    <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
-                </div>
-                <div class="total-number-box">
-                    <p>$ ${cost}</p>
-                </div>
-                <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
-                    <img src="../public/img/cart__trash.svg">
-                </div>
-            </div>`
+            lang = getLang()
+            noAvalible = lang == "ru" ? "Нет в наличии" : "Not available";
+
+            if(maxValue == undefined)
+            {
+                products.innerHTML += `<div class="product-count-block">
+                    <div class="product-img-box">
+                        <img src="/public/img/products/${img}">
+                    </div>
+                    <div class="product-count-text-box">
+                        <p>${productTitle}: ${productName}</p>
+                        <p class="dark-text">${gameName} Software</p>
+                    </div>
+                    <div class="input-box">
+                    </div>
+                    <div class="total-number-box">
+                        <p>${noAvalible}</p>
+                    </div>
+                    <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
+                        <img src="../public/img/cart__trash.svg">
+                    </div>
+                </div>`
+            }
+            else 
+            {
+                products.innerHTML += `<div class="product-count-block">
+                    <div class="product-img-box">
+                        <img src="/public/img/products/${img}">
+                    </div>
+                    <div class="product-count-text-box">
+                        <p>${productTitle}: ${productName}</p>
+                        <p class="dark-text">${gameName} Software</p>
+                    </div>
+                    <div class="input-box">
+                        <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
+                        <input type="text" id="item-${element["id"]}" value="${element["count"]}" max-value="${maxValue}" readonly>
+                        <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
+                    </div>
+                    <div class="total-number-box">
+                        <p>$ ${cost}</p>
+                    </div>
+                    <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
+                        <img src="../public/img/cart__trash.svg">
+                    </div>
+                </div>` 
+            }
         });
     }
 
@@ -127,11 +153,37 @@ function addItems(object)
     let input = document.querySelector("#item-" + objectId)
     let inputData = input.value;
     let maxVal = input.getAttribute("max-value");
+    let newMass = [];
 
     if(inputData + 1 <= maxVal)
     {
         input.value = Number(inputData) + 1;
+
+        let items = JSON.parse(localStorage.getItem("cart"))["items"];
+        items.forEach(element => {
+            if(element["id"] == objectId)
+            {
+                newMass.push({
+                    "id": element["id"],
+                    "product": element["product"],
+                    "count": element["count"] + 1,
+                })
+            }
+            else
+            {
+                newMass.push(element)
+            }
+        })
+
+        localStorage.setItem("cart", JSON.stringify({
+            "items": newMass
+        }));
+        console.log(newMass);
+        productsType = newMass;
+        rightCard()
     }
+
+
 }
 
 function removeItems(object)
@@ -139,10 +191,34 @@ function removeItems(object)
     let objectId = object.getAttribute("x-data");
     let input = document.querySelector("#item-" + objectId)
     let inputData = input.value;
+    let newMass = [];
 
     if(inputData - 1 >= 1)
     {
         input.value = Number(inputData) - 1;
+
+        let items = JSON.parse(localStorage.getItem("cart"))["items"];
+        items.forEach(element => {
+            if(element["id"] == objectId)
+            {
+                newMass.push({
+                    "id": element["id"],
+                    "product": element["product"],
+                    "count": element["count"] - 1,
+                })
+            }
+            else
+            {
+                newMass.push(element)
+            }
+        })
+
+        localStorage.setItem("cart", JSON.stringify({
+            "items": newMass
+        }));
+        console.log(newMass);
+        productsType = newMass;
+        rightCard()
     }
 }
 
@@ -167,6 +243,7 @@ function reLoadCart()
     {
         cartNotify.hidden = true;
     }
+    generateItems()
 }
 
 function removeItemById(object) {
@@ -187,26 +264,40 @@ function removeItemById(object) {
 
 function rightCard()
 {
+    
     let currentCost = 0;
     let cartBox = document.querySelector(".products-cart")
     let cost = document.querySelector("#cost")
     while (cartBox.firstChild) {
         cartBox.removeChild(cartBox.firstChild);
     }
-    productsType.forEach(element => {
-        productsTypesName.forEach(products => {
-            if(products["id"] == element["id"])
-            {
-                cartBox.innerHTML =`<div class="product_item">
-                    <p class="name-product">${products["productTitle"]}: ${products["name"]}</p>
-                    <p class="amount">$ ${products["cost"] * element["count"]}</p>
-                </div>`
-                currentCost += products["cost"] * element["count"];
-            }
-        });
-    });
-    cost.innerHTML = currentCost;
+    try
+    {
+        productsType.forEach(element => {
+            productsTypesName.forEach(products => {
+                if(products["id"] == element["id"])
+                {
 
+                    let countKeys;
+
+                    keysProducts.forEach(keys => {
+                        if(products["id"] == keys["productType"])
+                            countKeys = keys["count_keys"]
+                    });
+
+                    if(countKeys != undefined)
+                    {
+                        cartBox.innerHTML +=`<div class="product_item">
+                            <p class="name-product">${products["productTitle"]}: ${products["name"]}</p>
+                            <p class="amount">$ ${products["cost"] * element["count"]}</p>
+                        </div>`
+                        currentCost += products["cost"] * element["count"];
+                    }
+                }
+            });
+        });
+        cost.innerHTML = currentCost;
+    } catch {}
 }
 
 function generateEvents()
