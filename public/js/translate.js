@@ -26,7 +26,8 @@ const languages = JSON.stringify({
         "cart-promo": "Промокод",
         "cart-mail": "Почта",
         "game-description": "Прочитайте описание продукта или воспользуйтесь фильтром, чтобы найти продукт, совместимый с вашей системой",
-        "announcements_open-link": "ОТКРЫТЬ"
+        "announcements_open-link": "ОТКРЫТЬ",
+        "announcement_archive-desc": "Архив анонсов за все время. Благодаря ему вы никогда не пропустите важную информацию. Изучите его..."
     },
     "en":{
         "main-text":"The best software store for games and more",
@@ -52,7 +53,8 @@ const languages = JSON.stringify({
         "cart-promo": "Coupon code",
         "cart-mail": "Email for invoice updates",
         "game-description": "Read the product description or use the filter to find a product that is compatible with your system",
-        "announcements_open-link": "OPEN"
+        "announcements_open-link": "OPEN",
+        "announcement_archive-desc": "An archive of all-time announcements. Thanks to it, you will never miss important information. Explore it..."
     }
 });
 

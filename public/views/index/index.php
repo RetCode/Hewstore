@@ -47,7 +47,7 @@
                         <p>{text}</p>
                     </div>
                     <div class="announcements_button-block">
-                        <a href="#" class="lang" data-text="announcement-archive">
+                        <a href="announcements-archive" class="lang" data-text="announcement-archive">
                             {text}
                             <img src="public/img/arrow.svg">
                         </a>
