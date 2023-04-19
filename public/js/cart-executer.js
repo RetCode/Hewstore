@@ -98,7 +98,7 @@ function generateItems()
                 </div>
                 <div class="input-box">
                     <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
-                    <input type="text" id="item-${element["id"]}" value="1" max-value="${maxValue}" readonly>
+                    <input type="text" id="item-${element["id"]}" value="${element["count"]}" max-value="${maxValue}" readonly>
                     <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
                 </div>
                 <div class="total-number-box">
@@ -123,12 +123,27 @@ function generateItems()
 
 function addItems(object)
 {
+    let objectId = object.getAttribute("x-data");
+    let input = document.querySelector("#item-" + objectId)
+    let inputData = input.value;
+    let maxVal = input.getAttribute("max-value");
 
+    if(inputData + 1 <= maxVal)
+    {
+        input.value = Number(inputData) + 1;
+    }
 }
 
 function removeItems(object)
 {
-    
+    let objectId = object.getAttribute("x-data");
+    let input = document.querySelector("#item-" + objectId)
+    let inputData = input.value;
+
+    if(inputData - 1 >= 1)
+    {
+        input.value = Number(inputData) - 1;
+    }
 }
 
 function reLoadCart()
