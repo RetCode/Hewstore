@@ -3,4 +3,8 @@ public/cached/getGames.cached
 public/cached/getProductsTypes.cached
 .gitignore
 public/cached/getProductsAll.cached
+<<<<<<< HEAD
 public/cached/getGames.cached
+=======
+*.cached
+>>>>>>> f838fd76a8219d03d1f68c1815319a4aca708be8
