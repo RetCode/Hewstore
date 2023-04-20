@@ -53,11 +53,11 @@
                                 </div>
                                 <div class="input-block">
                                     <div class="input_arrow">
-                                        <input class="input-coupon langInput" type="text" data-text="cart-promo" placeholder="{text}">
+                                        <input id="promo" class="input-coupon langInput" type="text" data-text="cart-promo" placeholder="{text}">
                                         <img src="../public/img/rArrow.svg">
                                     </div>
                                     
-                                    <input type="mail" class="langInput" data-text="cart-mail" placeholder="{text}">
+                                    <input id="cart-mail" type="mail" class="langInput" data-text="cart-mail" placeholder="{text}">
                                 </div>
                                 <div class="button-box">
                                     <button class="lang" data-text="cart-pay-button">{text}</button>

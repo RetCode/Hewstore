@@ -22,6 +22,7 @@ class Router
             case "api": Router::done("api", "api"); break;
             case "cart": Router::done("index", "cart"); break;
             case "game": Router::done("index", "game"); break;
+            case "payments": Router::done("index", "payments"); break;
             case "admin/games": Router::done("admin", "game"); break;
             case "admin/items": Router::done("admin", "items"); break;
             case "admin/types": Router::done("admin", "types"); break;
