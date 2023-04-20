@@ -225,4 +225,16 @@ class Validations
         if(!isset($id) || empty($id))
             header("Location: /");
     }
+
+    /**
+    *|-----------------------------------------------------------------
+    *|  @param int $hash
+    *|  Валидация метода api - payAction
+    *|-----------------------------------------------------------------
+    **/
+    static function payAction($hash)
+    {
+        if(!isset($hash) || empty($hash))
+            header("Location: /");
+    }
 }

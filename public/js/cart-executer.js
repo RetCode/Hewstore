@@ -46,15 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.button-box').addEventListener("click", () => {
         let promo = document.querySelector("#promo");
         let mail = document.querySelector("#cart-mail");
+        let cost = Number(document.querySelector("#cost").innerHTML);
+        let items = [];
+
+        productsType.forEach(element => {
+
+            let countKeys;
+
+            keysProducts.forEach(keys => {
+                if(element["id"] == keys["productType"])
+                    countKeys = keys["count_keys"]
+            });
+
+            if(countKeys != undefined)
+            {
+                items.push(element);
+            }
+
+        })
 
         if(mail.value != "" && mail.value.match("@") != null)
         {
             localStorage.setItem("payments", JSON.stringify({
-                "mail": mail.value(),
-                "promo": promo.value()
+                "mail": mail.value,
+                "promo": promo.value,
+                "cost": cost,
+                "items": items
             }))
 
-
+            location.href = "/payments"
+        }
+        else
+        {
+            $(mail).css("border","1px #8e3934 solid")
         }
     })
 });
@@ -193,7 +217,6 @@ function addItems(object)
         localStorage.setItem("cart", JSON.stringify({
             "items": newMass
         }));
-        console.log(newMass);
         productsType = newMass;
         rightCard()
     }
@@ -231,7 +254,6 @@ function removeItems(object)
         localStorage.setItem("cart", JSON.stringify({
             "items": newMass
         }));
-        console.log(newMass);
         productsType = newMass;
         rightCard()
     }

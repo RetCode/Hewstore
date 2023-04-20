@@ -361,7 +361,7 @@ class apiModel extends Model{
      *  Запрос на создание платежа
      */
 
-    function getOffer($amount, $network, $to_currency){
+    function getOffer($amount, $network, $to_currency, $mail, $promo, $items){
 
         $client = Client::payment($_ENV["PAYMENT_KEY"], $_ENV["MERCHANT_UUID"]);
 
@@ -381,10 +381,7 @@ class apiModel extends Model{
 
         $result = $client->create($data);
 
-        var_dump($idPayment);
-        var_dump($result);
-
-        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
             $amount,
             "USD",
@@ -393,11 +390,14 @@ class apiModel extends Model{
             $to_currency,
             $result["uuid"],
             $result["payment_status"],
-            $result["expired_at"],
-            $result["address"]
+            time() + 7200,
+            $result["address"],
+            $result["payer_amount"],
+            $mail,
+            json_encode($items)
         ]);
 
-        return True;
+        return $result["uuid"];
     }
 
     /**

@@ -285,13 +285,13 @@ body::-webkit-scrollbar
     display: flex;
     justify-content: center;
 }
-svg {
+.loading svg {
     width: 3.25em;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
    }
    
-circle {
+.loading circle {
 fill: none;
 stroke: #ffe001;
 stroke-width: 2;

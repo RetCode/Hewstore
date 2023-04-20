@@ -28,4 +28,33 @@ class indexModel extends Model
             header("Location: /");
         }
     }
+
+    function getPayInfo($hash)
+    {
+        $result = DataBase::Query("SELECT * FROM payments WHERE uuid = ?",[
+            $hash
+        ]);
+        return $result;
+    }
+
+    function getProducts($arr)
+    {
+
+        $html = "";
+
+
+        foreach($arr as $id => $el)
+        {
+            $products = DataBase::Query("SELECT product.name as 'cheat', products_type.name FROM products_type
+            INNER JOIN product ON products_type.product = product.id
+            WHERE products_type.id = ?", [
+                $el["id"]
+            ])[0];
+
+            $html .= '<p>' . $products["cheat"] . ' - ' . $products["name"] . ' x' . $el["count"] .'</p>';
+     
+        }
+
+        return $html;
+    }
 }

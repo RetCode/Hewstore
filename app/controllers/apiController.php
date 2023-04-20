@@ -507,10 +507,12 @@ class apiController extends Controller
                 
                 Validations::getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"]);
 
-               if($this->model->getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"])){
+               $data = $this->model->getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"], $_POST["mail"], $_POST["promo"], $_POST["items"]);
+               if($data != null){
                     Utils::sendAjaxRequest([
                         "response" => true,
-                        "succes" => true
+                        "succes" => true,
+                        "hash" => $data
                     ]);
                 }
                 else{
