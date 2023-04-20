@@ -162,6 +162,8 @@ body::-webkit-scrollbar
     padding: 23px 22px;
     background: rgba(25, 34, 60, 1);
     border: 1px solid #141b36;
+
+    min-height: 234px;
 }
 
 .product-name-box
