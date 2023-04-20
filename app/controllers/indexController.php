@@ -30,4 +30,11 @@ class indexController extends Controller
             "GAMENAME" => $this->model->getGameName($_GET["id"])
         ]);
     }
+
+    function paymentsAction()
+    {
+        $this->view->render_html([
+            "HEADER" => Utils::getTemplates("header_other.template")
+        ]);
+    }
 }

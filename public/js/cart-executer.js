@@ -42,6 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     })
+
+    document.querySelector('.button-box').addEventListener("click", () => {
+        let promo = document.querySelector("#promo");
+        let mail = document.querySelector("#cart-mail");
+
+        if(mail.value != "" && mail.value.match("@") != null)
+        {
+            localStorage.setItem("payments", JSON.stringify({
+                "mail": mail.value(),
+                "promo": promo.value()
+            }))
+
+
+        }
+    })
 });
 
 function generateItems()
@@ -289,14 +304,14 @@ function rightCard()
                     {
                         cartBox.innerHTML +=`<div class="product_item">
                             <p class="name-product">${products["productTitle"]}: ${products["name"]}</p>
-                            <p class="amount">$ ${products["cost"] * element["count"]}</p>
+                            <p class="amount">$ ${(products["cost"] * element["count"]).toFixed(2)}</p>
                         </div>`
                         currentCost += products["cost"] * element["count"];
                     }
                 }
             });
         });
-        cost.innerHTML = currentCost;
+        cost.innerHTML = currentCost.toFixed(2);
     } catch {}
 }
 
