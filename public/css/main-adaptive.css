@@ -22,6 +22,11 @@
     {
         display: none;
     }
+
+    .navigation_burger-block
+    {
+        display: block;
+    }
 }
 
 /* main page */

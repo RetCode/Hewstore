@@ -23,5 +23,7 @@
             </a>
             <a href="#products"class="purshare-button lang" data-text="purshare-button">{text}</a>
         </div>
-    </div>        
+        <div class="navigation_burger-block"></div>
+    </div>
+    <div class="mobile_header-container"></div>     
 </nav>
