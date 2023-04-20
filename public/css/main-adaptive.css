@@ -6,11 +6,23 @@
         width: 100%;
 
         padding: 0 20px;
+
+        transition: 0.2s ease all;
+    }
+
+    .burger
+    {
+        display: block;
     }
 
     .navigation_choise_language__item-block
     {
         display: none;
+    }
+
+    .mobile__choise_language-active
+    {
+        display: block;
     }
 
     .navigation-block .navigation_center__item-block
@@ -26,6 +38,14 @@
     .navigation_burger-block
     {
         display: block;
+    }
+}
+
+@media (max-width: 400px)
+{
+    .mobile_header-button_block
+    {
+        flex-direction: column;
     }
 }
 
@@ -179,5 +199,24 @@
     .contacts_items-block .contacts-item
     {
         padding: 18px 18px;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .burger_purshare-button
+    {
+        margin-bottom: 0;
+        margin-right: 30px;
+    }
+}
+
+
+@media (max-width: 400px)
+{
+    .burger_purshare-button
+    {
+        margin-bottom: 20px;
+        margin-right: 0;
     }
 }
