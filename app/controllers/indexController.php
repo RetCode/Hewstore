@@ -9,8 +9,8 @@ class indexController extends Controller
 {
     function indexAction()
     {
-        Utils::sendMail("HewStore Buy", "test", "PURCHASE","xoheveras.tm@gmail.com");
-        
+        // Utils::sendMail("HewStore Buy", "test", "PURCHASE","xoheveras.tm@gmail.com");
+
         $this->view->render_html([
             "HEADER" => Utils::getTemplates("header.template")
         ]);
