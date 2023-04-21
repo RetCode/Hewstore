@@ -12,7 +12,7 @@
             <div class="navigation_center__item-block">
                 <a href="/" class="navigation-button navigation_active lang" data-text="home">{text}</a>
                 <a href="/" class="navigation-button lang" data-text="announcement">{text}</a>
-                <a href="/" class="navigation-button lang" data-text="products">{text}></a>
+                <a href="/" class="navigation-button lang" data-text="products">{text}</a>
                 <a href="/" class="navigation-button lang" data-text="contacts">{text}</a>
             </div>
             <div class="navigation_right__item-block">

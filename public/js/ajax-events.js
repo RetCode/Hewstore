@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+
+
 let findInput = document.querySelector('#findInput');
 let timeOutId;
 let prevText;
