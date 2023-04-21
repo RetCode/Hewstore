@@ -4,7 +4,7 @@
                 <div class="navigation_logo__item-block">
                     <a href="/"><img draggable="false" class="image-logo" src="public/img/header-logo.svg" alt="logo"></a>
                 </div>
-                <div class="navigation_choise_language__item-block mobile__choise_language-active">
+                <div class="navigation_choise_language__item-block">
                     <button id="en" class="language-button">ENG</button>
                     <button id="ru" class="language-button">RU</button>
                 </div>
