@@ -42,7 +42,6 @@ class indexModel extends Model
 
         $html = "";
 
-
         foreach($arr as $id => $el)
         {
             $products = DataBase::Query("SELECT product.name as 'cheat', products_type.name FROM products_type
@@ -56,5 +55,66 @@ class indexModel extends Model
         }
 
         return $html;
+    }
+
+    function changeStatus($id, $status)
+    {
+        $order = DataBase::Query("SELECT * FROM payments WHERE id = ?",[
+            $id
+        ]);
+
+        if($order != null)
+        {
+            if($status == "paid" || $status = "paid_over")
+            {
+                Utils::sendMail(
+                    "Thank you for purchase",
+                    Utils::renderHTML(
+                        Utils::getTemplates("mail.template"),
+                        [
+                            "URL" => $_SERVER["SERVER_NAME"],
+                            "ORDER_ID" => $order[0]["id"],
+                            "DATE" => date("d.m.Y", $order[0]["expired_at"]),
+                        ]
+                    ),
+                    "Digital goods store",
+                    $order[0]["mail"]
+                );
+
+                DataBase::QueryUpd("UPDATE payments SET payment_status = ?, expired_at = ? WHERE id = ?",[
+                    $status,
+                    time() - 8000,
+                    $id
+                ]);
+
+                Utils::debugLog("ID: $id Status: $status", "payStatus");
+            }
+            else 
+            {
+                DataBase::QueryUpd("UPDATE payments SET payment_status = ? WHERE id = ?",[
+                    $status,
+                    $id
+                ]);
+            }
+        }
+    }
+
+    function payStatus($string)
+    {
+        switch($string)
+        {
+            case "cancel":
+                return "Pay cancel";
+            break;
+            case "paid":
+                return "Pay success";
+            break;
+            case "wrong_amount":
+                return "Wrong amount";
+            break;
+            case "paid_over":
+                return "Pay success";
+            break;
+        }
     }
 }

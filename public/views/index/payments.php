@@ -393,7 +393,10 @@
                         },
                         success: function(data){
                             if(data["succes"] == true)
+                            {
+                                localStorage.removeItem("cart");
                                 location.href = "/pay?hash=" + data["hash"];
+                            }
                             else
                             {
                                 document.querySelector(".selected_method-wrapper").innerHTML = `<div class="loading" style="color:white;     display: flex;

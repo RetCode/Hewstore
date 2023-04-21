@@ -59,7 +59,7 @@ class indexController extends Controller
                 "network" => $result[0]["network"],
                 "user_email" => $result[0]["mail"],
                 "date" => date("d.m.Y", $result[0]["expired_at"] - 7200),
-                "payment_status" => $result[0]["payment_status"],
+                "payment_status" => $this->model->payStatus($result[0]["payment_status"]),
                 "payment_wallet_name" => $result[0]["adress"],
                 "amount" => number_format($result[0]["payment_amount"], 8),
                 "time" => $result[0]["expired_at"],
@@ -70,5 +70,29 @@ class indexController extends Controller
         {
             header("Location: /");
         }
+    }
+
+    function webhookAction()
+    {
+        header('Access-Control-Allow-Origin: *');
+
+        if($json = json_decode(file_get_contents("php://input"), true)) 
+        {
+            $data = $json;
+
+            Utils::debugLog(file_get_contents("php://input"), "webhook");
+
+            $sign = $data["sign"];
+            unset($data["sign"]);
+            $hash = md5(base64_encode(json_encode($data, JSON_UNESCAPED_UNICODE)) . $_ENV["PAYMENT_KEY"]);
+            
+            if (hash_equals($hash, $sign)) 
+            {
+
+                Utils::debugLog("Платеж номер: " . $data["order_id"], "webhookAppruve");
+                $this->model->changeStatus($data["order_id"], $data["status"]);
+            }
+        }
+        
     }
 }

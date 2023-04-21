@@ -373,8 +373,8 @@ class apiModel extends Model{
             'network' => $network,
             'order_id' => strval($idPayment + 1),
             'url_return' => 'https://example.com/return',
-            'url_callback' => 'https://example.com/callback',
-            'is_payment_multiple' => false,
+            'url_callback' => $_ENV["WEBHOOK_URL"],
+            'is_payment_multiple' => true,
             'lifetime' => '7200',
             'to_currency' => $to_currency
         ];
@@ -397,7 +397,10 @@ class apiModel extends Model{
             json_encode($items)
         ]);
 
-        return $result["uuid"];
+        if($result['payment_status'] == "cancel")
+            return "cancel";
+        else
+            return $result["uuid"];
     }
 
     /**

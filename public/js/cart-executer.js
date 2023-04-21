@@ -272,12 +272,19 @@ function reLoadCart()
         cartNotify.innerHTML = cart.length;
         
         if(cart.length != 0)
+        {
+            cartNotify.style.display = "flex";
             cartNotify.hidden = false;
+        }
         else
+        {
+            cartNotify.style.display = "none";
             cartNotify.hidden = true;
+        }
     }
     else
     {
+        cartNotify.style.display = "none";
         cartNotify.hidden = true;
     }
     generateItems()

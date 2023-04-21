@@ -8,11 +8,15 @@ function loadCart()
         cartNotify.innerHTML = cart.length;
         
         if(cart.length != 0)
+        {
             cartNotify.hidden = false;
+            cartNotify.style.display = "flex";
+        }
     }
     else
     {
         cartNotify.hidden = true;
+        cartNotify.style.display = "none";
     }
 }
 

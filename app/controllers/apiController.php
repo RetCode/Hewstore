@@ -506,9 +506,27 @@ class apiController extends Controller
             if($_POST["method"] == "getOffer"){
                 
                 Validations::getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"]);
+               
+                try{
+                    $data = $this->model->getOffer(
+                        $_POST["amount"], 
+                        $_POST["network"], 
+                        $_POST["to_currency"], 
+                        $_POST["mail"], 
+                        $_POST["promo"], 
+                        $_POST["items"]
+                    );
+                }
+                catch(Exception $ex)
+                {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "status" => $ex
+                    ]);
+                }
 
-               $data = $this->model->getOffer($_POST["amount"], $_POST["network"], $_POST["to_currency"], $_POST["mail"], $_POST["promo"], $_POST["items"]);
-               if($data != null){
+                if($data != null){
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true,
