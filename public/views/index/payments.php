@@ -31,12 +31,12 @@
                                 </svg>                            
                             </a>
                             <div class="select_payment_type-title">
-                                <p>Choose a payment method</p>
+                                <p class="lang" data-text="select_payment-text">{text}</p>
                             </div>
                             <div class="select_methods">
                                 <div class="select_method active" data-id="1">
                                     <div class="select_method-title">
-                                        <p>Cryptocurrencies</p>
+                                        <p class="lang" data-text="cryptocurrencies_method-title">{text}</p>
                                     </div>
                                     <div class="select_method-desc">
                                         <p>Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Monero, Solana, Ripple, Binance Coin, Tron, USDC, USDT ...</p>
@@ -55,8 +55,7 @@
                                         <p>Binance Pay</p>
                                     </div>
                                     <div class="select_method-desc">
-                                        <p>If you do not have a Binance account, <a href="#">register here</a>
-                                            and send crypto transactions with 0% fees.</p>
+                                        <p class="lang" data-text="binance_method-desc">{text}</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,11 +95,11 @@
                                 </svg>                            
                             </a>
                             <div class="select_payment_type-title">
-                                <p>Choose a payment method</p>
+                                <p class="lang" data-text="select_payment-text">{text}</p>
                             </div>
                             <div class="selected_method-header">
                                 <div class="select_method-title">
-                                    <p>Cryptocurrencies</p>
+                                    <p class="lang" data-text="cryptocurrencies_method-title">{text}</p>
                                 </div>
                                 <div class="select_method-desc">
                                     <p>Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Monero, Solana, Ripple, Binance Coin, Tron, USDC, USDT ...</p>
@@ -313,7 +312,7 @@
                             </a>
                             <div class="select-header">
                                 <div class="select_payment_type-title">
-                                    <p>Is that correct?</p>
+                                    <p class="lang" data-text="correct_text">{text}</p>
                                 </div>
                                 <div class="selected_coin-block">
                                     <p class="selected_type">Binance Pay</p>
@@ -322,12 +321,12 @@
                             </div>  
                             <div class="select-wrapper">
                                 <div class="alert_block">
-                                    <p class="alert_title">IMPORTANT</p>
-                                    <p class="alert_desc">Follow the information on the next page so we can receive and process your payment.</p>
+                                    <p class="alert_title lang" data-text="alert_Title">{text}</p>
+                                    <p class="alert_desc lang" data-text="alert_Desc">{text}</p>
                                 </div>
                             </div> 
                             <div class="button-block">
-                                <button>Continue</button>
+                                <button class="lang" data-text="continue_button">{text}</button>
                             </div> 
                             <div class="select_method-count">
                                 <div class="select_method-drop"></div>
@@ -340,6 +339,7 @@
             </div>
         </section>
     </div>
+    <script src="public/js/translate.js"></script>
     <script src="vendor/jquery.js"></script>
     <script src="public/js/translate.js"></script>
     <script src="public/js/min/event-click-min.js"></script>
