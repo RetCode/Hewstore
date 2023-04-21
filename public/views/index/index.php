@@ -191,7 +191,7 @@
                     </div>
                 </div>
             </section>
-        </main>        
+        </main>
     </div>    
 	<!-- Scripts -->
     <script src="public/js/cart-handler.js"></script>
