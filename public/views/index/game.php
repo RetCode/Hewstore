@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
 	<link rel="stylesheet" href="public/css/game_item-page.css">
+    <link rel="icon" type="image/x-icon" href="public/img/icon.png">
     <title>Товары</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
                         <div class="right-block">
                             <div class="input-box">
                                 <img src="../public/img/find.svg">
-                                <input type="text" class="langInput" data-text="search" placeholder="{text}">
+                                <input type="text" class="langInput" id="findInput" data-text="search" placeholder="{text}">
                             </div>
                         </div>
                     </div>
@@ -36,10 +37,10 @@
                                     <p>OS</p>
                                 </div>
                                 <div class="button-block" id="os">
-                                    <button>Windows 7</button>
-                                    <button>Windows 8</button>
-                                    <button>Windows 10</button>
-                                    <button>Windows 11</button>
+                                    <button x-data="1" class="os-button">Windows 7</button>
+                                    <button x-data="2" class="os-button">Windows 8</button>
+                                    <button x-data="3" class="os-button">Windows 10</button>
+                                    <button x-data="4" class="os-button">Windows 11</button>
                                 </div>
                             </div>
                             <div class="cpu-block">
@@ -47,8 +48,8 @@
                                     <p>CPU</p>
                                 </div>
                                 <div class="button-block" id="cpu">
-                                    <button>Intel</button>
-                                    <button>AMD</button>
+                                    <button x-data="1" class="cpu-button">Intel</button>
+                                    <button x-data="2" class="cpu-button">AMD</button>
                                 </div>
                             </div>
                             <div class="gpu-block">
@@ -56,68 +57,19 @@
                                     <p>GPU</p>
                                 </div>
                                 <div class="button-block" id="gpu">
-                                    <button>Nvidia</button>
-                                    <button>AMD</button>
+                                    <button x-data="1" class="gpu-button">Nvidia</button>
+                                    <button x-data="2" class="gpu-button">AMD</button>
                                 </div>
                             </div>
                         </div>
                         <div class="catalog-block">
-                            <div class="item">
-                                <div class="item-image">
-                                    <img src="../public/img/561.png">
-                                    <p>NOBLE</p>
-                                    <p class="green">UNDETECTED</p>
+                            <div class="loading">
+                                <div class="spinner">
+                                    <svg viewBox="25 25 50 50" class="circular">
+                                        <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                                    </svg>
                                 </div>
-                                <div class="item_bottom-block">                                    
-                                    <button><img class="cart" src="../public/img/cart-dark.svg">ADD TO CART</button>
-                                    <a href="#">
-                                        MORE DETAILS 
-                                        <img src="../public/img/arrow.svg">
-                                    </a>                              
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image">
-                                    <img src="../public/img/564.png">
-                                    <p>EDENITY</p>
-                                    <p class="green">UNDETECTED</p>
-                                </div>
-                                <div class="item_bottom-block">                                    
-                                    <button><img class="cart" src="../public/img/cart-dark.svg">ADD TO CART</button>
-                                    <a href="#">
-                                        MORE DETAILS 
-                                        <img src="../public/img/arrow.svg">
-                                    </a>                              
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image">
-                                    <img src="../public/img/563.png">
-                                    <p>HYPERFLICK</p>
-                                    <p class="green">UNDETECTED</p>
-                                </div>
-                                <div class="item_bottom-block">                                    
-                                    <button><img class="cart" src="../public/img/cart-dark.svg">ADD TO CART</button>
-                                    <a href="#">
-                                        MORE DETAILS 
-                                        <img src="../public/img/arrow.svg">
-                                    </a>                              
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="item-image">
-                                    <img src="../public/img/562.png">
-                                    <p>CRITICALHIT</p>
-                                    <p class="green">UNDETECTED</p>
-                                </div>
-                                <div class="item_bottom-block">                                    
-                                    <button><img class="cart" src="../public/img/cart-dark.svg">ADD TO CART</button>
-                                    <a href="#">
-                                        MORE DETAILS 
-                                        <img src="../public/img/arrow.svg">
-                                    </a>                              
-                                </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -126,26 +78,17 @@
     </div>
 
     <!-- Modals -->
-    <div class="modal modal_active">
+    <div class="modal">
         <div class="bg_blur"></div>
         <div class="modal_body">
-            <div class="modal_item">                
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 7.00</p>
-            </div>
-            <div class="modal_item">
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 40.00</p>
-            </div>
-            <div class="modal_item">                
-                <p class="product_name">product_name: Day Subscription</p>
-                <p class="product_price">$ 125.00</p>
+            <div class="modal-items">
             </div>
             <button class="modal_button">Close</button>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="public/js/cart-handler.js"></script>
 	<script src="public/js/translate.js"></script>
 	<script src="public/js/min/event-click-min.js"></script>
 	<script src="vendor/jquery.js"></script>

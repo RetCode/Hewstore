@@ -1,5 +1,13 @@
 const buttons = [...document.querySelectorAll('.language-button')];
 const links = [...document.querySelectorAll('.navigation-button')];
+let isOpen = document.querySelector('.burger input');
+
+console.log('item:', isOpen)
+
+isOpen.addEventListener('click', () =>{
+    document.querySelector('.mobile_header-container').classList.toggle('mobile_header-active');
+    document.querySelector('.navigation_choise_language__item-block').classList.toggle('mobile__choise_language-active');
+})
 
 buttons.forEach(item =>
 {
@@ -11,27 +19,3 @@ buttons.forEach(item =>
         item.classList.add('active')
     })
 })
-
-links.forEach(item =>
-{
-    item.addEventListener('click', () =>
-    {
-        document.querySelector('.navigation-button.navigation_active').classList.remove('navigation_active')
-        item.classList.add('navigation_active')
-    })
-})
-
-const anchors = document.querySelectorAll('a[href*="#"]')
-
-for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href').substr(1)
-    
-    document.getElementById(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  })
-}

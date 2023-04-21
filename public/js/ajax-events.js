@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             searchArray = data["items"];
 
             lang = getLang()
-            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "MORE DETAILS";
+            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "VIEW PRODUCTS";
             langProducts = lang == "ru" ? "Продуктов" : "Products";
 
             for(let i = 0; i < data["items"].length; i++)
@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+
+
 let findInput = document.querySelector('#findInput');
 let timeOutId;
 let prevText;
@@ -69,7 +71,7 @@ findInput.addEventListener('keyup', () => {
             let productCount = searchArray[i]["productCount"]
 
             lang = getLang()
-            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "MORE DETAILS";
+            langProductsCaption = lang == "ru" ? "ПОСМОТРЕТЬ ПРОДУКТЫ" : "VIEW PRODUCTS";
             langProducts = lang == "ru" ? "Продуктов" : "Products";
 
             if(serachText != "")

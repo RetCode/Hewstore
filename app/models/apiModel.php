@@ -34,10 +34,10 @@ class apiModel extends Model{
     */
     function getProducts($id){
         return $this->DataBase::Query(
-            "SELECT product.id, product.name, product.img, status_table.name as 'status', games_table.name as 'game' FROM product
-             INNER JOIN status_table ON status_table.id = product.status
-             INNER JOIN games_table ON games_table.id = product.games
-             WHERE product.games = ?", 
+            "SELECT product.id, product.name, product.img, status_table.name as 'status', games_table.name as 'game', status_table.color FROM product
+            INNER JOIN status_table ON status_table.id = product.status
+            INNER JOIN games_table ON games_table.id = product.games
+            WHERE product.games = ?", 
              [
                $id
              ]
@@ -64,7 +64,8 @@ class apiModel extends Model{
         return $this->DataBase::Query(
             "SELECT products_type.id, products_type.product, products_type.name, products_type.cost, product.name as 'productTitle' 
             FROM products_type 
-            INNER JOIN product ON product.id = products_type.product"
+            INNER JOIN product ON product.id = products_type.product
+            ORDER BY cost"
         );
     }
 
@@ -88,74 +89,26 @@ class apiModel extends Model{
         );
     }
 
-    /** 
-     * Запрос в базу данных на добавление нового филтра
-     * @param string $filter
-     * @param string $value
-     * @return True|False
-    */
-    function addFilter($filter, $value){
-
-        $isExists = DataBase::Query(
-            "SELECT id FROM $filter WHERE name LIKE ?",
-            [
-                $value
-            ]);
-
-        if($isExists == null){
-            DataBase::QueryUpd("INSERT INTO $filter VALUES(NULL, ?)",
-            [
-                $value
-            ]);
-            return True;
-        }
-        else return false;
-    }
 
     /** 
      * Запрос в базу данных на получение филтров
      * @param string $filter
     */
-    function getFilter($filter){
+    function getFilter($id){
 
         // Проверяем кеширование
-        $cachedResult = LocalCachedUI::getCache($filter);
+        $cachedResult = LocalCachedUI::getCache("getProductsFilter-" . $id);
         
         if($cachedResult != null)
             return $cachedResult;
             
-        $data = DataBase::Query("SELECT * FROM $filter");
+        $data = DataBase::Query("SELECT * FROM stats_product WHERE game = ?", [$id]);
 
         if($data != null)
             // Создание кеша
-            LocalCachedUI::createCached($filter, $data, 60);
+            LocalCachedUI::createCached("getProductsFilter-" . $id, $data, 60);
 
         return $data;
-    }
-
-    /** 
-     * Запрос в базу данных на редактирование фильтра
-     * @param string $filter
-     * @param string $value
-     * @return True|False
-    */
-    function editFilter($filter, $id, $text){
-
-        $isExists = DataBase::Query(
-            "SELECT id FROM $filter WHERE id = ?",
-            [
-                $id
-            ]);
-
-        if($isExists != null){
-            DataBase::QueryUpd("UPDATE $filter SET name = ? WHERE id = ?",
-            [
-                $text,
-                $id
-            ]);
-            return True;
-        }
-        else return false;
     }
 
     /** 
@@ -244,6 +197,9 @@ class apiModel extends Model{
                 $cost,
                 $id
             ]);
+
+            if (file_exists("public/cached/getProductsTypes.cached"))
+                unlink("public/cached/getProductsTypes.cached");
 
             return True;
         }
@@ -385,6 +341,9 @@ class apiModel extends Model{
                 $id
             ]);
 
+            if (file_exists("public/cached/getProductsTypes.cached"))
+                unlink("public/cached/getProductsTypes.cached");
+
             return True;
         }
         else return false;
@@ -402,7 +361,7 @@ class apiModel extends Model{
      *  Запрос на создание платежа
      */
 
-    function getOffer($amount, $network, $to_currency){
+    function getOffer($amount, $network, $to_currency, $mail, $promo, $items){
 
         $client = Client::payment($_ENV["PAYMENT_KEY"], $_ENV["MERCHANT_UUID"]);
 
@@ -414,18 +373,15 @@ class apiModel extends Model{
             'network' => $network,
             'order_id' => strval($idPayment + 1),
             'url_return' => 'https://example.com/return',
-            'url_callback' => 'https://example.com/callback',
-            'is_payment_multiple' => false,
+            'url_callback' => $_ENV["WEBHOOK_URL"],
+            'is_payment_multiple' => true,
             'lifetime' => '7200',
             'to_currency' => $to_currency
         ];
 
         $result = $client->create($data);
 
-        var_dump($idPayment);
-        var_dump($result);
-
-        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        DataBase::QueryUpd("INSERT INTO payments VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
             $amount,
             "USD",
@@ -434,11 +390,17 @@ class apiModel extends Model{
             $to_currency,
             $result["uuid"],
             $result["payment_status"],
-            $result["expired_at"],
-            $result["address"]
+            time() + 7200,
+            $result["address"],
+            $result["payer_amount"],
+            $mail,
+            json_encode($items)
         ]);
 
-        return True;
+        if($result['payment_status'] == "cancel")
+            return "cancel";
+        else
+            return $result["uuid"];
     }
 
     /**
@@ -483,7 +445,7 @@ class apiModel extends Model{
      *  Запрос на создание продукта
      */
 
-     function createProductType($name, $product, $cost){
+    function createProductType($name, $product, $cost){
 
         DataBase::QueryUpd("INSERT INTO products_type VALUES(Null, ?, ?, ?)",
         [
@@ -491,6 +453,21 @@ class apiModel extends Model{
             $name,
             $cost
         ]);
+
+        if (file_exists("public/cached/getProductsAll.cached"))
+            unlink("public/cached/getProductsAll.cached");
+
         return True;
+    }
+
+    /**
+     *  Запрос на получение кол-ва ключей
+     */
+
+    function getKeysCount()
+    {
+        return DataBase::Query("SELECT productType, COUNT(*) as count_keys
+        FROM key_table
+        GROUP BY productType");
     }
 }

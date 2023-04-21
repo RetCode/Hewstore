@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+html
+{
+    scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after
@@ -157,7 +162,6 @@ body::-webkit-scrollbar
     padding: 23px 22px;
     background: rgba(25, 34, 60, 1);
     border: 1px solid #141b36;
-    margin-left: 30px;
 }
 
 .product-name-box
@@ -175,9 +179,16 @@ body::-webkit-scrollbar
 
 .product-amount-box
 {
+    margin-top: 11px;
+}
+
+.product-amount-box .product_item
+{
     display: flex;
     justify-content: space-between;
-    margin-top: 11px;
+    align-items: center;
+
+    padding-bottom: 10px;
 }
 
 .product-amount-box .amount
@@ -192,7 +203,6 @@ body::-webkit-scrollbar
     display: flex;
     justify-content: space-between;
     border-top: #141b36 1px solid;
-    margin-top: 10px;
     padding-top: 10px;
 }
 
@@ -268,3 +278,50 @@ body::-webkit-scrollbar
     font-weight: 600;
     font-size: 12px;
 }
+
+/* loading style */
+.loading
+{
+    display: flex;
+    justify-content: center;
+}
+.loading svg {
+    width: 3.25em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+   }
+   
+.loading circle {
+fill: none;
+stroke: #ffe001;
+stroke-width: 2;
+stroke-dasharray: 1, 200;
+stroke-dashoffset: 0;
+stroke-linecap: round;
+animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+100% {
+    transform: rotate(360deg);
+}
+}
+
+@keyframes dash4 {
+0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+}
+
+50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+}
+
+100% {
+    stroke-dashoffset: -125px;
+}
+}
+   
+  
+/* loading style */

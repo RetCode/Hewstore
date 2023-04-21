@@ -1,26 +1,59 @@
 <nav class="navigation-block">
-    <div class="header-container">
-        <div class="navigation_left__item-block">
-            <div class="navigation_logo__item-block">
-                <a href="/"><img draggable="false" class="image-logo" src="public/img/header-logo.svg" alt="logo"></a>
+        <div class="header-container">
+            <div class="navigation_left__item-block">
+                <div class="navigation_logo__item-block">
+                    <a href="/"><img draggable="false" class="image-logo" src="public/img/header-logo.svg" alt="logo"></a>
+                </div>
+                <div class="navigation_choise_language__item-block">
+                    <button id="en" class="language-button">ENG</button>
+                    <button id="ru" class="language-button">RU</button>
+                </div>
             </div>
-            <div class="navigation_choise_language__item-block">
-                <button id="en" class="language-button">ENG</button>
-                <button id="ru" class="language-button">RU</button>
+            <div class="navigation_center__item-block">
+                <a href="/" class="navigation-button navigation_active lang" data-text="home">{text}</a>
+                <a href="/" class="navigation-button lang" data-text="announcement">{text}</a>
+                <a href="/" class="navigation-button lang" data-text="products">{text}</a>
+                <a href="/" class="navigation-button lang" data-text="contacts">{text}</a>
             </div>
+            <div class="navigation_right__item-block">
+                <a href="cart" class="cart-button lang" data-text="cart">
+                    <div class="cart-count" hidden>5</div>
+                    <img src="public/img/cart.svg">
+                    {text}
+                </a>
+                <a href="#products"class="purshare-button lang" data-text="purshare-button">{text}</a>
+            </div>
+            <label class="burger" for="burger">
+                <input type="checkbox" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
         </div>
-        <div class="navigation_center__item-block">
-            <a href="/" class="navigation-button lang" data-text="home">{text}</a>
-            <a href="/" class="navigation-button lang" data-text="announcement">{text}</a>
-            <a href="/" class="navigation-button lang" data-text="products">{text}<img src=""></a>
-            <a href="/" class="navigation-button lang" data-text="contacts">{text}</a>
-        </div>
-        <div class="navigation_right__item-block">
-            <a href="/cart" class="cart-button lang" data-text="cart">
-                <img src="public/img/cart.svg">
-                {text}
-            </a>
-            <a href="/"class="purshare-button lang" data-text="purshare-button">{text}</a>
-        </div>
-    </div>        
-</nav>
+        <div class="header-container mobile_header-container">
+            <div class="mobile_header-nav">
+                <ul class="mobile_header-list">
+                    <li>
+                        <a href="/" class="navigation-button navigation_active mobile_link lang" data-text="home">{text}</a>
+                    </li>
+                    <li>
+                        <a href="/" class="navigation-button mobile_link lang" data-text="announcement">{text}</a>
+                    </li>
+                    <li>
+                        <a href="/" class="navigation-button mobile_link lang" data-text="products">{text}</a>
+                    </li>
+                    <li>
+                        <a href="/" class="navigation-button mobile_link lang" data-text="contacts">{text}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile_header-button_block">
+                <a href="#products"class="purshare-button burger_purshare-button lang" data-text="purshare-button">{text}</a>
+                <a href="cart" class="cart-button mobile_link lang" data-text="cart">
+                    <div class="cart-count" hidden>5</div>
+                    <img src="public/img/cart.svg">
+                    {text}
+                </a>                
+            </div>
+        </div>     
+    </nav>

@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="public/css/min/header-min.css">
 	<link rel="stylesheet" href="public/css/min/index-min.css">
+    <link rel="stylesheet" href="public/css/main-adaptive.css">
+    <link rel="icon" type="image/x-icon" href="public/img/icon.png">
 	<title>HewStore</title>
 </head>
 <body>
@@ -46,7 +48,7 @@
                         <p>{text}</p>
                     </div>
                     <div class="announcements_button-block">
-                        <a href="#" class="lang" data-text="announcement-archive">
+                        <a href="announcements-archive" class="lang" data-text="announcement-archive">
                             {text}
                             <img src="public/img/arrow.svg">
                         </a>
@@ -66,8 +68,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -87,8 +89,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -108,8 +110,8 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a href="#">
-                                        OPEN
+                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                        {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
                                 </div>
@@ -135,12 +137,12 @@
                         </div>
                     </div>  
                     <div class="loading">
-                            <div class="spinner">
-                                <svg viewBox="25 25 50 50" class="circular">
-                                    <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
-                                </svg>
-                            </div>
-                        </div>                  
+                        <div class="spinner">
+                            <svg viewBox="25 25 50 50" class="circular">
+                                <circle stroke-miterlimit="10" stroke-width="3" fill="none" r="20" cy="50" cx="50" class="path"></circle>
+                            </svg>
+                        </div>
+                    </div>                  
                     <div class="products_items-block">
                     </div>
                 </div>
@@ -162,7 +164,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header lang" data-text="discord-server">{text}</p>
-                                <a href="https://discord.gg/Fpy262yz9S" class="contacts-link">discord.gg/Fpy262yz9S</a>
+                                <a href="https://discord.gg/Fpy262yz9S" target="_blank" class="contacts-link">discord.gg/Fpy262yz9S</a>
                             </div>
                         </div>
                         <div class="contacts-item">
@@ -171,7 +173,10 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Discord</p>
-                                <a class="contacts-link">HewHewLalalay#5853</a>
+                                <a id="copy_target" onclick="copyFunction()" class="contacts-link copy_target">
+                                    <p>HewHewLalalay#5853</p>
+                                    <input id="text" type="text" value="HewHewLalalay#5853">
+                                </a>
                             </div>
                         </div>
                         <div class="contacts-item">
@@ -180,7 +185,7 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Telegram</p>
-                                <a href="https://t.me/NobodyKnowsMeAgain" class="contacts-link">@NobodyKnowsMeAgain</a>
+                                <a href="https://t.me/NobodyKnowsMeAgain" target="_blank" class="contacts-link">@NobodyKnowsMeAgain</a>
                             </div>
                         </div>
                     </div>
@@ -189,9 +194,11 @@
         </main>        
     </div>    
 	<!-- Scripts -->
+    <script src="public/js/cart-handler.js"></script>
 	<script src="public/js/translate.js"></script>
-	<script src="public/js/min/event-click-min.js"></script>
     <script src="vendor/jquery.js"></script>
     <script src="public/js/ajax-events.js"></script>
+    <script src="public/js/scroll_event.js"></script>
+    <script src="public/js/min/event-click-min.js"></script>
 </body>
 </html>
