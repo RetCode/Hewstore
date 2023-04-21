@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
 	<link rel="stylesheet" href="public/css/payments-final.css">
-    <link rel="stylesheet" href="public/css/main-adaptive.css">
     <link rel="icon" type="image/x-icon" href="public/img/icon.png">
     <title>HewStore</title>
 </head>
@@ -51,10 +50,10 @@
                                     <img src="../public/img/header-logo.svg">
                                 </div>
                                 <div class="header-title">
-                                    <p class="lang" data-text="payment_title">{text}</p>
+                                    <p>Payment Details</p>
                                 </div>
-                                <div class="header-desc lang" data-text="payment_desc">
-                                    {text}
+                                <div class="header-desc">
+                                    Thank you for submitting an application. Please fill out the application below and pay for the order.
                                 </div>
                             </div>
                             <div class="border"></div>
@@ -64,31 +63,31 @@
                                 </div>
                                 <div class="payment_details-order_block">
                                     <div class="order_values">
-                                        <p class="order_title lang">Order ID</p>
+                                        <p class="order_title">Order ID</p>
                                         <p class="order_attribute">%%order_id%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Price</p>
+                                        <p class="order_title">Price</p>
                                         <p class="order_attribute">%%count_price%% $</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Coin</p>
+                                        <p class="order_title">Coin</p>
                                         <p class="order_attribute">%%count_coin%%</p>
                                     </div>
                                     <div class="order_values order_values_off">
-                                        <p class="order_title lang">Network</p>
+                                        <p class="order_title">Network</p>
                                         <p class="order_attribute">%%network%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Email</p>
+                                        <p class="order_title">Email</p>
                                         <p class="order_attribute">%%user_email%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Transaction date</p>
+                                        <p class="order_title">Transaction date</p>
                                         <p class="order_attribute">%%date%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Canceled in</p>
+                                        <p class="order_title">Canceled in</p>
                                         <p class="order_attribute timer"></p>
                                     </div>
                                 </div>
