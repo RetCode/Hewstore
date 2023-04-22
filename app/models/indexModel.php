@@ -82,20 +82,19 @@ class indexModel extends Model
                     for($i = 0; $i < $el["count"]; $i++)
                     {
 
-                        $key = DataBase::Query("SELECT id, key_text FROM key_table WhERE id = ?",[
+                        $key = DataBase::Query("SELECT id, key_text FROM key_table WhERE productType = ?",[
                             $el["id"]
                         ]);
 
-                        if($key == null)
-                        {
-                            $key = "This key is out of stock, please contact support";
-                        }
-                        else
-                        {
+                        try{
                             DataBase::Query("DELETE FROM key_table where id = ?", [
                                 $key[0]["id"]
                             ]);
                             $key = $key[0]["key_text"];
+                        }
+                        catch(Exception $ex){
+                            Utils::debugLog($ex, "ketGiveExceptions");
+                            $key = "This key is out of stock, please contact support";
                         }
 
                         $html .= '<tr>
