@@ -337,7 +337,7 @@ body::-webkit-scrollbar
     color: rgba(255, 255, 255, 0.6);
 }
 
-.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p span
+.payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p .span_text
 {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
