@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/min/header-min.css">
     <link rel="stylesheet" href="public/css/main-adaptive.css">
-	<link rel="stylesheet" href="public/css/payments-final.css">
+	<link rel="stylesheet" href="public/css/min/payments-final-min.css">
     <link rel="icon" type="image/x-icon" href="public/img/icon.png">
     <title>HewStore</title>
 </head>

@@ -54,14 +54,9 @@
 {
     .container
     {
-        width: 100%;
+        width: 100% !important;
 
-        padding: 0 70px;
-    }
-
-    .wrapper
-    {
-        background-size: auto;
+        padding: 0 70px !important;
     }
 
     .wrapper .main
@@ -160,6 +155,173 @@
     }
 }
 
+/* game items page */
+@media (max-width: 1200px)
+{
+    .right-block
+    {
+        display: none;
+    }
+
+    .product-block
+    {
+        flex-direction: column;
+    }
+    
+    .button-block
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .os-block
+    {
+        margin-bottom: 20px;
+    }
+
+    .cpu-block
+    {
+        margin-bottom: 20px;
+    }
+
+    .button-block:last-child
+    {
+        margin-bottom: 0;
+    }
+
+    .button-block button
+    {
+        margin-bottom: 15px;
+    }
+
+    .catalog-block .item .item_bottom-block button
+    {
+        white-space: nowrap;
+    }
+
+    .catalog-block .item .item_bottom-block a
+    {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 1042px)
+{
+    .catalog-block
+    {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 460px)
+{
+    .catalog-block .item .item_bottom-block button
+    {
+        padding: 8px;
+        margin-right: 20px;
+
+        font-size: 8px;
+
+        align-items: center;
+    }
+
+    .catalog-block .item .item_bottom-block a
+    {
+        font-size: 8px;
+    }
+}
+
+/* cart */
+@media (max-width: 1200px)
+{
+    .main
+    {
+        width: auto;
+    }
+
+    .all-box
+    {
+        flex-direction: column;
+    }
+
+    .boxes
+    {
+        width: 100%;
+
+        margin-bottom: 20px;
+    }
+
+    .input-box
+    {
+        margin: 0;
+    }
+
+    .cart-form-box
+    {
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) 
+{
+    .product-count-block
+    {
+        flex-direction: column;
+    }
+
+    .product-img-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .product-img-box img
+    {
+        width: 180px;
+        height: auto;
+    }
+
+    .product-count-text-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .input-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .total-number-box
+    {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* payments */
+@media (max-width: 703px)
+{
+    .select_cryptocurrencies-block .selected_method-wrapper
+    {
+        grid-template-columns: auto;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .close_button svg
+    {
+        margin-right: 0;
+        margin-top: -40px;
+    }
+
+    .back-button
+    {
+        margin-left: 0;
+        margin-top: -40px;
+    }
+}
+
+/* header */
 @media (max-width: 550px)
 {
     .container

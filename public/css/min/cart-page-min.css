@@ -41,9 +41,14 @@ body::-webkit-scrollbar
 
 .wrapper
 {
-    background: url(../img/blurbg.png) top no-repeat;
+    background: url(../../img/blurbg.png) no-repeat;
+    background-size: cover;
+    /* background-color: #0A122E; */
+    background-position: top;
 
     padding-bottom: 48.5vh;
+
+    min-height: 100vh;
 }
 
 .main
