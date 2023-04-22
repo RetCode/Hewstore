@@ -48,7 +48,7 @@
                         <div class="payment_details-wrapper">
                             <div class="payment_details-header">
                                 <div class="header-logo">
-                                    <img src="../public/img/header-logo.svg">
+                                    <img draggable="false" src="../public/img/header-logo.svg">
                                 </div>
                                 <div class="header-title">
                                     <p class="lang" data-text="payment_title">{text}</p>
@@ -64,31 +64,31 @@
                                 </div>
                                 <div class="payment_details-order_block">
                                     <div class="order_values">
-                                        <p class="order_title lang">Order Id</p>
+                                        <p class="order_title lang" data-text="orderId">{text}</p>
                                         <p class="order_attribute">%%order_id%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Price</p>
+                                        <p class="order_title lang" data-text="price">{text}</p>
                                         <p class="order_attribute">%%count_price%% $</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Coin</p>
+                                        <p class="order_title lang" data-text="coin">{text}</p>
                                         <p class="order_attribute">%%count_coin%%</p>
                                     </div>
                                     <div class="order_values order_values_off">
-                                        <p class="order_title lang">Network</p>
+                                        <p class="order_title lang" data-text="network">{text}</p>
                                         <p class="order_attribute">%%network%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Email</p>
+                                        <p class="order_title lang" data-text="email">{text}</p>
                                         <p class="order_attribute">%%user_email%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Transaction date</p>
+                                        <p class="order_title lang" data-text="transaction_date">{text}</p>
                                         <p class="order_attribute">%%date%%</p>
                                     </div>
                                     <div class="order_values">
-                                        <p class="order_title lang">Canceled in</p>
+                                        <p class="order_title lang" data-text="order_cancel">{text}</p>
                                         <p class="order_attribute timer"></p>
                                     </div>
                                 </div>
@@ -109,16 +109,16 @@
                                         </div>
                                         <div class="allcoins_info-block">
                                             <div class="allcoins_info_title">
-                                                <p>To pay, scan the QR code<br> through your mobile wallet.</p>
+                                                <p class="lang" data-text="qrcode_title">{text}</p>
                                             </div>
                                             <div class="allcoins_info_desc">
-                                                <p>Or send <span>%%count_coin%%</span> to <span>%%payment_wallet_name%%</span></p>
+                                                <p><span class="lang" data-text="qrcode_desc1">{text} </span><span class="span_text">%%count_coin%%</span> <span class="lang" data-text="qrcode_desc2">{text}</span> <span class="span_text">%%payment_wallet_name%%</span></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="payment_change-button_block">
-                                    <a href="/payments">
+                                    <a href="/payments" class="lang" data-text="change_method">
                                         <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <g opacity="0.3" clip-path="url(#clip0_22_864)">
                                                 <path d="M6.66675 16H25.3334" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -131,15 +131,15 @@
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        Change payment method
+                                        {text}
                                     </a>
                                 </div>
                                 <div class="payment_status-block">
-                                    <p class="value_name">Status</p>
+                                    <p class="value_name lang" data-text="status">{text}</p>
                                     <p class="value_attribute">%%payment_status%%</p>
                                 </div>
                                 <div class="payment_faq-block">
-                                    <p>If you have any quastions, please contact <a href="/">Support</a></p>
+                                    <p class="lang" data-text="faq_text">{text}</p>
                                 </div>
                             </div>
                         </div>
