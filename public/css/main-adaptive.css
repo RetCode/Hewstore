@@ -321,6 +321,16 @@
     }
 }
 
+/* item_game */
+@media (max-width: 1200px)
+{
+    .item_wrapper .item_wrapper-main .item_button-block
+    {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 /* header */
 @media (max-width: 550px)
 {
