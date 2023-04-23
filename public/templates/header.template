@@ -21,7 +21,7 @@
                     <img src="public/img/cart.svg">
                     {text}
                 </a>
-                <a href="#products"class="purshare-button lang" data-text="purshare-button">{text}</a>
+                <a href="#products"class="purshare-button nm lang" data-text="purshare-button">{text}</a>
             </div>
             <label class="burger" for="burger">
                 <input type="checkbox" id="burger">

@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="item_bottom-block">                                    
                         <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
-                        <a href="#">
+                        <a href="../layout-pages/item_info-page.html">
                             ${langMore}
                             <img src="../public/img/arrow.svg">
                         </a>                              

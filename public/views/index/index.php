@@ -48,7 +48,7 @@
                         <p>{text}</p>
                     </div>
                     <div class="announcements_button-block">
-                        <a href="announcements-archive" class="lang" data-text="announcement-archive">
+                        <a href="archive" class="lang" data-text="announcement-archive">
                             {text}
                             <img src="public/img/arrow.svg">
                         </a>
@@ -68,7 +68,7 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
                                         {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
@@ -89,7 +89,7 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
                                         {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
@@ -110,7 +110,7 @@
                                     <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
                                 </div>
                                 <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="#">
+                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
                                         {text}
                                         <img src="public/img/arrow.svg">
                                     </a>
