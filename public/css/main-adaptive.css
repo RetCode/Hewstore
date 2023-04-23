@@ -54,9 +54,9 @@
 {
     .container
     {
-        width: 100% !important;
+        width: 100%;
 
-        padding: 0 70px !important;
+        padding: 0 70px;
     }
 
     .wrapper .main
@@ -152,6 +152,48 @@
         width: 100%;
 
         margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .container
+    {
+        padding: 0 10px;
+    }
+
+    .logo-box
+    {
+        width: auto;
+        height: auto;
+
+        padding: 35px 51px;
+    }
+
+    .button-box
+    {
+        flex-direction: column;
+    }
+
+    .purshare-button
+    {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .contacts_items-block .contacts-item .contacts_item-info .contacts-header
+    {
+        font-size: 16px;
+    }
+
+    .contacts_items-block .contacts-item .contacts_item-info .contacts-link
+    {
+        font-size: 12px;
+    }
+    
+    .contacts_items-block .contacts-item
+    {
+        padding: 18px 18px;
     }
 }
 
@@ -331,49 +373,74 @@
     }
 }
 
-/* header */
-@media (max-width: 550px)
+/* confirm pay */
+@media (max-width: 1200px)
 {
-    .container
+    .payment_details-wrapper .payment_details-main
     {
-        padding: 0 10px;
+        padding: 36px 60px;
     }
 
-    .logo-box
+    .payment_details-wrapper .payment_details-main .payment_details-order_block .order_values .order_attribute
     {
-        width: auto;
-        height: auto;
-
-        padding: 35px 51px;
+        text-align: right;
     }
 
-    .button-box
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode
     {
         flex-direction: column;
     }
 
-    .purshare-button
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_title p
     {
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p
+    {
+        text-align: center;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .qrcode_block
+    {
+        display: flex;
+        justify-content: center;
+
         margin-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
-    .contacts_items-block .contacts-item .contacts_item-info .contacts-header
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p .span_text
     {
-        font-size: 16px;
+        word-wrap: break-word;
     }
 
-    .contacts_items-block .contacts-item .contacts_item-info .contacts-link
+    .payment_details-wrapper .payment_details-main .payment_details-product_name p
     {
-        font-size: 12px;
-    }
-    
-    .contacts_items-block .contacts-item
-    {
-        padding: 18px 18px;
+        margin-bottom: 10px;
     }
 }
 
+@media (max-width: 600px)
+{
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_title p
+    {
+        font-size: 11px;
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+}
+
+/* header */
 @media (max-width: 550px)
 {
     .burger_purshare-button
