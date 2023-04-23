@@ -95,4 +95,11 @@ class indexController extends Controller
         }
         
     }
+
+    function archiveAction()
+    {
+        $this->view->render_html([
+            "HEADER" => Utils::getTemplates("header_other.template")
+        ]);
+    }
 }

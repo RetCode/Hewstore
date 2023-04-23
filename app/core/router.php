@@ -24,6 +24,7 @@ class Router
             case "game": Router::done("index", "game"); break;
             case "payments": Router::done("index", "payments"); break;
             case "pay": Router::done("index", "pay"); break;
+            case "archive": Router::done("index", "archive"); break;
             case "webhook": Router::done("index", "webhook"); break;
             case "admin/games": Router::done("admin", "game"); break;
             case "admin/items": Router::done("admin", "items"); break;
