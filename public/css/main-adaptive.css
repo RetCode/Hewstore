@@ -154,6 +154,7 @@
     .products_items-block
     {
         display: flex;
+        justify-content: flex-start;
 
         overflow-x: scroll;
     }
@@ -494,6 +495,15 @@
     .archive-wrapper .announcements-item .announcements_item-info .announcements_item-link a
     {
         font-size: 14px;
+    }
+}
+
+/* announcements-page */
+@media (max-width: 550px)
+{
+    .announcements_image-block img
+    {
+        height: auto;
     }
 }
 
