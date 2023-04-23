@@ -59,11 +59,6 @@
         padding: 0 70px;
     }
 
-    .wrapper
-    {
-        background-size: auto;
-    }
-
     .wrapper .main
     {
         background-size: auto;
@@ -202,6 +197,250 @@
     }
 }
 
+/* game items page */
+@media (max-width: 1200px)
+{
+    .right-block
+    {
+        display: none;
+    }
+
+    .product-block
+    {
+        flex-direction: column;
+    }
+    
+    .button-block
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .os-block
+    {
+        margin-bottom: 20px;
+    }
+
+    .cpu-block
+    {
+        margin-bottom: 20px;
+    }
+
+    .button-block:last-child
+    {
+        margin-bottom: 0;
+    }
+
+    .button-block button
+    {
+        margin-bottom: 15px;
+    }
+
+    .catalog-block .item .item_bottom-block button
+    {
+        white-space: nowrap;
+    }
+
+    .catalog-block .item .item_bottom-block a
+    {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 1042px)
+{
+    .catalog-block
+    {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 460px)
+{
+    .catalog-block .item .item_bottom-block button
+    {
+        padding: 8px;
+        margin-right: 20px;
+
+        font-size: 8px;
+
+        align-items: center;
+    }
+
+    .catalog-block .item .item_bottom-block a
+    {
+        font-size: 8px;
+    }
+}
+
+/* cart */
+@media (max-width: 1200px)
+{
+    .main
+    {
+        width: auto;
+    }
+
+    .all-box
+    {
+        flex-direction: column;
+    }
+
+    .boxes
+    {
+        width: 100%;
+
+        margin-bottom: 20px;
+    }
+
+    .input-box
+    {
+        margin: 0;
+    }
+
+    .cart-form-box
+    {
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) 
+{
+    .product-count-block
+    {
+        flex-direction: column;
+    }
+
+    .product-img-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .product-img-box img
+    {
+        width: 180px;
+        height: auto;
+    }
+
+    .product-count-text-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .input-box
+    {
+        margin-bottom: 10px;
+    }
+
+    .total-number-box
+    {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* payments */
+@media (max-width: 703px)
+{
+    .select_cryptocurrencies-block .selected_method-wrapper
+    {
+        grid-template-columns: auto;
+    }
+}
+
+@media (max-width: 550px)
+{
+    .close_button svg
+    {
+        margin-right: 0;
+        margin-top: -40px;
+    }
+
+    .back-button
+    {
+        margin-left: 0;
+        margin-top: -40px;
+    }
+}
+
+/* item_game */
+@media (max-width: 1200px)
+{
+    .item_wrapper .item_wrapper-main .item_button-block
+    {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* confirm pay */
+@media (max-width: 1200px)
+{
+    .payment_details-wrapper .payment_details-main
+    {
+        padding: 36px 60px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_details-order_block .order_values .order_attribute
+    {
+        text-align: right;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode
+    {
+        flex-direction: column;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_title p
+    {
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p
+    {
+        text-align: center;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .qrcode_block
+    {
+        display: flex;
+        justify-content: center;
+
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p .span_text
+    {
+        word-wrap: break-word;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_details-product_name p
+    {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px)
+{
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_title p
+    {
+        font-size: 11px;
+        text-align: center;
+
+        margin-bottom: 10px;
+    }
+
+    .payment_details-wrapper .payment_details-main .payment_qrcode-block .allcoins_qrcode .allcoins_info-block .allcoins_info_desc p
+    {
+        font-size: 11px;
+        text-align: center;
+    }
+}
+
+/* header */
 @media (max-width: 550px)
 {
     .burger_purshare-button
