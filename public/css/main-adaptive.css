@@ -41,7 +41,7 @@
     }
 }
 
-@media (max-width: 400px)
+@media (max-width: 340px)
 {
     .mobile_header-button_block
     {
@@ -451,7 +451,7 @@
 }
 
 
-@media (max-width: 400px)
+@media (max-width: 340px)
 {
     .burger_purshare-button
     {
