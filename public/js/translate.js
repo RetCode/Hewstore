@@ -4,7 +4,7 @@ var userLang;
 const languages = JSON.stringify({
     "ru":{
         "main-text":"Лучший магазин софта для игр и не только",
-        "description-text":"Почему вам следует выбрать нас? - Лучшие продукты на мировом рынке, Быстрая поддержка, Мгновенное получение, Наш опыт.",
+        "description-text":"Почему вам следует выбрать нас? - Лучшие продукты на мировом рынке, Быстрая поддержка, Мгновенное получение, Наш опыт.<br><br>Хотите задать вопрос? - Свяжитесь с нами! Мы открыты для любых вопросов :)",
         "purshare-button":"КУПИТЬ ЧИТ",
         "more-details-button":"СВЯЗАТЬСЯ С НАМИ",
         "announcement":"АНОНСЫ",
@@ -61,7 +61,7 @@ const languages = JSON.stringify({
     },
     "en":{
         "main-text":"The best software store for games and more",
-        "description-text":"Why should you choose us? - The best products on the global market, Quick support, Instant delivery, Our experience.",
+        "description-text":"Why should you choose us? - The best products on the global market, Quick support, Instant delivery, Our experience.<br><br>Want to ask a question? - Contact us! We are open to any question :)",
         "purshare-button":"PURCHASE CHEAT",
         "more-details-button":"CONTACT US",
         "announcement":"ANNOUNCEMENTS",

@@ -133,43 +133,55 @@ function generateItems()
             if(maxValue == undefined)
             {
                 products.innerHTML += `<div class="product-count-block">
-                    <div class="product-img-box">
-                        <img src="/public/img/products/${img}">
+                    <div class="product-count_left-block">
+                        <div class="product-img-box">
+                            <img src="/public/img/products/${img}">
+                        </div>
+                        <div class="product-count-text-box">
+                            <p>${productTitle}: ${productName}</p>
+                            <p class="dark-text">${gameName} Software</p>
+                        </div>
                     </div>
-                    <div class="product-count-text-box">
-                        <p>${productTitle}: ${productName}</p>
-                        <p class="dark-text">${gameName} Software</p>
-                    </div>
-                    <div class="input-box">
-                    </div>
-                    <div class="total-number-box">
-                        <p>${noAvalible}</p>
-                    </div>
-                    <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
-                        <img src="../public/img/cart__trash.svg">
+                    <div class="product-count_right-block"">
+                        <div class="input-box">
+                        </div>
+                        <div class="price_delete-block">
+                            <div class="total-number-box">
+                                <p>${noAvalible}</p>
+                            </div>
+                            <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
+                                <img src="../public/img/cart__trash.svg">
+                            </div>
+                        </div>
                     </div>
                 </div>`
             }
             else 
             {
                 products.innerHTML += `<div class="product-count-block">
-                    <div class="product-img-box">
-                        <img src="/public/img/products/${img}">
+                    <div class="product-count_general-block">
+                        <div class="product-img-box">
+                            <img src="/public/img/products/${img}">
+                        </div>
+                        <div class="product-count-text-box">
+                            <p>${productTitle}: ${productName}</p>
+                            <p class="dark-text">${gameName} Software</p>
+                        </div>
                     </div>
-                    <div class="product-count-text-box">
-                        <p>${productTitle}: ${productName}</p>
-                        <p class="dark-text">${gameName} Software</p>
-                    </div>
-                    <div class="input-box">
-                        <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
-                        <input type="text" id="item-${element["id"]}" value="${element["count"]}" max-value="${maxValue}" readonly>
-                        <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
-                    </div>
-                    <div class="total-number-box">
-                        <p>$ ${cost}</p>
-                    </div>
-                    <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
-                        <img src="../public/img/cart__trash.svg">
+                    <div class="product-count_general-block">
+                        <div class="input-box">
+                            <button onclick="addItems(this)" x-data="${element["id"]}" class="button-plus">+</button>
+                            <input type="text" id="item-${element["id"]}" value="${element["count"]}" max-value="${maxValue}" readonly>
+                            <button onclick="removeItems(this)" x-data="${element["id"]}" class="button-minus">-</button>
+                        </div>
+                        <div class="price_delete-block">
+                            <div class="total-number-box">
+                                <p>$ ${cost}</p>
+                            </div>
+                            <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
+                                <img src="../public/img/cart__trash.svg">
+                            </div>
+                        </div>
                     </div>
                 </div>` 
             }

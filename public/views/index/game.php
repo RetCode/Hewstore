@@ -23,12 +23,10 @@
                             </div>
                             <div class="info-box">
                                 <p class="info-text lang" data-text="game-description">{text}</p>
-                            </div>
-                        </div>
-                        <div class="right-block">
-                            <div class="input-box">
-                                <img src="../public/img/find.svg">
-                                <input type="text" class="langInput" id="findInput" data-text="search" placeholder="{text}">
+                                <div class="input-box">
+                                    <img src="../public/img/find.svg">
+                                    <input type="text" class="langInput" id="findInput" data-text="search" placeholder="{text}">
+                                </div>
                             </div>
                         </div>
                     </div>

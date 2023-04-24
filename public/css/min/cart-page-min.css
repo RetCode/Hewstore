@@ -63,6 +63,7 @@ body::-webkit-scrollbar
 {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -100,7 +101,7 @@ body::-webkit-scrollbar
 .clear-block
 {
     background: rgba(25, 34, 60, 1);
-    border-color: 1px solid #141b36;;
+    border: 1px solid #141b36;
     padding: 14px 30px;
     border-radius: 4px;
     display: flex;
@@ -130,10 +131,20 @@ body::-webkit-scrollbar
     align-items: center;
 }
 
+.product-img-box
+{
+    margin-right: 20px;
+}
+
 .product-img-box img
 {
     width: 50px;
     height: 25px;
+}
+
+.product-count-text-box
+{
+    max-width: 344px;
 }
 
 .product-count-text-box p
@@ -141,6 +152,7 @@ body::-webkit-scrollbar
     color: #FFFFFF;
     font-weight: 600;
     font-size: 18px;
+    word-break: break-all;
 }
 
 .product-count-text-box .dark-text
@@ -158,6 +170,7 @@ body::-webkit-scrollbar
 {
     color: #ffe001;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .cart-form-box
@@ -220,6 +233,12 @@ body::-webkit-scrollbar
     color: #ffe001;
 }
 
+.product-count_general-block
+{
+    display: flex;
+    align-items: center;
+}
+
 .input-block
 {
     margin-top: 20px;   
@@ -258,8 +277,9 @@ body::-webkit-scrollbar
 
 .input-box
 {
-    margin-left: 70px;
-    margin-right: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-block .input_arrow
@@ -296,16 +316,32 @@ body::-webkit-scrollbar
 
 .input-box input
 {
-    width: 20px;
-    height: 20px;
+    width: 38px;
+
     color: #FFFFFF;
     text-align: center;
     background: rgba(20, 27, 54, .5);
     border: 1px solid #141b36;
-    box-sizing: border-box;
     border-radius: 4px;
     font-weight: 600;
     font-size: 12px;
+
+    padding: 7px 10px;
+}
+
+.trash-box
+{
+    cursor: pointer;
+
+    margin-left: 8px;
+}
+
+.price_delete-block
+{
+    display: flex;
+    align-items: center;
+
+    margin-left: 50px;
 }
 
 /* loading style */
@@ -351,12 +387,5 @@ animation: dash4 1.5s ease-in-out infinite;
 100% {
     stroke-dashoffset: -125px;
 }
-}
-   
-  
+}  
 /* loading style */
-
-.trash-box
-{
-    cursor: pointer;
-}
