@@ -4,8 +4,7 @@ select_method.forEach(item =>
     {
         item.addEventListener('click', () =>
         {
-            document.querySelector('.select_method.active').classList.remove('active');
-            item.classList.add('active');
+            document.querySelector('.select_method.active').classList.toggle('active');
         })
     })
 

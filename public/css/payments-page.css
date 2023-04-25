@@ -269,6 +269,8 @@ body::-webkit-scrollbar {
 .select_cryptocurrencies-block .selected_method-wrapper {
     width: 100%;
 
+    animation: showBlock 1s ease forwards;
+
     border-radius: 0 0 8px 8px;
 
     padding: 12px;
@@ -539,8 +541,21 @@ body::-webkit-scrollbar {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    opacity: 1;
+    opacity: 1;    
+
+    animation: showBlock 1s ease forwards;
 }
+
+/* animation */
+@keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+/* animation */
 
 /* loading style */
 .loading
