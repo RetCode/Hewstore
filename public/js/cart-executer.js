@@ -361,6 +361,7 @@ function generateEvents()
     document.querySelector(".cart-clear-all").addEventListener("click", () => {
         localStorage.removeItem("cart");
         generateItems()
+        loadCart()
         reLoadCart()
     })
 }

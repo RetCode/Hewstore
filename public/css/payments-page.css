@@ -105,6 +105,8 @@ body::-webkit-scrollbar {
     padding: 24px;
 
     cursor: pointer;
+
+    transition: 0.2s ease all;
 }
 
 .select_payment_type-block .select_methods .select_method:first-child {
@@ -115,7 +117,8 @@ body::-webkit-scrollbar {
     border-radius: 0 0 8px 8px;
 }
 
-.select_payment_type-block .select_methods .select_method.active {
+.select_payment_type-block .select_methods .select_method:hover
+{
     background: #1f2431;
     border-color: #ffe001;
 }
@@ -268,8 +271,9 @@ body::-webkit-scrollbar {
 
 .select_cryptocurrencies-block .selected_method-wrapper {
     width: 100%;
+    min-height: 541px;
 
-    animation: showBlock 1s ease forwards;
+    animation: showBlock 1s ease all forwards;
 
     border-radius: 0 0 8px 8px;
 
@@ -547,14 +551,15 @@ body::-webkit-scrollbar {
 }
 
 /* animation */
-@keyframes showBlock {
+@keyframes showBlock 
+{
     0% {
       opacity: 0;
     }
     100% {
       opacity: 1;
     }
-  }
+}
 /* animation */
 
 /* loading style */
@@ -563,6 +568,9 @@ body::-webkit-scrollbar {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    animation: showBlock 1s ease forwards;
 }
 .spinner svg {
     width: 3.25em;

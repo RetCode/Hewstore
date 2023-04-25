@@ -5,10 +5,13 @@
     {
         width: 100%;
 
-        padding: 0 20px;
-
-        transition: 0.2s ease all;
+        padding: 0 20px;              
     }
+
+    /* .mobile_header-container.mobile_header-active
+    {
+        animation: showBlock 1s ease forwards;  
+    } */
 
     .burger
     {
@@ -334,7 +337,11 @@
 
     .input-box
     {
-        margin: 0;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-right: 0;
+
+        width: 100%;
     }
 
     .cart-form-box
@@ -369,14 +376,6 @@
     .product-count-text-box
     {
         margin-bottom: 10px;
-    }
-
-    .input-box
-    {
-        margin-top: 10px;
-        margin-right: 0;
-
-        width: 100%;
     }
 
     .product-count_general-block
@@ -428,9 +427,10 @@
 /* confirm pay */
 @media (max-width: 1200px)
 {
-    .payment_details-wrapper .payment_details-main
+
+    .confirmation_payment-section
     {
-        padding: 36px 60px;
+        padding-top: 140px;
     }
 
     .payment_details-wrapper .payment_details-main .payment_details-order_block .order_values .order_attribute
@@ -472,6 +472,14 @@
     .payment_details-wrapper .payment_details-main .payment_details-product_name p
     {
         margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 720px)
+{
+    .payment_details-wrapper .payment_details-main
+    {
+        padding: 36px 60px;
     }
 }
 
@@ -556,5 +564,25 @@
     {
         margin-bottom: 20px;
         margin-right: 0;
+    }
+}
+
+@keyframes showBlock 
+{
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+@keyframes hideBlock 
+{
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
 }

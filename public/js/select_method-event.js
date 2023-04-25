@@ -1,13 +1,3 @@
-const select_method = [...document.querySelectorAll('.select_method')];
-
-select_method.forEach(item =>
-    {
-        item.addEventListener('click', () =>
-        {
-            document.querySelector('.select_method.active').classList.toggle('active');
-        })
-    })
-
 let switching_to_cryptocurrencies = document.querySelectorAll('.select_method');
 let backButton = document.querySelectorAll('.back-button');
 

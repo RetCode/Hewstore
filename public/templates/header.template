@@ -30,7 +30,7 @@
                 <span></span>
             </label>
         </div>
-        <div class="header-container mobile_header-container">
+        <div id="mobile_header" class="header-container mobile_header-container">
             <div class="mobile_header-nav">
                 <ul class="mobile_header-list">
                     <li>

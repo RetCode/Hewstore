@@ -25,7 +25,7 @@ body
 {
     position: relative;
 
-    background: url(../img/paymentbg.png) no-repeat;
+    background: url(../../img/paymentbg.png) no-repeat;
     background-size: contain;
     background-color: #0A122E;
     background-position: top;

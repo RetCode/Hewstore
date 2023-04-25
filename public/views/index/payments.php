@@ -35,7 +35,7 @@
                                 <p class="lang" data-text="select_payment-text">{text}</p>
                             </div>
                             <div class="select_methods">
-                                <div class="select_method active" data-id="1">
+                                <div class="select_method" data-id="1">
                                     <div class="select_method-title">
                                         <p class="lang" data-text="cryptocurrencies_method-title">{text}</p>
                                     </div>
@@ -62,7 +62,6 @@
                             </div>
                             <div class="select_method-count">
                                 <div class="select_method-drop active-select"></div>
-                                <div class="select_method-drop"></div>
                                 <div class="select_method-drop"></div>
                             </div>
                         </div>
@@ -279,7 +278,6 @@
                             <div class="select_method-count">
                                 <div class="select_method-drop"></div>
                                 <div class="select_method-drop active-select"></div>
-                                <div class="select_method-drop"></div>
                             </div>
                         </div>
                         <div class="select_final-block">
@@ -330,7 +328,6 @@
                                 <button class="lang" data-text="continue_button">{text}</button>
                             </div> 
                             <div class="select_method-count">
-                                <div class="select_method-drop"></div>
                                 <div class="select_method-drop"></div>
                                 <div class="select_method-drop active-select"></div>
                             </div>                        
