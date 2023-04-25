@@ -373,8 +373,10 @@
 
     .input-box
     {
-        margin-bottom: 10px;
+        margin-top: 10px;
         margin-right: 0;
+
+        width: 100%;
     }
 
     .product-count_general-block
@@ -385,6 +387,7 @@
     .price_delete-block
     {
         margin-left: 0;
+        margin-top: 10px;
     }
 }
 
