@@ -77,6 +77,12 @@
                             Покупки
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/filters" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"></svg>
+                            Фильтры
+                        </a>
+                    </li>
                 </ul>
                 <button type="button" class="btn btn-primary" style="margin-top: 10px; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#createGame">Добавить игру</button>
             </div>
@@ -84,10 +90,6 @@
                 <table class="table table-striped" id="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Название</th>
-                        <th scope="col">Картинка</th>
-                        <th scope="col">Инструменты</th>
                     </tr>
                     </thead>
                     <tbody>

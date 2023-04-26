@@ -528,7 +528,55 @@ class apiModel extends Model{
             $bodyen,
             time()
         ]);
+
+        if (file_exists("public/cached/getAnnounce.cached"))
+            unlink("public/cached/getAnnounce.cached");
+
         return True;
+    }
+
+    /**
+     *  Запрос на удаление анонса
+     */
+
+     function deleteAnnounce($id){
+        
+        DataBase::QueryUpd('DELETE FROM announcements WHERE id = ?',
+        [
+            $id
+        ]);
+        if (file_exists("public/cached/getAnnounce.cached"))
+            unlink("public/cached/getAnnounce.cached");
+        return True;
+    }
+
+    /**
+     *  Запрос на редактирование анонса
+     */
+
+     function editAnnounce($id, $nameru, $nameen, $descriptionru, $descriptionen, $bodyru, $bodyen){
+        
+        DataBase::QueryUpd('UPDATE announcements SET nameru = ?, nameen = ?, descriptionru = ?, descriptionen = ?, bodyru = ?, bodyen = ? WHERE id = ?',
+        [
+            $nameru,
+            $nameen,
+            $descriptionru,
+            $descriptionen,
+            $bodyru,
+            $bodyen,
+            $id
+        ]);
+        if (file_exists("public/cached/getAnnounce.cached"))
+            unlink("public/cached/getAnnounce.cached");
+        return True;
+    }
+
+    /**
+     *  Запрос на получение анонсов
+     */
+
+     function getAnnounce(){
+        return DataBase::Query('SELECT * FROM announcements');
     }
     
 }

@@ -70,6 +70,35 @@ class apiController extends Controller
                 ]);
             }
 
+            /**
+             * Если значение параметра "method" в запросе равно "getAnnounce",
+             * то вызывается метод getAnnounce() модели  для получения данных о играх.
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * и "items" содержащим массив анонсов
+             */
+            if($_POST["method"] == "getAnnounce"){
+
+                // Проверяем кеширование
+                $cachedResult = LocalCachedUI::getCache("getAnnounce");
+                
+                if($cachedResult != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "items" => json_decode(json_encode($cachedResult),true)
+                    ]);
+                }
+                    
+                $announce = $this->model->getAnnounce();
+
+                // Создание кеша
+                LocalCachedUI::createCached("getAnnounce", $announce, 60);
+
+                Utils::sendAjaxRequest([
+                    "response" => true,
+                    "items" => json_decode(json_encode($announce),true)
+                ]);
+            }
+
             /** 
              * Если значение параметра "method" в запросе равно "getProducts",
              * то вызывается метод getProducts() модели  для получения данных о продуктах в играх.
@@ -740,6 +769,62 @@ class apiController extends Controller
                     ]); 
                 }
              }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "deleteAnnounce",
+             * то вызывается метод deleteAnnounce() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+
+            if($_POST["method"] == "deleteAnnounce"){
+                
+                Validations::deleteId($_POST["id"]);
+
+               if($this->model->deleteAnnounce($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Announce not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "editAnnounce",
+             * то вызывается метод deleteAnnounce() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+
+             if($_POST["method"] == "editAnnounce"){
+                
+               if($this->model->editAnnounce(
+                    $_POST["id"], 
+                    $_POST["nameru"], 
+                    $_POST["nameen"],
+                    $_POST["descriptionru"],
+                    $_POST["descriptionen"],
+                    $_POST["bodyru"],
+                    $_POST["bodyen"]
+               )){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Announce not exists"
+                    ]); 
+                }
+            }
 
         }
         else{

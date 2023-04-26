@@ -77,6 +77,12 @@
                             Покупки
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/filters" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"></svg>
+                            Фильтры
+                        </a>
+                    </li>
                 </ul>
                 <button type="button" class="btn btn-primary" style="margin-top: 10px; margin-left: 5px;" data-bs-toggle="modal" data-bs-target="#createGame">Добавить анонс</button>
             </div>
@@ -100,6 +106,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
+                        <input type="text" id="recipent-id" hidden>
                         <input type="text" class="form-control" name="name" id="nameRuInput-recesipition" placeholder="Имя[RU]">
                     </div>
                     <div class="mb-3">
@@ -184,6 +191,8 @@
         </script>
         <script>
 
+            let allItems;
+
             function clearAlert()
             {
                 document.getElementById("alerts").innerHTML = "";
@@ -242,16 +251,20 @@
             function inputData(object)
             {
                 let id = object.getAttribute("x-id");
-                let name = object.getAttribute("x-name");
-                let status = object.getAttribute("x-status");
-                let game = object.getAttribute("x-game");
 
-                document.getElementById("recipient-name").value = name;
-                document.getElementById("recipient-id").value = id;
+                allItems["items"].forEach(element => {
+                    if(element["id"] == id)
+                    {
+                        document.getElementById("recipent-id").value = id;
+                        document.getElementById("nameRuInput-recesipition").value = element["nameru"];
+                        document.getElementById("nameEnInput-recesipition").value = element["nameen"];
+                        document.getElementById("descRuInput-recesipition").value = element["descriptionru"];
+                        document.getElementById("descEnInput-recesipition").value = element["descriptionen"];
+                        sceditor.instance(document.querySelectorAll("#editor")[0]).val(sceditor.instance(document.querySelectorAll("#editor")[0]).toBBCode(element["bodyru"]));
+                        sceditor.instance(document.querySelectorAll("#editor")[1]).val(sceditor.instance(document.querySelectorAll("#editor")[1]).toBBCode(element["bodyen"]));
+                    }
+                });
 
-
-                document.getElementById("recipient-statusInput").value = status;
-                document.getElementById("recipient-gameInput").value = game;
             }
 
             function deleteData(object)
@@ -261,12 +274,12 @@
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'deleteProduct', id: id},
+                data: {method: 'deleteAnnounce', id: id},
                     success: function(response) {
                         if(response["succes"] == true)
                         {
                             document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
-                            Продукт успешно удален
+                            Анонс успешно удален
                             </div>`;
 
                             loadItems()
@@ -286,15 +299,18 @@
 
             function savedata()
             {
-                let id = document.getElementById("recipient-id").value;
-                let name = document.getElementById("recipient-name").value;
-                let status = document.getElementById("recipient-statusInput").value;
-                let game = document.getElementById("recipient-gameInput").value;
+                let id = document.getElementById("recipent-id").value;
+                let nameru = document.getElementById("nameRuInput-recesipition").value;
+                let nameen = document.getElementById("nameEnInput-recesipition").value;
+                let descru = document.getElementById("descRuInput-recesipition").value;
+                let descen = document.getElementById("descEnInput-recesipition").value;
+                var bodyru = sceditor.instance(document.querySelectorAll("#editor")[0]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[0]).val(), true); 
+                var bodyen = sceditor.instance(document.querySelectorAll("#editor")[1]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[1]).val(), true); 
 
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'editProduct', id: id, text: name, status: status, game: game},
+                data: {method: 'editAnnounce', id: id, nameru: nameru, nameen: nameen, descriptionru: descru, descriptionen: descen, bodyru: bodyru, bodyen: bodyen},
                     success: function(response) {
                         if(response["succes"] == true)
                         {
@@ -322,9 +338,9 @@
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'getProductsAll'},
+                data: {method: 'getAnnounce'},
                 success: function(response) {
-                        console.log(response)
+                        allItems = response
                         document.getElementById("table").innerHTML = `<thead>
                         <tr>
                             <th scope="col">#</th>
@@ -338,12 +354,10 @@
                             document.getElementById("table").innerHTML += 
                             `<tr>
                                 <th scope="row">${element["id"]}</th>
-                                <td>${element["name"]}</td>
-                                <td>${element["img"]}</td>
-                                <td>${element["status"]}</td>
-                                <td>${element["game"]}</td>
+                                <td>${element["nameru"]} | ${element["nameen"]}</td>
+                                <td>${element["descriptionru"]} | ${element["descriptionen"]}</td>
                                 <td>
-                                    <button type="button" class="btn btn-secondary" onclick="inputData(this)" x-id="${element['id']}" x-name="${element['name']}" x-status="${element['statusID']}" x-game="${element['games']}" data-bs-toggle="modal" data-bs-target="#exampleModal">Редактировать</button>
+                                    <button type="button" class="btn btn-secondary" onclick="inputData(this)" x-id="${element['id']}"  data-bs-toggle="modal" data-bs-target="#exampleModal">Редактировать</button>
                                     <button type="button" x-id="${element['id']}" onclick="deleteData(this)" class="btn btn-danger">Удалить</button>
                                 </td>
                             </tr>`;

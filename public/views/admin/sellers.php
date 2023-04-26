@@ -77,18 +77,18 @@
                             Покупки
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/filters" class="nav-link text-white">
+                            <svg class="bi me-2" width="16" height="16"></svg>
+                            Фильтры
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="table-box" style="width: 100%; margin-left:280px;">
                 <table class="table table-striped" id="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Оплачено</th>
-                        <th scope="col">Валюта</th>
-                        <th scope="col">uuid</th>
-                        <th scope="col">Кошелек</th>
-                        <th scope="col">Статус</th>
                     </tr>
                     </thead>
                     <tbody>
