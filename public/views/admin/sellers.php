@@ -177,7 +177,7 @@
                             `<tr>
                                 <th scope="row">${element["id"]}</th>
                                 <td>${element["amount"]} ${element["currency"]}</td>
-                                <td>${element["to_currency"]}$</td>
+                                <td>${element["to_currency"]}</td>
                                 <td>${element["uuid"]}</td>
                                 <td>${element["adress"]}</td>
                                 <td><button type="button" class="btn btn-success">Оплачено</button></td>

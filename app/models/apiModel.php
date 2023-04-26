@@ -75,7 +75,7 @@ class apiModel extends Model{
     */
     function getSellers(){
         return $this->DataBase::Query(
-            "SELECT * FROM payments WHERE payment_status = 'success'"
+            "SELECT * FROM payments WHERE payment_status = 'paid' OR payment_status = 'paid_over'"
         );
     }
 
@@ -210,9 +210,10 @@ class apiModel extends Model{
      * Запрос в базу данных на редактирование статуса
      * @param string $id
      * @param string $text
+     * @param string $color
      * @return True|False
     */
-    function editStatus($id, $text){
+    function editStatus($id, $text, $color){
 
         $isExists = DataBase::Query(
             "SELECT id FROM status_table WHERE id = ?",
@@ -221,9 +222,10 @@ class apiModel extends Model{
             ]);
 
         if($isExists != null){
-            DataBase::QueryUpd("UPDATE status_table SET name = ? WHERE id = ?",
+            DataBase::QueryUpd("UPDATE status_table SET name = ?, color = ? WHERE id = ?",
             [
                 $text,
+                $color,
                 $id
             ]);
             return True;
@@ -236,10 +238,11 @@ class apiModel extends Model{
      * @param string $text
      * @return True|False
     */
-    function addStatus($text){
-        DataBase::QueryUpd("INSERT INTO status_table VALUES(Null, ?)",
+    function addStatus($text, $color){
+        DataBase::QueryUpd("INSERT INTO status_table VALUES(Null, ?, ?)",
         [
-            $text
+            $text,
+            $color
         ]);
         return True;
     }
@@ -469,5 +472,42 @@ class apiModel extends Model{
         return DataBase::Query("SELECT productType, COUNT(*) as count_keys
         FROM key_table
         GROUP BY productType");
+    }
+
+
+    /**
+     *  Запрос на получение ключей
+     */
+    function getKeysAll()
+    {
+        return DataBase::Query("SELECT key_table.id, key_table.key_text, products_type.name, key_table.productType, (SELECT name FROM product WHERE id = products_type.id) as 'pName'
+        FROM key_table
+        INNER JOIN products_type ON products_type.id = key_table.productType
+        INNER JOIN product ON product.id = products_type.id");
+    }
+
+    /**
+     *  Запрос на удаление ключа
+     */
+    function deleteKey($id)
+    {
+        DataBase::QueryUpd("DELETE FROM key_table WHERE id = ?", [
+            $id
+        ]);
+        return True;
+    }
+
+    /**
+     *  Запрос на создание ключа
+     */
+
+     function createKey($id, $product){
+
+        DataBase::QueryUpd("INSERT INTO key_table VALUES(Null, ?, ?)",
+        [
+            $id,
+            $product
+        ]);
+        return True;
     }
 }

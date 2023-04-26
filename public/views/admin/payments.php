@@ -157,7 +157,7 @@
                 $.ajax({
                 url: "/api",
                 type: "POST",
-                data: {method: 'getSellers'},
+                data: {method: 'getPayments'},
                 success: function(response) {
                         console.log(response)
                         document.getElementById("table").innerHTML = `<thead>
@@ -168,6 +168,7 @@
                         <th scope="col">uuid</th>
                         <th scope="col">Кошелек</th>
                         <th scope="col">Статус</th>
+                        <th scope="col">Товары</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -181,6 +182,7 @@
                                 <td>${element["uuid"]}</td>
                                 <td>${element["adress"]}</td>
                                 <td>${element["payment_status"]}</td>
+                                <td>${element["items"]}</td>
                             </tr>`;
                         });
                     }

@@ -161,12 +161,18 @@ class Validations
     *|  Валидация метода api - addStatus
     *|-----------------------------------------------------------------
     **/
-    static function addStatus($name)
+    static function addStatus($name, $color)
     {
         if(!isset($name) || empty($name))
             Utils::sendAjaxRequest([
                 "response" => false,
                 "error" => "Name undefined"
+            ]);
+
+        if(!isset($color) || empty($color))
+            Utils::sendAjaxRequest([
+                "response" => false,
+                "error" => "Color undefined"
             ]);
     }
 

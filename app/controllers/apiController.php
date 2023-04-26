@@ -131,8 +131,8 @@ class apiController extends Controller
             }
 
             /** 
-             * Если значение параметра "method" в запросе равно "getProducts",
-             * то вызывается метод getProducts() модели  для получения данных о продуктах в играх.
+             * Если значение параметра "method" в запросе равно "getStatus",
+             * то вызывается метод getStatus() модели  для получения данных о продуктах в играх.
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
              * и "items" содержащим массив продуктов
              */
@@ -345,14 +345,11 @@ class apiController extends Controller
              * Если значение параметра "method" в запросе равно "editProduct",
              * то вызывается метод editProduct() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
 
             if($_POST["method"] == "editStatus"){
                 
-                Validations::editTitle($_POST['id'], $_POST["text"]);
-
-               if($this->model->editStatus($_POST['id'], $_POST["text"])){
+               if($this->model->editStatus($_POST['id'], $_POST["text"], $_POST["color"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true
@@ -371,14 +368,13 @@ class apiController extends Controller
              * Если значение параметра "method" в запросе равно "addStatus",
              * то вызывается метод addStatus() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
 
             if($_POST["method"] == "addStatus"){
                 
-                Validations::addStatus($_POST["name"]);
+                Validations::addStatus($_POST["name"], $_POST["color"]);
 
-               if($this->model->addStatus($_POST["name"])){
+               if($this->model->addStatus($_POST["name"], $_POST["color"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => true
@@ -388,7 +384,7 @@ class apiController extends Controller
                     Utils::sendAjaxRequest([
                         "response" => true,
                         "succes" => false,
-                        "error" => "Status not exists"
+                        "error" => "Error"
                     ]); 
                 }
             }
@@ -397,7 +393,6 @@ class apiController extends Controller
              * Если значение параметра "method" в запросе равно "deleteStatus",
              * то вызывается метод addStatus() модели  для редактирования данных о продукте
              * Результат передается в виде JSON-ответа с параметрами "response" равным true,
-             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
              */
 
             if($_POST["method"] == "deleteStatus"){
@@ -636,7 +631,80 @@ class apiController extends Controller
                         "succes" => false,
                     ]); 
                 }
-            }   
+            }  
+            
+            /** 
+             * Если значение параметра "method" в запросе равно "getKeys",
+             * то вызывается метод getKeys() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+            if($_POST["method"] == "getKeys"){
+                
+                $data = $this->model->getKeysAll();
+
+                if($data != null){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true,
+                        "items" => $data
+                    ]);
+                } else {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                    ]); 
+                }
+            }
+            
+            /** 
+             * Если значение параметра "method" в запросе равно "deleteKey",
+             * то вызывается метод deleteKey() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+            if($_POST["method"] == "deleteKey"){
+                
+                Validations::deleteId($_POST["id"]);
+
+               if($this->model->deleteKey($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Key not exists"
+                    ]); 
+                }
+            }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "deleteKey",
+             * то вызывается метод deleteKey() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * Защита ключем на основании IP сервера и версии API md5(ip . api_version)
+             */
+
+             if($_POST["method"] == "createKey"){
+                
+               if($this->model->createKey($_POST["key"], $_POST["product"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Key not exists"
+                    ]); 
+                }
+            }
 
         }
         else{
