@@ -22,70 +22,7 @@
                     <div class="archive-desc">
                         <p class="lang" data-text="announcement_archive-desc">{text}</p>
                     </div>
-                    <div class="archive-wrapper">
-                        <div class="announcements-item">
-                            <img class="announcements_image" src="public/img/announcements/1.png">
-                            <div class="announcements_item-info">
-                                <div class="announcements_item-date">
-                                    <img src="public/img/date.svg">
-                                    <p>22.06.2023</p>
-                                </div>
-                                <div class="announcements_item-name">
-                                    <p>Announcements Name</p>
-                                </div>
-                                <div class="announcements_item-description">
-                                    <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
-                                </div>
-                                <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
-                                        {text}
-                                        <img src="public/img/arrow.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="announcements-item">
-                            <img class="announcements_image" src="public/img/announcements/1.png">
-                            <div class="announcements_item-info">
-                                <div class="announcements_item-date">
-                                    <img src="public/img/date.svg">
-                                    <p>22.06.2023</p>
-                                </div>
-                                <div class="announcements_item-name">
-                                    <p>Announcements Name</p>
-                                </div>
-                                <div class="announcements_item-description">
-                                    <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
-                                </div>
-                                <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
-                                        {text}
-                                        <img src="public/img/arrow.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="announcements-item">
-                            <img class="announcements_image" src="public/img/announcements/1.png">
-                            <div class="announcements_item-info">
-                                <div class="announcements_item-date">
-                                    <img src="public/img/date.svg">
-                                    <p>22.06.2023</p>
-                                </div>
-                                <div class="announcements_item-name">
-                                    <p>Announcements Name</p>
-                                </div>
-                                <div class="announcements_item-description">
-                                    <p>https://sellix.io/HewStore [PayPal, Credit & Debit Card, BTC, ETH, LTC, XLM, Apple Pay] ...</p>
-                                </div>
-                                <div class="announcements_item-link">
-                                    <a class="lang" data-text="announcements_open-link" href="../layout-pages/announcements-page.html">
-                                        {text}
-                                        <img src="public/img/arrow.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="archive-wrapper">                        
                     </div>
                 </div>
             </div>
@@ -95,5 +32,6 @@
 <script src="public/js/translate.js"></script>
 <script src="public/js/min/event-click-min.js"></script>
 <script src="vendor/jquery.js"></script>
+<script src="public/js/ajax-events-archive.js"></script>
 </body>
 </html>
