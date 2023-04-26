@@ -84,11 +84,6 @@
                 <table class="table table-striped" id="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Название</th>
-                        <th scope="col">Картинка</th>
-                        <th scope="col">Статус</th>
-                        <th scope="col">Игра</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -104,11 +99,23 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>!! Важно, укажи прошлые параметры статуса и игры при изменении</p>
                     <div class="mb-3">
-                      <input type="text" class="form-control" id="recipient-id" hidden>
-                      <label for="recipient-name" class="col-form-label">Имя:</label>
-                      <input type="text" class="form-control" id="recipient-name">
+                        <input type="text" class="form-control" name="name" id="nameRuInput-recesipition" placeholder="Имя[RU]">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" id="nameEnInput-recesipition" placeholder="Имя[EN]">
+                    </div>
+                    <div class="mb-3">
+                        <textarea type="text" class="form-control" name="name" id="descRuInput-recesipition" placeholder="Описание [RU]"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" name="name" id="descEnInput-recesipition" placeholder="Описание [EN]"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="editor"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="editor"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -127,13 +134,27 @@
                 <div class="modal-body">
                   <form id="fileUploadForm" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="name" id="nameInput" placeholder="Имя">
+                        <input type="text" class="form-control" name="name" id="nameRuInput" placeholder="Имя[RU]">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" id="nameEnInput" placeholder="Имя[EN]">
+                    </div>
+                    <div class="mb-3">
+                        <textarea type="text" class="form-control" name="name" id="descRuInput" placeholder="Описание [RU]"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" name="name" id="descEnInput" placeholder="Описание [EN]"></textarea>
                     </div>
                     <div class="mb-3">
                         <input type="file" class="form-control" name="file" id="fileInput">
                     </div>
-                    <textarea id="editor"></textarea>
-                </form>
+                    <div class="mb-3">
+                        <textarea id="editor"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea id="editor"></textarea>
+                    </div>
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" onclick="createData()" data-bs-dismiss="modal" aria-label="Close">Создать</button>
@@ -143,6 +164,24 @@
           </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="../vendor/jquery.js"></script>
+        <!-- Include the default theme -->
+        <link rel="stylesheet" href="/vendor/minified/themes/default.min.css" />
+
+        <!-- Include the editors JS -->
+        <script src="/vendor/minified/sceditor.min.js"></script>
+
+        <!-- Include the BBCode or XHTML formats -->
+        <script src="/vendor/minified/formats/bbcode.js"></script>
+        <script src="/vendor/minified/formats/xhtml.js"></script>
+        <script>
+            var textarea = document.querySelectorAll("#editor");
+            textarea.forEach(element => {
+                sceditor.create(element, {
+                    format: 'bbcode',
+                    style: '/vendor/minified/themes/content/default.min.css'
+                });
+            });
+        </script>
         <script>
 
             function clearAlert()
@@ -152,19 +191,25 @@
 
             function createData()
             {
-                var status = $("#statusInput").val();
-                var game = $("#gameInput").val();
-                var name = $("#nameInput").val(); 
+                var nameru = $("#nameRuInput").val();
+                var nameen = $("#nameEnInput").val();
+                var descriptionru = $("#descRuInput").val(); 
+                var descriptionen = $("#descEnInput").val(); 
+                var bodyru = sceditor.instance(document.querySelectorAll("#editor")[2]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[2]).val(), true); 
+                var bodyen = sceditor.instance(document.querySelectorAll("#editor")[3]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[3]).val(), true); 
                 var fileInput = $("#fileInput")[0];
                 var file = fileInput.files[0]; 
                 
                 var formData = new FormData(); 
                 
-                formData.append("name", name); 
                 formData.append("file", file);
-                formData.append("status", status);
-                formData.append("game", game);
-                formData.append("method", "createProduct");
+                formData.append("nameru", nameru); 
+                formData.append("nameen", nameen);
+                formData.append("descriptionru", descriptionru);
+                formData.append("descriptionen", descriptionen);
+                formData.append("bodyru", bodyru);
+                formData.append("bodyen", bodyen);
+                formData.append("method", "createAnnounce");
 
                 $.ajax({
                     url: "/api",
@@ -284,9 +329,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Название</th>
-                            <th scope="col">Картинка</th>
-                            <th scope="col">Статус</th>
-                            <th scope="col">Игра</th>
+                            <th scope="col">Описание</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -310,22 +353,6 @@
             }
 
             loadItems()
-        </script>
-        <!-- Include the default theme -->
-        <link rel="stylesheet" href="/vendor/minified/themes/default.min.css" />
-
-        <!-- Include the editors JS -->
-        <script src="/vendor/minified/sceditor.min.js"></script>
-
-        <!-- Include the BBCode or XHTML formats -->
-        <script src="/vendor/minified/formats/bbcode.js"></script>
-        <script src="/vendor/minified/formats/xhtml.js"></script>
-        <script>
-            var textarea = document.getElementById("editor");
-            sceditor.create(textarea, {
-                format: 'bbcode',
-                style: '/vendor/minified/themes/content/default.min.css'
-            });
         </script>
     </body>
 </html>

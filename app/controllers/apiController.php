@@ -706,6 +706,41 @@ class apiController extends Controller
                 }
             }
 
+            
+            /** 
+             * Если значение параметра "method" в запросе равно "createAnnounce",
+             * то вызывается метод createAnnounce() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+
+             if($_POST["method"] == "createAnnounce"){
+                
+                $targetDir = "public/img/announcements/";
+                $targetFile = $targetDir . basename($_FILES["file"]["name"]);
+
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+                    if($this->model->createAnnounce(
+                        $_POST["nameru"], 
+                        $_POST["nameen"],
+                        $_POST["descriptionru"],
+                        $_POST["descriptionen"],
+                        basename($_FILES["file"]["name"]),
+                        $_POST["bodyru"],
+                        $_POST["bodyen"]
+                    )){
+                         Utils::sendAjaxRequest([
+                             "response" => true,
+                             "succes" => true
+                         ]);
+                     }
+                } else {
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                    ]); 
+                }
+             }
+
         }
         else{
             Utils::sendAjaxRequest([

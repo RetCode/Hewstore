@@ -510,4 +510,25 @@ class apiModel extends Model{
         ]);
         return True;
     }
+
+    /**
+     *  Запрос на создание анонса
+     */
+
+     function createAnnounce($nameru, $nameen, $descriptionru, $descriptionen, $img, $bodyru, $bodyen){
+        
+        DataBase::QueryUpd('INSERT INTO announcements VALUES(Null, ?, ?, ?, ?, ?, ?, ?, ?)',
+        [
+            $nameru,
+            $nameen,
+            $descriptionru,
+            $descriptionen,
+            $img,
+            $bodyru,
+            $bodyen,
+            time()
+        ]);
+        return True;
+    }
+    
 }
