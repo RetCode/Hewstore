@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="public/css/min/index-min.css">
     <link rel="stylesheet" href="public/css/main-adaptive.css">
     <link rel="icon" type="image/x-icon" href="public/img/icon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/2.8.6/clipboard-polyfill.js"></script>
 	<title>HewStore</title>
 </head>
 <body>
@@ -173,10 +174,10 @@
                             </div>
                             <div class="contacts_item-info">
                                 <p class="contacts-header">Discord</p>
-                                <a id="copy_target" class="contacts-link copy_target">
+                                <button id="copy_target" class="contacts-link copy_target">
                                     <p>HewHewLalalay#5853</p>
                                     <input id="text" type="text" value="HewHewLalalay#5853">
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div class="contacts-item">
