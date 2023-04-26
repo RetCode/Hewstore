@@ -259,6 +259,8 @@ body::-webkit-scrollbar
     font-size: 12px;
     color: #8a8e9b;
     width: 100%;
+
+    transition: 0.2s ease all;
 }
 
 .button-box button
@@ -342,6 +344,12 @@ body::-webkit-scrollbar
     align-items: center;
 
     margin-left: 50px;
+}
+
+.unactive
+{
+    opacity: .8;
+    cursor:no-drop !important;
 }
 
 /* loading style */
