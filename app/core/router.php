@@ -35,6 +35,7 @@ class Router
             case "admin/promo": Router::done("admin", "promo"); break;
             case "admin/payments": Router::done("admin", "payments"); break;
             case "admin/sellers": Router::done("admin", "sellers"); break;
+            case "admin/filters": Router::done("admin", "filters"); break;
             case "admin": Router::done("admin", "admin"); break;
             default: Router::error(404);
         }

@@ -579,4 +579,43 @@ class apiModel extends Model{
         return DataBase::Query('SELECT * FROM announcements');
     }
     
+
+    /**
+     *  Запрос на создание промокода
+     */
+
+     function createPromo($promo, $life, $count, $product, $procent){
+        
+        DataBase::QueryUpd('INSERT INTO promo VALUES(Null, ?, ?, ?, ?, ?)',
+        [
+            $promo,
+            $life,
+            $count,
+            $product,
+            $procent
+        ]);
+
+        return True;
+    }
+
+    /**
+     *  Запрос на удаление проиокода
+     */
+
+     function deletePromo($id){
+        
+        DataBase::QueryUpd('DELETE FROM promo WHERE id = ?',
+        [
+            $id
+        ]);
+        return True;
+    }
+
+    /**
+     *  Запрос на получение промокодов
+     */
+
+     function getPromo(){
+        return DataBase::Query('SELECT * FROM promo');
+    }
 }

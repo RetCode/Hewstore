@@ -5,6 +5,7 @@ use app\core\Utils;
 use app\core\Validations;
 use app\core\View;
 use app\interfaces\LocalCachedUI;
+use app\interfaces\SessionUI;
 
 /**
  * apiController класс является контроллером для обработки API-запросов.
@@ -301,6 +302,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "editGame"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::editTitle($_POST['id'], $_POST["text"]);
 
                if($this->model->editGame($_POST['id'], $_POST["text"])){
@@ -327,6 +331,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "editProduct"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::editTitle($_POST['id'], $_POST["text"]);
 
                if($this->model->editProduct($_POST['id'], $_POST["text"], $_POST["status"], $_POST["game"])){
@@ -353,6 +360,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "editProductType"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::editTitle($_POST['id'], $_POST["text"]);
 
                if($this->model->editProductType($_POST['id'], $_POST["text"], $_POST["product"], $_POST["cost"])){
@@ -378,6 +388,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "editStatus"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                if($this->model->editStatus($_POST['id'], $_POST["text"], $_POST["color"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
@@ -401,6 +414,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "addStatus"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::addStatus($_POST["name"], $_POST["color"]);
 
                if($this->model->addStatus($_POST["name"], $_POST["color"])){
@@ -426,6 +442,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "deleteStatus"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteStatus($_POST["id"])){
@@ -452,6 +471,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "deleteGame"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteGame($_POST["id"])){
@@ -478,6 +500,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "deleteProduct"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteProduct($_POST["id"])){
@@ -504,6 +529,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "deleteProductType"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteProductType($_POST["id"])){
@@ -574,6 +602,9 @@ class apiController extends Controller
              */
             if($_POST["method"] == "createGame"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 $targetDir = "public/img/games/";
                 $targetFile = $targetDir . basename($_FILES["file"]["name"]);
                 $name = $_POST["name"];
@@ -600,6 +631,9 @@ class apiController extends Controller
              */
             if($_POST["method"] == "createProduct"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 $targetDir = "public/img/products/";
                 $targetFile = $targetDir . basename($_FILES["file"]["name"]);
                 $name = $_POST["name"];
@@ -626,6 +660,9 @@ class apiController extends Controller
              */
             if($_POST["method"] == "createProductType"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 if($this->model->createProductType($_POST["name"], $_POST["game"], $_POST["cost"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
@@ -669,6 +706,9 @@ class apiController extends Controller
              */
             if($_POST["method"] == "getKeys"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 $data = $this->model->getKeysAll();
 
                 if($data != null){
@@ -694,6 +734,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "deleteKey"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteKey($_POST["id"])){
@@ -719,7 +762,10 @@ class apiController extends Controller
              */
 
              if($_POST["method"] == "createKey"){
-                
+
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                if($this->model->createKey($_POST["key"], $_POST["product"])){
                     Utils::sendAjaxRequest([
                         "response" => true,
@@ -744,6 +790,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "createAnnounce"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 $targetDir = "public/img/announcements/";
                 $targetFile = $targetDir . basename($_FILES["file"]["name"]);
 
@@ -778,6 +827,9 @@ class apiController extends Controller
 
             if($_POST["method"] == "deleteAnnounce"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                 Validations::deleteId($_POST["id"]);
 
                if($this->model->deleteAnnounce($_POST["id"])){
@@ -803,6 +855,9 @@ class apiController extends Controller
 
              if($_POST["method"] == "editAnnounce"){
                 
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
                if($this->model->editAnnounce(
                     $_POST["id"], 
                     $_POST["nameru"], 
@@ -825,6 +880,53 @@ class apiController extends Controller
                     ]); 
                 }
             }
+
+            /** 
+             * Если значение параметра "method" в запросе равно "deletePromo",
+             * то вызывается метод deletePromo() модели  для редактирования данных о продукте
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             */
+
+             if($_POST["method"] == "deletePromo"){
+                
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
+                Validations::deleteId($_POST["id"]);
+
+               if($this->model->deletePromo($_POST["id"])){
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => true
+                    ]);
+                }
+                else{
+                    Utils::sendAjaxRequest([
+                        "response" => true,
+                        "succes" => false,
+                        "error" => "Promo not exists"
+                    ]); 
+                }
+            }
+
+            /**
+             * Если значение параметра "method" в запросе равно "getPromo",
+             * то вызывается метод getPromo() модели  для получения данных о играх.
+             * Результат передается в виде JSON-ответа с параметрами "response" равным true,
+             * и "items" содержащим массив промокодов
+             */
+            if($_POST["method"] == "getPromo"){
+
+                if(SessionUI::get("admin_auth") != True)
+                    header("Location: /admin");
+
+                $promo = $this->model->getPromo();
+
+                Utils::sendAjaxRequest([
+                    "response" => true,
+                    "items" => json_decode(json_encode($promo),true)
+                ]);
+            }   
 
         }
         else{

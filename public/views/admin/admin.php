@@ -71,11 +71,13 @@
             <p>Войти в Админ Панель</p>
         </div>
         <div class="authorization_inputs-block bg-dark">
-            <input type="text" placeholder="Login">
-            <input type="text" placeholder="Password">
-            <div class="button-block">
-                <button class="btn btn-primary">Войти</button>
-            </div>
+            <form action="/admin" method="post" style="display: flex; flex-direction:column;">
+                <input type="text" name="login" placeholder="Login">
+                <input type="password" name="password" placeholder="Password">
+                <div class="button-block">
+                    <button class="btn btn-primary">Войти</button>
+                </div>
+            </form>
         </div>
         
     </div>
