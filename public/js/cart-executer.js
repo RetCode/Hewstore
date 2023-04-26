@@ -83,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
+
+
 function generateItems()
 {
     let products = document.querySelector(".products");  
