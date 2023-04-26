@@ -62,13 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 items.innerHTML += `<div class="item">
                     <div class="item-image">
-                        <img src="public/img/products/${img}">
-                        <p>${name}</p>
-                        <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                        <div class="img-block">
+                            <img src="public/img/products/${img}">
+                        </div>
+                        <div class="tags-block">
+                            <p>${name}</p>
+                            <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                        </div>
                     </div>
                     <div class="item_bottom-block">                                    
                         <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
-                        <a href="../layout-pages/item_info-page.html">
+                        <a href="info?id=${id}">
                             ${langMore}
                             <img src="../public/img/arrow.svg">
                         </a>                              
@@ -186,13 +190,17 @@ function filterWriter()
 
         items.innerHTML += `<div class="item">
             <div class="item-image">
-                <img src="public/img/products/${img}">
-                <p>${name}</p>
-                <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                <div class="img-block">
+                    <img src="public/img/products/${img}">
+                </div>
+                <div class="tags-block">
+                    <p>${name}</p>
+                    <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                </div>
             </div>
             <div class="item_bottom-block">                                    
                 <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
-                <a href="#">
+                <a href="info?id=${id}">
                     ${langMore}
                     <img src="../public/img/arrow.svg">
                 </a>                              
@@ -367,13 +375,17 @@ findInput.addEventListener('keyup', () => {
                 {
                     items.innerHTML += `<div class="item">
                         <div class="item-image">
-                            <img src="public/img/products/${img}">
-                            <p>${name}</p>
-                            <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                            <div class="img-block">
+                                <img src="public/img/products/${img}">
+                            </div>
+                            <div class="tags-block">
+                                <p>${name}</p>
+                                <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                            </div>
                         </div>
                         <div class="item_bottom-block">                                    
                             <button x-data="${id}" onclick="showProducts(this)"><img class="cart" src="../public/img/cart-dark.svg">${langCart}</button>
-                            <a href="#">
+                            <a href="info?id=${id}">
                                 ${langMore}
                                 <img src="../public/img/arrow.svg">
                             </a>                              
@@ -385,13 +397,17 @@ findInput.addEventListener('keyup', () => {
             {
                 items.innerHTML += `<div class="item">
                         <div class="item-image">
-                            <img src="public/img/products/${img}">
-                            <p>${name}</p>
-                            <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                            <div class="img-block">
+                                <img src="public/img/products/${img}">
+                            </div>
+                            <div class="tags-block">
+                                <p>${name}</p>
+                                <p class="green" style="color:${color}; background-color:${hexToRgba(color, 0.2)}">${status}</p>
+                            </div>
                         </div>
                         <div class="item_bottom-block">                                    
                             <button x-data="${id}" onclick="showProducts(this)"><img class="cart" x-data="${id}" onclick="showProducts(this)" src="../public/img/cart-dark.svg">${langCart}</button>
-                            <a href="#">
+                            <a href="info?id=${id}">
                                 ${langMore}
                                 <img src="../public/img/arrow.svg">
                             </a>                              
