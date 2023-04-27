@@ -140,7 +140,7 @@ function generateItems()
             if(maxValue == undefined)
             {
                 products.innerHTML += `<div class="product-count-block">
-                    <div class="product-count_general-block">
+                    <div class="product-count_general-block product-count_items-block">
                         <div class="product-img-box">
                             <img src="/public/img/products/${img}">
                         </div>
@@ -166,7 +166,7 @@ function generateItems()
             else 
             {
                 products.innerHTML += `<div class="product-count-block">
-                    <div class="product-count_general-block">
+                    <div class="product-count_general-block product-count_items-block">
                         <div class="product-img-box">
                             <img src="/public/img/products/${img}">
                         </div>
