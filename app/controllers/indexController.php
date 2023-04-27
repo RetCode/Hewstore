@@ -9,8 +9,6 @@ class indexController extends Controller
 {
     function indexAction()
     {
-        // Utils::sendMail("HewStore Buy", "test", "PURCHASE","xoheveras.tm@gmail.com");
-
         $this->view->render_html([
             "HEADER" => Utils::getTemplates("header.template")
         ]);
@@ -100,6 +98,26 @@ class indexController extends Controller
     {
         $this->view->render_html([
             "HEADER" => Utils::getTemplates("header_other.template")
+        ]);
+    }
+
+    function announcementsAction()
+    {
+        Validations::announcementsAction($_GET["id"]);
+
+        $announcment = $this->model->getInfoAnnouncment($_GET['id']);
+
+        $this->view->render_html([
+            "HEADER" => Utils::getTemplates("header_other.template"),
+            "IMG" => $announcment["img"],
+            "BODY-RU" => $announcment["bodyru"],
+            "BODY-EN" => $announcment["bodyen"],
+            "DESC-RU" => $announcment["descriptionru"],
+            "DESC-EN" => $announcment["descriptionen"],
+            "TITLE-RU" => $announcment["nameru"],
+            "TITLE-EN" => $announcment["nameen"],
+            "DATE-EN" => date("m/d/Y", $announcment["date"]),
+            "DATE-RU" => date("d.m.Y", $announcment["date"]),
         ]);
     }
 }

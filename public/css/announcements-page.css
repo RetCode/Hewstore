@@ -112,6 +112,8 @@ body::-webkit-scrollbar
     width: 100%;
 
     padding-top: 20px;
+
+    margin-bottom: 15px;
 }
 
 .announcements_desc p
@@ -120,4 +122,9 @@ body::-webkit-scrollbar
     font-weight: 500;
     color: white;
     word-wrap: break-word;
+}
+
+.ru, .en
+{
+    display: none;
 }

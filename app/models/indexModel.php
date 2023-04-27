@@ -29,6 +29,20 @@ class indexModel extends Model
         }
     }
 
+    function getInfoAnnouncment($id)
+    {
+        $announcment = DataBase::Query("SELECT * FROM announcements WHERE id = ?",
+        [
+            $id
+        ]);
+        if($announcment != null){
+            return $announcment[0];
+        }
+        else{
+            header("Location: /");
+        } 
+    }
+
     function getPayInfo($hash)
     {
         $result = DataBase::Query("SELECT * FROM payments WHERE uuid = ?",[

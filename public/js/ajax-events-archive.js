@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for(let i = 0; i < data["items"].length; i++)
             {
+                date_announce = new Date(data["items"][i]["date"] * 1000)
                 let id = data["items"][i]["id"];
                 let name = limitStr(lang == "ru" ? data["items"][i]["nameru"] : data["items"][i]["nameen"], 45);
                 let desc = limitStr(lang == "ru" ? data["items"][i]["descriptionru"] : data["items"][i]["descriptionen"], 100);
                 let img = data["items"][i]["img"];
-                let date = data["items"][i]["date"]
+                let date = lang == "ru" ? date_announce.getDate() + "." + (date_announce.getMonth() + 1) + "." + date_announce.getFullYear() : (date_announce.getMonth() + 1) + "/" + date_announce.getDate() + "/" + date_announce.getFullYear() 
 
                 // loadingGIF.remove();
 
