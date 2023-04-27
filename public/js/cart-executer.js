@@ -146,7 +146,7 @@ function generateItems()
                         </div>
                         <div class="product-count-text-box">
                             <p>${productTitle}: ${productName}</p>
-                            <p class="dark-text">${gameName} Software</p>
+                            <p class="dark-text">${gameName.toLowerCase().replace(/(^|\s)\S/g, (l) => l.toUpperCase())} Software</p>
                         </div>
                     </div>
                     <div class="product-count_general-block">
@@ -172,7 +172,7 @@ function generateItems()
                         </div>
                         <div class="product-count-text-box">
                             <p>${productTitle}: ${productName}</p>
-                            <p class="dark-text">${gameName} Software</p>
+                            <p class="dark-text">${gameName.toLowerCase().replace(/(^|\s)\S/g, (l) => l.toUpperCase())} Software</p>
                         </div>
                     </div>
                     <div class="product-count_general-block">
