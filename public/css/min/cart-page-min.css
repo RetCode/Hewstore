@@ -247,6 +247,11 @@ body::-webkit-scrollbar
     margin-top: 20px;   
 }
 
+.not_avalible-text
+{
+    width: auto;
+}
+
 .input-block .input-coupon
 {
     margin-bottom: 10px;

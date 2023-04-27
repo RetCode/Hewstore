@@ -153,7 +153,7 @@ function generateItems()
                         <div class="input-box">
                         </div>
                         <div class="price_delete-block">
-                            <div class="total-number-box">
+                            <div class="total-number-box not_avalible-text">
                                 <p>${noAvalible}</p>
                             </div>
                             <div class="trash-box" x-data="${element["id"]}" onclick="removeItemById(this)">
