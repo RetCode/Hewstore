@@ -61,7 +61,7 @@
                                     <input id="cart-mail" type="mail" class="langInput" data-text="cart-mail" placeholder="{text}">
                                 </div>
                                 <div class="button-box">
-                                    <button class="lang unactive" data-text="cart-pay-button">{text}</button>
+                                    <button disabled class="lang pay-btn unactive" data-text="cart-pay-button">{text}</button>
                             </div>
                     </div>                 
                 </div>

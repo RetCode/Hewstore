@@ -289,7 +289,6 @@ function reLoadCart()
     {
         if(localStorage.getItem("cart") != [])
         {
-            console.log(localStorage.getItem("cart"));
             let cart = JSON.parse(localStorage.getItem("cart"))["items"];
             cartNotify.innerHTML = cart.length;
             
@@ -371,6 +370,17 @@ function rightCard()
         cost.innerHTML = currentCost.toFixed(2);
     } catch {
         cost.innerHTML = currentCost.toFixed(2);
+    }
+
+    if(currentCost > 0)
+    {
+        document.querySelector(".pay-btn").disabled = false; 
+        document.querySelector(".pay-btn").classList.remove("unactive"); 
+    }
+    else
+    {
+        document.querySelector(".pay-btn").disabled = true; 
+        document.querySelector(".pay-btn").classList.add("unactive"); 
     }
 }
 
