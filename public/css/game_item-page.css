@@ -220,6 +220,8 @@ body::-webkit-scrollbar
 
     margin: 7px;
 
+    border-radius: 5px;
+
     font-size: 15px;
     font-weight: 600;
     color: white;
