@@ -164,6 +164,8 @@ body::-webkit-scrollbar
 .total-number-box
 {
     margin-right: 5px;
+
+    width: 50px;
 }
 
 .total-number-box p
@@ -238,13 +240,6 @@ body::-webkit-scrollbar
 {
     display: flex;
     align-items: center;
-
-    max-width: 178px;
-}
-
-.product-count_items-block
-{
-    max-width:max-content;
 }
 
 .input-block
