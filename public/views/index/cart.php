@@ -49,8 +49,8 @@
                                     </div>
                                 </div>
                                 <div class="total-box">
-                                        <p class="lang" data-text="cart-product-cost">{text}</p>
-                                        <p>$ <span id="cost">0</span></p>
+                                        <p class="lang strong-text" data-text="cart-product-cost">{text}</p>
+                                        <p class="strong-text">$ <span id="cost">0</span></p>
                                 </div>
                                 <div class="input-block">
                                     <div class="input_arrow">
