@@ -325,6 +325,11 @@
         margin-bottom: 20px;
     }
 
+    .name-product
+    {
+        width: auto;
+    }
+
     .info-box
     {
         flex-direction: column;
