@@ -1,7 +1,7 @@
 const buttons = [...document.querySelectorAll('.language-button')];
 const links = [...document.querySelectorAll('.navigation-button')];
 let isOpen = document.querySelector('.burger input');
-let error = document.getElementById('enter_promo');
+
 
 
 isOpen.addEventListener('click', () =>{
@@ -18,8 +18,4 @@ buttons.forEach(item =>
         document.querySelector('.language-button.active').classList.remove('active');
         item.classList.add('active')
     })
-})
-
-error.addEventListener('click', () => {
-    document.getElementById('promo').setAttribute("style", "border: 1px solid rgb(142, 57, 52);")
 })

@@ -2,6 +2,11 @@ let productsType;
 let productsTypesName;
 let productsName;
 let keysProducts;
+let error = document.getElementById('enter_promo');
+
+error.addEventListener('click', () => {
+    document.getElementById('promo').setAttribute("style", "border: 1px solid rgb(142, 57, 52);")
+})
 
 document.addEventListener('DOMContentLoaded', () => {
 
