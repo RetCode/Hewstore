@@ -135,7 +135,7 @@ function generateItems()
             if(maxValue == undefined)
             {
                 products.innerHTML += `<div class="product-count-block">
-                    <div class="product-count_left-block">
+                    <div class="product-count_general-block">
                         <div class="product-img-box">
                             <img src="/public/img/products/${img}">
                         </div>
@@ -144,7 +144,7 @@ function generateItems()
                             <p class="dark-text">${gameName} Software</p>
                         </div>
                     </div>
-                    <div class="product-count_right-block"">
+                    <div class="product-count_general-block">
                         <div class="input-box">
                         </div>
                         <div class="price_delete-block">
