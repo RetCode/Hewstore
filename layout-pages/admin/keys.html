@@ -25,7 +25,7 @@
             <div class="menu_links">
                 <ul>
                     <li>
-                        <a class="pages_link" href="">Главная</a>
+                        <a class="pages_link" href="admin.html">Главная</a>
                     </li>
                     <li>
                         <a class="pages_link" href="game.html">Игры</a>
@@ -37,7 +37,7 @@
                         <a class="pages_link" href="types.html">Тип товара</a>
                     </li>
                     <li>
-                        <a class="pages_link active" href="keys.html">Ключи от товара</a>
+                        <a class="pages_link active" href="">Ключи от товара</a>
                     </li>
                     <li>
                         <a class="pages_link" href="tag.html">Тег</a>
@@ -57,12 +57,93 @@
                     <li>
                         <a class="pages_link" href="filters.html">Фильтры</a>
                     </li>
+                    <li>
+                        <button class="add_item-button">Добавить игру</button>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="content-block">
-
+            <div class="content open">
+                <div class="nav-block">
+                    <p>#</p>
+                    <p>Тип продукта</p>
+                    <p>Ключ</p>
+                    <p>Инструменты</p>
+                </div>
+                <div class="table-block">
+                    <div class="item">
+                        <p>id</p>
+                        <p>product_type</p>
+                        <p>key</p>
+                        <div class="button-block">
+                            <button class="edit-button">Редактировать</button>
+                            <button class="delete-button">Удалить</button>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+            <div class="add_item-block">
+                <div class="container">
+                    <div class="add_item-header">
+                        <button class="back_button">
+                            <img src="../../public/img/back.svg">
+                        </button>
+                        <p class="title">Создание новой игры</p>
+                    </div>
+                    <div class="add_item-wrapper">
+                        <input class="add_item pl" type="text" placeholder="Ключ">
+                        <select class="add_item pl">
+                            <option>product_type</option>
+                        </select>
+                        <button class="create_button">Создать</button>                       
+                    </div>
+                </div>                
+            </div>
+            <div class="edit_item-block">
+                <div class="container">
+                    <div class="edit_item-header">
+                        <button class="back_button">
+                            <img src="../../public/img/back.svg">
+                        </button>
+                        <p class="title">Редактирование</p>
+                    </div>
+                    <div class="edit_item-wrapper">
+                        <input class="add_item pl" type="text" placeholder="Ключ">
+                        <select class="add_item pl">
+                            <option>product_type</option>
+                        </select>
+                        <button class="create_button">Сохранить</button>  
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+    <script>
+        newItem = document.querySelector('.add_item-button');
+        let backButton = document.querySelectorAll('.back_button');
+        let editButton = document.querySelectorAll('.edit-button');
+
+        newItem.addEventListener('click', () => {
+            document.querySelector('.add_item-block').classList.add('open');
+            document.querySelector('.content').classList.remove('open');
+        })
+
+        backButton.forEach(back => {
+                back.addEventListener('click', () => {
+                document.querySelector('.add_item-block').classList.remove('open');
+                document.querySelector('.content').classList.add('open');
+            })
+        })
+
+        editButton.forEach(edit => {
+                edit.addEventListener('click', () => {
+                document.querySelector('.content').classList.remove('open');
+                document.querySelector('.edit_item-block').classList.add('open');
+            })
+        })
+
+        
+    </script>
 </body>
 </html>

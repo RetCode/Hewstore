@@ -18,12 +18,19 @@ html
 
     margin: 0;
 
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 body
 {
     background: #131418;
+
+    line-height: normal !important;
+}
+
+p
+{
+    margin: 0 !important;
 }
 
 .main-block
@@ -92,6 +99,7 @@ body
 .menu_links ul
 {
     padding: 0;
+    margin: 0;
 
     list-style: none;
 }
@@ -131,6 +139,22 @@ body
     color: white;
 }
 
+.menu_links ul .add_item-button
+{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+
+    border: transparent;
+    background: #dc3545;
+
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+
+    cursor: pointer;
+}
+
 .content-block
 {
     width: 100%;
@@ -143,6 +167,18 @@ body
 
     padding: 65px 45px;
     padding-right: 30px;
+
+    display: none;
+}
+
+.admin_active
+{
+    display: block;
+}
+
+.edit_item-block
+{
+    display: none;
 }
 
 .content .stat-block
@@ -385,4 +421,236 @@ body
 
     display: flex;
     justify-content: flex-end;
+}
+
+.nav-block
+{
+    width: 100%;
+
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(0,228px));
+
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.nav-block p
+{
+    width: 228px;
+}
+
+.item
+{
+    width: 100%;
+    border-radius: 5px;
+
+    background: #262932;    
+
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(0,228px));
+
+    padding: 10px 20px;
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.item p
+{
+    width: 228px;
+    word-wrap: break-word;
+}
+
+.edit-button
+{
+    width: 135px;
+    height: 35px;
+    border-radius: 5px;
+
+    border: transparent;
+    background: #7F7F7F;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+
+    cursor: pointer;
+}
+
+.delete-button
+{
+    width: 85px;
+    height: 35px;
+    border-radius: 5px;
+
+    border: transparent;
+    background: #dc3545;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+
+    cursor: pointer;
+}
+
+.add_item-block
+{
+    display: none;
+}
+
+.container
+{
+    width: 100%;
+    height: 100vh;
+
+    padding: 65px 45px;
+}
+
+.add_item-header
+{
+    display: flex;
+    align-items: center;
+}
+
+.add_item-header button
+{
+    height: 25px;
+    margin-right: 10px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: transparent;
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.add_item-header .title
+{
+    font-size: 21px;
+    font-weight: 600;
+    color: white;
+}
+
+.add_item-wrapper
+{
+    margin-top: 25px;
+}
+
+.add_item
+{
+    width: 800px;
+    height: 40px;
+    border-radius: 5px;
+
+    border: 1px solid #dad9d9;
+    background: white;
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 0;
+    margin-bottom: 15px;
+
+    appearance: none;
+
+    outline: transparent;
+}
+
+.pl
+{
+    padding-left: 15px;
+}
+
+.add_item label
+{
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-right: 20px;
+
+    background: #ececec;
+    border: 1px solid #dad9d9;
+
+    cursor: pointer;
+}
+
+.create_button
+{
+    width: 150px;
+    height: 35px;
+    border-radius: 5px;
+
+    border: transparent;
+    background: #4E9673;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+
+    cursor: pointer;
+}
+
+.edit_item-header
+{
+    display: flex;
+    align-items: center;
+}
+
+.edit_item-header button
+{
+    height: 25px;
+    margin-right: 10px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: transparent;
+    background: transparent;
+
+    cursor: pointer;
+
+    transition: 0.2s ease all;
+}
+
+.edit_item-header button:hover path
+{
+    stroke: white;
+}
+
+.edit_item-header .title
+{
+    font-size: 21px;
+    font-weight: 600;
+    color: white;
+}
+
+.edit_item-wrapper
+{
+    margin-top: 25px;
+}
+
+.open
+{
+    display: block;
 }
