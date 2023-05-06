@@ -58,7 +58,7 @@
                         <a class="pages_link" href="filters.html">Фильтры</a>
                     </li>
                     <li>
-                        <button class="add_item-button">Добавить игру</button>
+                        <button class="add_item-button">Добавить тег</button>
                     </li>
                 </ul>
             </div>
@@ -128,6 +128,7 @@
         backButton.forEach(back => {
                 back.addEventListener('click', () => {
                 document.querySelector('.add_item-block').classList.remove('open');
+                document.querySelector('.edit_item-block').classList.remove('open');
                 document.querySelector('.content').classList.add('open');
             })
         })
@@ -137,9 +138,7 @@
                 document.querySelector('.content').classList.remove('open');
                 document.querySelector('.edit_item-block').classList.add('open');
             })
-        })
-
-        
+        })        
     </script>
 </body>
 </html>

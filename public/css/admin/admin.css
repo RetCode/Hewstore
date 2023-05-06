@@ -439,9 +439,20 @@ p
     color: white;
 }
 
-.nav-block p
+.promo
 {
-    width: 228px;
+    grid-template-columns: repeat(auto-fit,minmax(0,185px)) !important;
+}
+
+.payments
+{
+    gap: 40px !important;
+    grid-template-columns: repeat(auto-fit,minmax(0,125px)) !important;
+}
+
+.payments_text
+{
+    white-space: nowrap;
 }
 
 .item
@@ -466,7 +477,6 @@ p
 
 .item p
 {
-    width: 228px;
     word-wrap: break-word;
 }
 
@@ -500,6 +510,11 @@ p
     color: white;
 
     cursor: pointer;
+}
+
+.button-block
+{
+    width: 228px;
 }
 
 .add_item-block
@@ -648,6 +663,23 @@ p
 .edit_item-wrapper
 {
     margin-top: 25px;
+}
+
+.sellers_status
+{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+    background: #198754;
+
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .open
