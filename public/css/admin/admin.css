@@ -228,6 +228,12 @@ p
     background: #262932;
 
     padding: 18px;
+    margin-right: 20px;
+}
+
+.content .stat_wrapper .stat_card:last-child
+{
+    margin-right: 0;
 }
 
 .content .stat_wrapper .stat_card .card_title
@@ -255,8 +261,9 @@ p
 
 .content .payments_block
 {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 66% 33%;
 }
 
 .content .payments_block .last_payments-header
@@ -280,7 +287,6 @@ p
 
 .last_payments-card
 {
-    width: 1031px;
     height: 70px;
     border-radius: 5px;
 
@@ -379,7 +385,6 @@ p
 
 .payments_method-card
 {
-    width: 500px;
     height: 70px;
     border-radius: 5px;
 
@@ -685,4 +690,9 @@ p
 .open
 {
     display: block;
+}
+
+.center_text
+{
+    text-align: center;
 }
