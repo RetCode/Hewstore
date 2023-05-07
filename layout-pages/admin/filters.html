@@ -58,7 +58,7 @@
                         <a class="pages_link active" href="">Фильтры</a>
                     </li>
                     <li>
-                        <button class="add_item-button">Добавить тип</button>
+                        <button class="add_item-button">Добавить фильтр</button>
                     </li>
                 </ul>
             </div>
@@ -68,14 +68,16 @@
                 <div class="nav-block">
                     <p>#</p>
                     <p>Название</p>
-                    <p>Цена</p>
+                    <p>Категория</p>
+                    <p>Значение категории</p>
                     <p>Инструменты</p>
                 </div>
                 <div class="table-block">
                     <div class="item">
                         <p>id</p>
-                        <p>name</p>
-                        <p>coast</p>
+                        <p>product_name</p>
+                        <p>category</p>
+                        <p>category_type</p>
                         <div class="button-block">
                             <button class="edit-button">Редактировать</button>
                             <button class="delete-button">Удалить</button>
@@ -89,14 +91,18 @@
                         <button class="back_button">
                             <img src="../../public/img/back.svg">
                         </button>
-                        <p class="title">Создание новой игры</p>
+                        <p class="title">Добавление нового фильтра</p>
                     </div>
                     <div class="add_item-wrapper">
-                        <input class="add_item pl" type="text" placeholder="Название">
                         <select class="add_item pl">
-                            <option>game</option>
+                            <option>product_name</option>
                         </select>
-                        <input class="add_item pl" type="text" placeholder="Цена">
+                        <select class="add_item pl">
+                            <option>category</option>
+                        </select>
+                        <select class="add_item pl">
+                            <option>category_type</option>
+                        </select>
                         <button class="create_button">Создать</button>                       
                     </div>
                 </div>                
@@ -110,11 +116,15 @@
                         <p class="title">Редактирование</p>
                     </div>
                     <div class="edit_item-wrapper">
-                        <input class="add_item pl" type="text" placeholder="Название">
                         <select class="add_item pl">
-                            <option>game</option>
+                            <option>product_name</option>
                         </select>
-                        <input class="add_item pl" type="text" placeholder="Цена">
+                        <select class="add_item pl">
+                            <option>category</option>
+                        </select>
+                        <select class="add_item pl">
+                            <option>category_type</option>
+                        </select>
                         <button class="create_button">Сохранить</button>  
                     </div>
                 </div>

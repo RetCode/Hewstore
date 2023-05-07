@@ -446,7 +446,7 @@ p
 
 .promo
 {
-    grid-template-columns: repeat(auto-fit,minmax(0,185px)) !important;
+    grid-template-columns: 20px 145px 145px 110px 120px 90px 228px !important;
 }
 
 .payments
