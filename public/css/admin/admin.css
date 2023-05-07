@@ -434,7 +434,7 @@ p
 
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(0,228px));
+    grid-template-columns: 20px 228px 228px 228px 228px 228px 228px;
 
     padding-bottom: 20px;
     padding-left: 20px;
@@ -451,8 +451,8 @@ p
 
 .payments
 {
-    gap: 40px !important;
-    grid-template-columns: repeat(auto-fit,minmax(0,125px)) !important;
+    /* gap: 40px !important; */
+    grid-template-columns: 20px 75px 70px 290px 300px 90px 490px !important;
 }
 
 .payments_text
@@ -470,14 +470,19 @@ p
     display: grid;
     align-items: center;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(0,228px));
+    grid-template-columns: 20px 228px 228px 228px 228px 228px 228px;
 
     padding: 10px 20px;
     margin-bottom: 10px;
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     color: white;
+}
+
+.id
+{
+    font-weight: 500;
 }
 
 .item p
