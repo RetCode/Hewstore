@@ -85,5 +85,33 @@
             </div>
         </div>
     </main>
+    <script src="../vendor/jquery.js"></script>
+    <script>
+        function loadItems()
+        {
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'getPayments'},
+            success: function(response) {
+                    response["items"].forEach(element => {
+                        document.getElementsByClassName("table-block")[0].innerHTML += 
+                        `
+                        <div class="item payments">
+                            <p>${element["p"]}</p>
+                            <p>${element["amount"]} ${element["currency"]}</p>
+                            <p>${element["to_currency"]}</p>
+                            <p>${element["uuid"]}</p>
+                            <p>${element["adress"]}</p>
+                            <p>${element["payment_status"]}</p>
+                            <p>${element["items"]}</p>
+                        </div>`;
+                    });
+                }
+            });
+        }
+
+        loadItems()
+    </script>
 </body>
 </html>

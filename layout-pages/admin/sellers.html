@@ -25,44 +25,44 @@
             <div class="menu_links">
                 <ul>
                     <li>
-                        <a class="pages_link" href="admin.html">Главная</a>
+                        <a class="pages_link" href="admin">Главная</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="game.html">Игры</a>
+                        <a class="pages_link" href="games">Игры</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="items.html">Товар</a>
+                        <a class="pages_link" href="items">Товар</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="types.html">Тип товара</a>
+                        <a class="pages_link" href="types">Тип товара</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="keys.html">Ключи от товара</a>
+                        <a class="pages_link" href="keys">Ключи от товара</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="tag.html">Тег</a>
+                        <a class="pages_link" href="tag">Тег</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="news.html">Анонсы</a>
+                        <a class="pages_link" href="news">Анонсы</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="promo.html">Промокоды</a>
+                        <a class="pages_link" href="promo">Промокоды</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="payments.html">Платежи</a>
+                        <a class="pages_link" href="payments">Платежи</a>
                     </li>
                     <li>
                         <a class="pages_link active" href="">Покупки</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="filters.html">Фильтры</a>
+                        <a class="pages_link" href="filters">Фильтры</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="content-block">
             <div class="content open">
-                <div class="nav-block">
+                <div class="nav-block sellers">
                     <p class="id">#</p>
                     <p>Оплачено</p>
                     <p>Валюта</p>
@@ -70,7 +70,7 @@
                     <p>Кошелек</p>
                     <p>Статус</p>
                 </div>
-                <div class="table-block">
+                <div class="table-block sellers">
                     <div class="item">
                         <p class="id">id</p>
                         <p>1 USD</p>
@@ -85,30 +85,34 @@
             </div>
         </div>
     </main>
+    <script src="../vendor/jquery.js"></script>
     <script>
-        newItem = document.querySelector('.add_item-button');
-        let backButton = document.querySelectorAll('.back_button');
-        let editButton = document.querySelectorAll('.edit-button');
+        function loadItems()
+        {
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'getSellers'},
+            success: function(response) {
+                    response["items"].forEach(element => {
+                        document.getElementsByClassName("table-block")[0].innerHTML += 
+                        `
+                        <div class="item annonce">
+                            <p>${element["id"]}</p>
+                            <p>${element["amount"]} ${element["currency"]}</p>
+                            <p>${element["to_currency"]}</p>
+                            <p>${element["uuid"]}</p>
+                            <p>${element["adress"]}</p>
+                            <div class="sellers_status">
+                                Оплачено
+                            </div>
+                        </div>`;
+                    });
+                }
+            });
+        }
 
-        newItem.addEventListener('click', () => {
-            document.querySelector('.add_item-block').classList.add('open');
-            document.querySelector('.content').classList.remove('open');
-        })
-
-        backButton.forEach(back => {
-                back.addEventListener('click', () => {
-                document.querySelector('.add_item-block').classList.remove('open');
-                document.querySelector('.edit_item-block').classList.remove('open');
-                document.querySelector('.content').classList.add('open');
-            })
-        })
-
-        editButton.forEach(edit => {
-                edit.addEventListener('click', () => {
-                document.querySelector('.content').classList.remove('open');
-                document.querySelector('.edit_item-block').classList.add('open');
-            })
-        })        
+        loadItems()      
     </script>
 </body>
 </html>

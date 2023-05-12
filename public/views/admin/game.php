@@ -25,37 +25,37 @@
             <div class="menu_links">
                 <ul>
                     <li>
-                        <a class="pages_link" href="admin.html">Главная</a>
+                        <a class="pages_link" href="admin">Главная</a>
                     </li>
                     <li>
                         <a class="pages_link active" href="">Игры</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="items.html">Товар</a>
+                        <a class="pages_link" href="items">Товар</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="types.html">Тип товара</a>
+                        <a class="pages_link" href="types">Тип товара</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="keys.html">Ключи от товара</a>
+                        <a class="pages_link" href="keys">Ключи от товара</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="tag.html">Тег</a>
+                        <a class="pages_link" href="tag">Тег</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="news.html">Анонсы</a>
+                        <a class="pages_link" href="news">Анонсы</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="promo.html">Промокоды</a>
+                        <a class="pages_link" href="promo">Промокоды</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="payments.html">Платежи</a>
+                        <a class="pages_link" href="payments">Платежи</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="sellers.html">Покупки</a>
+                        <a class="pages_link" href="sellers">Покупки</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="filters.html">Фильтры</a>
+                        <a class="pages_link" href="filters">Фильтры</a>
                     </li>
                     <li>
                         <button class="add_item-button">Добавить игру</button>
@@ -65,7 +65,7 @@
         </div>
         <div class="content-block">
             <div class="content open">
-                <div class="nav-block">
+                <div class="nav-block game">
                     <p>#</p>
                     <p>Название</p>
                     <p>Картинка</p>
@@ -265,7 +265,7 @@
                     response["items"].forEach(element => {
                         document.getElementsByClassName("table-block")[0].innerHTML += 
                         `
-                        <div class="item">
+                        <div class="item game">
                             <p>${element["id"]}</p>
                             <p>${element["name"]}</p>
                             <p>${element["img"]}</p>

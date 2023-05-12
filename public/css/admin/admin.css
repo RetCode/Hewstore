@@ -446,13 +446,53 @@ p
 
 .promo
 {
-    grid-template-columns: 20px 145px 145px 110px 120px 90px 228px !important;
+    grid-template-columns: 20px 145px 145px 110px 175px 90px 228px !important;
 }
 
 .payments
 {
     /* gap: 40px !important; */
     grid-template-columns: 20px 75px 70px 290px 300px 90px 490px !important;
+}
+
+.game
+{
+    grid-template-columns: 20px 228px 228px 228px !important;
+}
+
+.items
+{
+    grid-template-columns: 20px 228px 228px 228px 228px 228px !important;
+}
+
+.keys
+{
+    grid-template-columns: 20px 150px 300px 228px !important;
+}
+
+.annonce
+{
+    grid-template-columns: 20px 560px 560px 228px !important;
+}
+
+.filters
+{
+    grid-template-columns: 20px 228px 265px 265px 228px !important;
+}
+
+.sellers
+{
+    grid-template-columns: 20px 100px 120px 300px 320px 150px !important;
+}
+
+.tag
+{
+    grid-template-columns: 20px 228px 228px 228px !important;
+}
+
+.types
+{
+    grid-template-columns: 20px 270px 80px 228px !important;
 }
 
 .payments_text

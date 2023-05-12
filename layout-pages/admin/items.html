@@ -65,7 +65,7 @@
         </div>
         <div class="content-block">
             <div class="content open">
-                <div class="nav-block">
+                <div class="nav-block items">
                     <p>#</p>
                     <p>Название</p>
                     <p>Картинка</p>
@@ -74,7 +74,7 @@
                     <p>Инструменты</p>
                 </div>
                 <div class="table-block">
-                    <div class="item">
+                    <div class="item items">
                         <p>id</p>
                         <p>name</p>
                         <p>img</p>
@@ -84,40 +84,7 @@
                             <button class="edit-button">Редактировать</button>
                             <button class="delete-button">Удалить</button>
                         </div>
-                    </div>   
-                    <div class="item">
-                        <p>id</p>
-                        <p>name</p>
-                        <p>img</p>
-                        <p>status</p>
-                        <p>game</p>
-                        <div class="button-block">
-                            <button class="edit-button">Редактировать</button>
-                            <button class="delete-button">Удалить</button>
-                        </div>
-                    </div> 
-                    <div class="item">
-                        <p>id</p>
-                        <p>name</p>
-                        <p>img</p>
-                        <p>status</p>
-                        <p>game</p>
-                        <div class="button-block">
-                            <button class="edit-button">Редактировать</button>
-                            <button class="delete-button">Удалить</button>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p>id</p>
-                        <p>name</p>
-                        <p>img</p>
-                        <p>status</p>
-                        <p>game</p>
-                        <div class="button-block">
-                            <button class="edit-button">Редактировать</button>
-                            <button class="delete-button">Удалить</button>
-                        </div>
-                    </div>                  
+                    </div>                 
                 </div>
             </div>
             <div class="add_item-block">
@@ -172,6 +139,7 @@
             </div>
         </div>
     </main>
+    <script src="../vendor/jquery.js"></script>
     <script>
         newItem = document.querySelector('.add_item-button');
         let backButton = document.querySelectorAll('.back_button');
@@ -195,7 +163,150 @@
                 document.querySelector('.content').classList.remove('open');
                 document.querySelector('.edit_item-block').classList.add('open');
             })
-        })        
+        })   
+        
+        function clearAlert()
+        {
+            document.getElementById("alerts").innerHTML = "";
+        }
+
+        function createData()
+        {
+            var name = $("#nameInput").val(); 
+            var fileInput = $("#fileInput")[0];
+            var file = fileInput.files[0]; 
+            
+            var formData = new FormData(); 
+            
+            formData.append("name", name); 
+            formData.append("file", file);
+            formData.append("method", "createGame");
+
+            $.ajax({
+                url: "/api",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Игра успешно добавлена
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка при добавлении
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function inputData(object)
+        {
+            let id = object.getAttribute("x-id");
+            let name = object.getAttribute("x-name")
+
+            document.getElementById("recipient-name").value = name;
+            document.getElementById("recipient-id").value = id;
+
+        }
+
+        function deleteData(object)
+        {
+            let id = object.getAttribute("x-id");
+
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'deleteGame', id: id},
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Игра успешно удалена
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка удаления
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function savedata()
+        {
+            let id = document.getElementById("recipient-id").value;
+            let name = document.getElementById("recipient-name").value;
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'editGame', id: id, text: name},
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Данные обновлены
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка обновления данных
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function loadItems()
+        {
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'getGames'},
+            success: function(response) {
+                    response["items"].forEach(element => {
+                        document.getElementsByClassName("table-block")[0].innerHTML += 
+                        `
+                        <div class="item game">
+                            <p>${element["id"]}</p>
+                            <p>${element["name"]}</p>
+                            <p>${element["img"]}</p>
+                            <p>${element["status"]}</p>
+                            <p>${element["games"]}</p>
+                            <div class="button-block">
+                                <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>
+                                <button class="delete-button"  x-id="${element['id']}">Удалить</button>
+                            </div>
+                        </div>`;
+                    });
+                }
+            });
+        }
+
+        loadItems()
     </script>
 </body>
 </html>

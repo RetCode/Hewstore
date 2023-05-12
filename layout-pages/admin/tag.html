@@ -25,37 +25,37 @@
             <div class="menu_links">
                 <ul>
                     <li>
-                        <a class="pages_link" href="admin.html">Главная</a>
+                        <a class="pages_link" href="admin">Главная</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="game.html">Игры</a>
+                        <a class="pages_link" href="games">Игры</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="items.html">Товар</a>
+                        <a class="pages_link" href="items">Товар</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="types.html">Тип товара</a>
+                        <a class="pages_link" href="types">Тип товара</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="keys.html">Ключи от товара</a>
+                        <a class="pages_link" href="keys">Ключи от товара</a>
                     </li>
                     <li>
                         <a class="pages_link active" href="">Тег</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="news.html">Анонсы</a>
+                        <a class="pages_link" href="news">Анонсы</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="promo.html">Промокоды</a>
+                        <a class="pages_link" href="promo">Промокоды</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="payments.html">Платежи</a>
+                        <a class="pages_link" href="payments">Платежи</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="sellers.html">Покупки</a>
+                        <a class="pages_link" href="sellers">Покупки</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="filters.html">Фильтры</a>
+                        <a class="pages_link" href="filters">Фильтры</a>
                     </li>
                     <li>
                         <button class="add_item-button">Добавить тег</button>
@@ -115,6 +115,7 @@
             </div>
         </div>
     </main>
+    <script src="../vendor/jquery.js"></script>
     <script>
         newItem = document.querySelector('.add_item-button');
         let backButton = document.querySelectorAll('.back_button');
@@ -138,7 +139,148 @@
                 document.querySelector('.content').classList.remove('open');
                 document.querySelector('.edit_item-block').classList.add('open');
             })
-        })        
+        })     
+        
+        function clearAlert()
+        {
+            document.getElementById("alerts").innerHTML = "";
+        }
+
+        function createData()
+        {
+            var name = $("#nameInput").val(); 
+            var fileInput = $("#fileInput")[0];
+            var file = fileInput.files[0]; 
+            
+            var formData = new FormData(); 
+            
+            formData.append("name", name); 
+            formData.append("file", file);
+            formData.append("method", "createKey");
+
+            $.ajax({
+                url: "/api",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Игра успешно добавлена
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка при добавлении
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function inputData(object)
+        {
+            let id = object.getAttribute("x-id");
+            let name = object.getAttribute("x-name")
+
+            document.getElementById("recipient-name").value = name;
+            document.getElementById("recipient-id").value = id;
+
+        }
+
+        function deleteData(object)
+        {
+            let id = object.getAttribute("x-id");
+
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'deleteStatus', id: id},
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Игра успешно удалена
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка удаления
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function savedata()
+        {
+            let id = document.getElementById("recipient-id").value;
+            let name = document.getElementById("recipient-name").value;
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'editStatus', id: id, text: name},
+                success: function(response) {
+                    if(response["succes"] == true)
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                        Данные обновлены
+                        </div>`;
+
+                        loadItems()
+                        setTimeout(clearAlert, 3000);
+                    }
+                    else
+                    {
+                        document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                        Ошибка обновления данных
+                        </div>`;
+
+                        setTimeout(clearAlert, 3000);
+                    }
+                }
+            });
+        }
+
+        function loadItems()
+        {
+            $.ajax({
+            url: "/api",
+            type: "POST",
+            data: {method: 'getStatus'},
+            success: function(response) {
+                    response["items"].forEach(element => {
+                        document.getElementsByClassName("table-block")[0].innerHTML += 
+                        `
+                        <div class="item annonce">
+                            <p>${element["id"]}</p>
+                            <p>${element["name"]}</p>
+                            <p><div style="display:flex; align-items:center;">${element["color"]}<div style="width:20px; height:20px; margin-left:15px; border-radius:100%; background-color:${element["color"]}"></div></div></p>
+                            <div class="button-block">
+                                <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>
+                                <button class="delete-button"  x-id="${element['id']}">Удалить</button>
+                            </div>
+                        </div>`;
+                    });
+                }
+            });
+        }
+
+        loadItems()
     </script>
 </body>
 </html>
