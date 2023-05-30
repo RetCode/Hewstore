@@ -433,6 +433,7 @@ p
     width: 100%;
 
     display: grid;
+    align-items: center;
     gap: 20px;
     grid-template-columns: 20px 228px 228px 228px 228px 228px 228px;
 
@@ -452,17 +453,22 @@ p
 .payments
 {
     /* gap: 40px !important; */
-    grid-template-columns: 20px 75px 70px 290px 300px 90px 490px !important;
+    grid-template-columns: 20px 75px 70px 290px 300px 90px 310px !important;
 }
 
 .game
 {
-    grid-template-columns: 20px 228px 228px 228px !important;
+    grid-template-columns: 20px 228px 228px 365px !important;
+}
+
+.items_open
+{
+    grid-template-columns: 20px 20px 228px 228px 228px 228px 228px !important;
 }
 
 .items
 {
-    grid-template-columns: 20px 228px 228px 228px 228px 228px !important;
+    grid-template-columns: 20px 228px 228px 228px 228px 365px !important;
 }
 
 .keys
@@ -472,7 +478,7 @@ p
 
 .annonce
 {
-    grid-template-columns: 20px 560px 560px 228px !important;
+    grid-template-columns: 20px 460px 460px 228px !important;
 }
 
 .filters
@@ -546,6 +552,29 @@ p
     cursor: pointer;
 }
 
+.open-button
+{
+    width: 135px;
+    height: 35px;
+    border-radius: 5px;
+
+    border: transparent;
+    background: #7F7F7F;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+
+    cursor: pointer;
+}
+
+.textarea_box
+{
+    width: 800px;
+
+    margin-bottom: 15px;
+}
+
 .delete-button
 {
     width: 85px;
@@ -560,11 +589,6 @@ p
     color: white;
 
     cursor: pointer;
-}
-
-.button-block
-{
-    width: 228px;
 }
 
 .add_item-block
@@ -730,6 +754,49 @@ p
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.open_items-block
+{
+    width: 100%;
+    height: 100%;
+    padding: 65px 45px;
+    padding-right: 30px;
+    display: none;
+}
+
+.open_items-block .back_button
+{
+    height: 25px;
+    margin-right: 10px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: transparent;
+    background: transparent;
+
+    cursor: pointer;
+
+    transition: 0.2s ease all;
+}
+
+.open_items-block button:hover path
+{
+    stroke: white;
+}
+
+.open_items-block button img
+{
+    width: 25px;
+}
+
+.desc
+{
+    height: 80px;
 }
 
 .open

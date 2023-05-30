@@ -156,6 +156,12 @@ body::-webkit-scrollbar
     color: white;
 } 
 
+.archive-wrapper .announcements-item .announcements_item-info .announcements_item-description
+{
+    width: 375px;
+    word-wrap: break-word;
+}
+
 .archive-wrapper .announcements-item .announcements_item-info .announcements_item-description p
 {
     font-size: 14px;

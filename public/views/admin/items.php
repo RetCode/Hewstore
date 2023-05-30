@@ -286,7 +286,7 @@
                             <p>${element["status"]}</p>
                             <p>${element["game"]}</p>
                             <div class="button-block">
-                                <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>
+                                <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>                                
                                 <button class="delete-button"  x-id="${element['id']}">Удалить</button>
                             </div>
                         </div>`;
