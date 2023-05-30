@@ -106,8 +106,7 @@
     <script src="../vendor/jquery.js"></script>
     <script>
         newItem = document.querySelector('.add_item-button');
-        let backButton = document.querySelectorAll('.back_button');
-        let editButton = document.querySelectorAll('.edit-button');
+        backButton = document.querySelectorAll('.back_button');
 
         newItem.addEventListener('click', () => {
             document.querySelector('.add_item-block').classList.add('open');
@@ -120,14 +119,7 @@
                 document.querySelector('.edit_item-block').classList.remove('open');
                 document.querySelector('.content').classList.add('open');
             })
-        })
-
-        editButton.forEach(edit => {
-                edit.addEventListener('click', () => {
-                document.querySelector('.content').classList.remove('open');
-                document.querySelector('.edit_item-block').classList.add('open');
-            })
-        })  
+        }) 
         
         function clearAlert()
         {
