@@ -125,7 +125,7 @@
             </div>
         </div>
     </main>
-    <script src="/vendor/minified/sceditor.min.js"></script>
+    <script src="../vendor/minified/sceditor.min.js"></script>
     <script src="../vendor/jquery.js"></script>
     <script>
         var textarea = document.querySelectorAll("#editor");
@@ -166,8 +166,8 @@
                 var nameen = $("#nameEnInput").val();
                 var descriptionru = $("#descRuInput").val(); 
                 var descriptionen = $("#descEnInput").val(); 
-                var bodyru = sceditor.instance(document.querySelectorAll("#editor")[2]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[2]).val(), true); 
-                var bodyen = sceditor.instance(document.querySelectorAll("#editor")[3]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[3]).val(), true); 
+                var bodyru = sceditor.instance(document.querySelectorAll("#editor")[0]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[0]).val(), true); 
+                var bodyen = sceditor.instance(document.querySelectorAll("#editor")[1]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[1]).val(), true); 
                 var fileInput = $("#fileInput")[0];
                 var file = fileInput.files[0]; 
                 
@@ -222,8 +222,8 @@
                         document.getElementById("nameEnInput-recesipition").value = element["nameen"];
                         document.getElementById("descRuInput-recesipition").value = element["descriptionru"];
                         document.getElementById("descEnInput-recesipition").value = element["descriptionen"];
-                        sceditor.instance(document.querySelectorAll("#editor")[0]).val(sceditor.instance(document.querySelectorAll("#editor")[0]).toBBCode(element["bodyru"]));
-                        sceditor.instance(document.querySelectorAll("#editor")[1]).val(sceditor.instance(document.querySelectorAll("#editor")[1]).toBBCode(element["bodyen"]));
+                        sceditor.instance(document.querySelectorAll("#editor")[2]).val(sceditor.instance(document.querySelectorAll("#editor")[2]).toBBCode(element["bodyru"]));
+                        sceditor.instance(document.querySelectorAll("#editor")[3]).val(sceditor.instance(document.querySelectorAll("#editor")[3]).toBBCode(element["bodyen"]));
                     }
                 });
 
