@@ -109,6 +109,19 @@
                 <div class="items_table-block">
                 </div>
             </div>
+            <div class="keys_items-block">
+                <div class="nav-block">
+                    <button class="back_button">
+                        <img src="../../public/img/back.svg">
+                    </button>
+                    <p>#</p>
+                    <p>Тип продукта</p>
+                    <p>Ключ</p>
+                    <p>Инструменты</p>
+                </div>
+                <div class="keys_table-block">
+                </div>
+            </div>
         </div>
     </main>
     <script src="../vendor/jquery.js"></script>
@@ -190,6 +203,7 @@
             document.querySelector('.edit_item-block').classList.add('open');
         }
 
+        // items function
         function openItem(object)
         {
             let id = object.getAttribute("x-id");
@@ -245,6 +259,168 @@
                     }
                 });
             }
+
+            // keys function
+        function openKeys(object)
+            {
+                newItem = document.querySelector('.add_item-button');
+                backButton = document.querySelectorAll('.back_button');
+
+                newItem.addEventListener('click', () => {
+                    document.querySelector('.add_item-block').classList.add('open');
+                    document.querySelector('.open_items-block').classList.remove('open');
+                })
+
+                backButton.forEach(back => {
+                        back.addEventListener('click', () => {
+                        document.querySelector('.add_item-block').classList.remove('open');
+                        document.querySelector('.edit_item-block').classList.remove('open');
+                        document.querySelector('.open_items-block').classList.add('open');
+                    })
+                }) 
+        
+                function clearAlert()
+                {
+                    document.getElementById("alerts").innerHTML = "";
+                }
+
+                function createData()
+                {
+                    var name = $("#nameInput").val(); 
+                    var fileInput = $("#fileInput")[0];
+                    var file = fileInput.files[0]; 
+                    
+                    var formData = new FormData(); 
+                    
+                    formData.append("name", name); 
+                    formData.append("file", file);
+                    formData.append("method", "createKey");
+
+                    $.ajax({
+                        url: "/api",
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            if(response["succes"] == true)
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                                Игра успешно добавлена
+                                </div>`;
+
+                                loadItems()
+                                setTimeout(clearAlert, 3000);
+                            }
+                            else
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                                Ошибка при добавлении
+                                </div>`;
+
+                                setTimeout(clearAlert, 3000);
+                            }
+                        }
+                    });
+                }
+
+                function inputData(object)
+                {
+                    let id = object.getAttribute("x-id");
+                    let name = object.getAttribute("x-name")
+
+                    document.getElementById("recipient-name").value = name;
+                    document.getElementById("recipient-id").value = id;
+
+                }
+
+                function deleteData(object)
+                {
+                    let id = object.getAttribute("x-id");
+
+                    $.ajax({
+                    url: "/api",
+                    type: "POST",
+                    data: {method: 'deleteKey', id: id},
+                        success: function(response) {
+                            if(response["succes"] == true)
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                                Игра успешно удалена
+                                </div>`;
+
+                                loadItems()
+                                setTimeout(clearAlert, 3000);
+                            }
+                            else
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                                Ошибка удаления
+                                </div>`;
+
+                                setTimeout(clearAlert, 3000);
+                            }
+                        }
+                    });
+                }
+
+                function savedata()
+                {
+                    let id = document.getElementById("recipient-id").value;
+                    let name = document.getElementById("recipient-name").value;
+                    $.ajax({
+                    url: "/api",
+                    type: "POST",
+                    data: {method: 'editKey', id: id, text: name},
+                        success: function(response) {
+                            if(response["succes"] == true)
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-success" role="alert">
+                                Данные обновлены
+                                </div>`;
+
+                                loadItems()
+                                setTimeout(clearAlert, 3000);
+                            }
+                            else
+                            {
+                                document.getElementById("alerts").innerHTML += `<div class="alert alert-danger" role="alert">
+                                Ошибка обновления данных
+                                </div>`;
+
+                                setTimeout(clearAlert, 3000);
+                            }
+                        }
+                    });
+                }
+
+                function loadItems()
+                {
+                    $.ajax({
+                    url: "/api",
+                    type: "POST",
+                    data: {method: 'getKeys'},
+                    success: function(response) {
+                            response["items"].forEach(element => {
+                                document.getElementsByClassName("keys_table-block")[0].innerHTML += 
+                                `
+                                <div class="item keys">
+                                    <p>${element["id"]}</p>
+                                    <p>${element["productType"]}</p>
+                                    <p>${element["key_text"]}</p>
+                                    <div class="button-block">
+                                        <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>
+                                        <button class="delete-button"  x-id="${element['id']}">Удалить</button>
+                                    </div>
+                                </div>`;
+                            });
+                        }
+                    });
+                }
+
+                loadItems()
+            }
+            // keys function
 
             function inputData(object)
             {
@@ -333,7 +509,7 @@
                                 <p>${element["status"]}</p>
                                 <p>${element["game"]}</p>
                                 <div class="button-block">
-                                    <button class="open-button" onclick="openItem(this)" x-id="${element['id']}" x-name="${element['name']}">Открыть</button>
+                                    <button class="open-button" onclick="openKeys(this)" x-id="${element['id']}" x-name="${element['name']}">Открыть</button>
                                     <button class="edit-button" x-id="${element['id']}" x-name="${element['name']}">Редактировать</button>                                
                                     <button class="delete-button"  x-id="${element['id']}">Удалить</button>
                                 </div>
@@ -345,6 +521,7 @@
 
             loadItems()             
         }
+        // items function
 
         function deleteData(object)
         {
