@@ -24,15 +24,6 @@
                         <a class="pages_link" href="games">Игры</a>
                     </li>
                     <li>
-                        <a class="pages_link" href="items">Товар</a>
-                    </li>
-                    <li>
-                        <a class="pages_link" href="types">Тип товара</a>
-                    </li>
-                    <li>
-                        <a class="pages_link" href="keys">Ключи от товара</a>
-                    </li>
-                    <li>
                         <a class="pages_link" href="tag">Тег</a>
                     </li>
                     <li>

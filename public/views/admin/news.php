@@ -45,7 +45,7 @@
                         <a class="pages_link" href="filters">Фильтры</a>
                     </li>
                     <li>
-                        <button class="add_item-button">Добавить игру</button>
+                        <button class="add_item-button">Добавить анонс</button>
                     </li>
                 </ul>
             </div>
@@ -96,13 +96,11 @@
                         <p class="title">Редактирование</p>
                     </div>
                     <div class="edit_item-wrapper">
-                        <input class="add_item pl" type="text" placeholder="Название">
-                        <select class="add_item pl">
-                            <option>item</option>
-                        </select>
-                        <select class="add_item pl">
-                            <option>item</option>
-                        </select>
+                        <input type="text" id="recipent-id" hidden="">
+                        <input class="add_item pl" id="nameRuInput-recesipition" type="text" placeholder="Название[RU]">
+                        <input class="add_item pl" id="nameEnInput-recesipition" type="text" placeholder="Название[EN]">
+                        <input class="add_item pl" id="descRuInput-recesipition" type="text" placeholder="Описание[RU]">
+                        <input class="add_item pl" id="descEnInput-recesipition" type="text" placeholder="Описание[EN]">
                         <div class="add_item">
                             <input class="form-control" id="fileInput" type="file">
                         </div>
@@ -112,14 +110,16 @@
                         <div class="textarea_box">
                             <textarea id="editor" style="display: none;"></textarea>
                         </div>   
-                        <button class="create_button">Сохранить</button>  
+                        <button onclick="savedata()" class="create_button">Сохранить</button>  
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-    <script src="../vendor/minified/sceditor.min.js"></script>
+    </main>    
     <script src="../vendor/jquery.js"></script>
+    <script src="../vendor/minified/sceditor.min.js"></script>
+    <script src="/vendor/minified/formats/bbcode.js"></script>
+    <script src="/vendor/minified/formats/xhtml.js"></script>
     <script>
         var textarea = document.querySelectorAll("#editor");
         textarea.forEach(element => {
@@ -154,12 +154,12 @@
         }
 
         function createData()
-            {
+        {
                 var nameru = $("#nameRuInput").val();
                 var nameen = $("#nameEnInput").val();
                 var descriptionru = $("#descRuInput").val(); 
                 var descriptionen = $("#descEnInput").val(); 
-                var bodyru = sceditor.instance(document.querySelectorAll("#editor")[0]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[0]).val(), true); 
+                var bodyru = sceditor.instance(document.querySelector("#editor")).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[0]).val(), true); 
                 var bodyen = sceditor.instance(document.querySelectorAll("#editor")[1]).fromBBCode(sceditor.instance(document.querySelectorAll("#editor")[1]).val(), true); 
                 var fileInput = $("#fileInput")[0];
                 var file = fileInput.files[0]; 
@@ -219,6 +219,9 @@
                         sceditor.instance(document.querySelectorAll("#editor")[3]).val(sceditor.instance(document.querySelectorAll("#editor")[3]).toBBCode(element["bodyen"]));
                     }
                 });
+
+                document.querySelector('.content').classList.remove('open');
+                document.querySelector('.edit_item-block').classList.add('open');
 
             }
 
@@ -295,6 +298,7 @@
             type: "POST",
             data: {method: 'getAnnounce'},
             success: function(response) {
+                    allItems = response
                     response["items"].forEach(element => {
                         document.getElementsByClassName("table-block")[0].innerHTML += 
                         `
